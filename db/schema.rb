@@ -10,10 +10,101 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_153338) do
+ActiveRecord::Schema.define(version: 2019_08_26_164716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "incident_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "incident_motives", force: :cascade do |t|
+    t.bigint "motive_id"
+    t.bigint "incident_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["incident_id"], name: "index_incident_motives_on_incident_id"
+    t.index ["motive_id"], name: "index_incident_motives_on_motive_id"
+  end
+
+  create_table "incident_recommendations", force: :cascade do |t|
+    t.bigint "incident_category_id"
+    t.bigint "recommendation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["incident_category_id"], name: "index_incident_recommendations_on_incident_category_id"
+    t.index ["recommendation_id"], name: "index_incident_recommendations_on_recommendation_id"
+  end
+
+  create_table "incidents", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "description"
+    t.date "date"
+    t.boolean "recurrent"
+    t.boolean "author_is_victim"
+    t.string "address"
+    t.boolean "publication_agreement"
+    t.string "place_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "incident_category_id"
+    t.index ["incident_category_id"], name: "index_incidents_on_incident_category_id"
+    t.index ["user_id"], name: "index_incidents_on_user_id"
+  end
+
+  create_table "motives", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "non_profits", force: :cascade do |t|
+    t.bigint "motive_id"
+    t.string "name"
+    t.string "contact_email"
+    t.text "description"
+    t.string "logo_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["motive_id"], name: "index_non_profits_on_motive_id"
+  end
+
+  create_table "proofs", force: :cascade do |t|
+    t.bigint "incident_id"
+    t.bigint "testimony_id"
+    t.string "media_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["incident_id"], name: "index_proofs_on_incident_id"
+    t.index ["testimony_id"], name: "index_proofs_on_testimony_id"
+  end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.boolean "is_an_action"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.bigint "incident_id"
+    t.string "report_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["incident_id"], name: "index_reports_on_incident_id"
+  end
+
+  create_table "testimonies", force: :cascade do |t|
+    t.bigint "incident_id"
+    t.string "cerfa_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["incident_id"], name: "index_testimonies_on_incident_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +118,15 @@ ActiveRecord::Schema.define(version: 2019_08_26_153338) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "incident_motives", "incidents"
+  add_foreign_key "incident_motives", "motives"
+  add_foreign_key "incident_recommendations", "incident_categories"
+  add_foreign_key "incident_recommendations", "recommendations"
+  add_foreign_key "incidents", "incident_categories"
+  add_foreign_key "incidents", "users"
+  add_foreign_key "non_profits", "motives"
+  add_foreign_key "proofs", "incidents"
+  add_foreign_key "proofs", "testimonies"
+  add_foreign_key "reports", "incidents"
+  add_foreign_key "testimonies", "incidents"
 end
