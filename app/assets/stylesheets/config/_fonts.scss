@@ -7,6 +7,33 @@
 $body-font: 'Source Sans Pro', sans-serif;
 $headers-font: 'Source Sans Pro', sans-serif;
 
+body {
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 28px;
+    font-weight: 400;
+  }
+  h3 {
+    font-size: 24px;
+    font-weight: 200;
+  }
+  h4 {
+    font-weight: 700;
+    font-size: 20px;
+  }
+  h5 {
+    font-weight: 400;
+    font-size: 20px;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 200;
+  }
+}
+
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
