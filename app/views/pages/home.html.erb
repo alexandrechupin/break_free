@@ -22,15 +22,18 @@
 
   <div class="row my-5">
 
-      <div class="card-launch">
-        <div class="label">
-          <h4>agression sexuelle</h4>
-          <p>example 1 – example 2 – example 3 - ...</p>
+      <%= link_to incidents_path(author_is_victim: 'true', inc_cat_id: 1), method: 'post' do  %>
+        <div class="card-launch">
+          <div class="label">
+            <h4>agression sexuelle</h4>
+            <p>example 1 – example 2 – example 3 - ...</p>
+          </div>
+          <div class="arrow">
+             <i class="fas fa-arrow-circle-right"></i>
+          </div>
         </div>
-        <div class="arrow">
-           <i class="fas fa-arrow-circle-right"></i>
-        </div>
-      </div>
+      <% end %>
+
 
       <div class="card-launch">
         <div class="label">
