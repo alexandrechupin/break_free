@@ -1,0 +1,59 @@
+.button-primary {
+  padding: 10px;
+  height: 40px;
+  background-color: #471F44;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.button-secondary {
+  padding: 10px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid;
+  border-color: #471F44;
+  color: #471F44;
+  border-radius: 25px;
+}
+
+
+.button-secondary:hover {
+  padding: 10px;
+  height: 40px;
+  background-color: #471F44;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.theme-tag {
+  padding: 10px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid;
+  border-color: #393D3F;
+  color: #393D3F;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.theme-tag:hover{
+  padding: 10px;
+  height: 40px;
+  background-color: #393D3F;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.theme-tag.active {
+  padding: 10px;
+  height: 40px;
+  background-color: #393D3F;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
