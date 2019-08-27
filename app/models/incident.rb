@@ -10,9 +10,6 @@ class Incident < ApplicationRecord
   has_many :incident_recommendations, through: :incident_category
   belongs_to :incident_category
 
-  validates :date, presence: true
-  validates :address, presence: true
   validates :incident_category, presence: true
-  validates :place_type, presence: true, inclusion: { in: PLACE_TYPE }
-  validates_associated :incident_motives
+  validates :place_type, inclusion: { in: PLACE_TYPE }
 end
