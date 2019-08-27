@@ -6,5 +6,5 @@ class User < ApplicationRecord
   has_many :incidents
 
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, uniqueness: true
+  validates :encrypted_password, presence: true, uniqueness: true
 end
