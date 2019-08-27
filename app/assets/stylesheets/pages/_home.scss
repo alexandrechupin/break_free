@@ -1,1 +1,37 @@
 // Specific CSS for your home-page
+.home-banner {
+  height: 40vh;
+  padding: 64px;
+  padding-bottom: 32px;
+  background-color: $my-light-blue;
+  .img-large {
+    width: 100%;
+  }
+  strong {
+    color: $my-purple;
+  }
+}
+
+.launch {
+  height: 50vh;
+}
+
+.explanations {
+  background-color: $my-beige;
+  padding: 16px;
+}
+
+.img-small {
+  width: 50%;
+  margin: 8px;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stats {
+  background-color: $my-light-blue;
+}

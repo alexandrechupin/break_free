@@ -1,2 +1,155 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag('Light-the-fire.svg', class: 'img-large') %>
+      </div>
+      <div class="col-md-8 d-flex align-items-center">
+        <div>
+          <h1>Je signale une <strong>agression</strong> <br> ou une <strong>situation de discrimination</strong></h1>
+          <h3>Ayez les bons réflexes pour réagir face <br> aux comportements inappropriés.</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container launch mt-5">
+
+  <div class="row justify-content-center">
+    <h4 class="mt-3">je suis ou j'ai été <em>témoin/victime</em> d'une</h4>
+  </div>
+
+  <div class="row my-5">
+
+      <div class="card-launch">
+        <div class="label">
+          <h4>agression sexuelle</h4>
+          <p>example 1 – example 2 – example 3 - ...</p>
+        </div>
+        <div class="arrow">
+           <i class="fas fa-arrow-circle-right"></i>
+        </div>
+      </div>
+
+      <div class="card-launch">
+        <div class="label">
+          <h4>agression <br> verbale</h4>
+          <p>example 1 – example 2 – example 3 - ...</p>
+        </div>
+        <div class="arrow">
+           <i class="fas fa-arrow-circle-right"></i>
+        </div>
+      </div>
+
+      <div class="card-launch">
+        <div class="label">
+          <h4>agression physique</h4>
+          <p>example 1 – example 2 – example 3 - ...</p>
+        </div>
+        <div class="arrow">
+           <i class="fas fa-arrow-circle-right"></i>
+        </div>
+      </div>
+
+      <div class="card-launch">
+        <div class="label">
+          <h4>situation de discrimination</h4>
+          <p>example 1 – example 2 – example 3 - ...</p>
+        </div>
+        <div class="arrow">
+           <i class="fas fa-arrow-circle-right"></i>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="row explanations">
+
+  <div class="container mt-3">
+
+    <h2>A quoi sert mon <strong>signalement</strong> ?</h2>
+
+
+    <div class="row justify-content-between mt-4">
+
+        <div class="card-floating">
+          <h5>Sachez quels sont les meilleurs réflexes selon votre situation</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit neque eget mauris aliquet varius. Aenean dictum purus scelerisque, molestie odio ut, tempus turpis.</p>
+        </div>
+
+        <div class="card-floating my-5">
+          <h5>Utilisez notre module de discussion anonyme</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit neque eget mauris aliquet varius. Aenean dictum purus scelerisque, molestie odio ut, tempus turpis.</p>
+        </div>
+
+        <div class="card-floating">
+          <h5>Dénoncez la haine</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit neque eget mauris aliquet varius. Aenean dictum purus scelerisque, molestie odio ut, tempus turpis.</p>
+        </div>
+
+        <div class="card-floating my-5">
+          <h5>Utilisez notre module de discussion anonyme</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit neque eget mauris aliquet varius. Aenean dictum purus scelerisque, molestie odio ut, tempus turpis.</p>
+        </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="row">
+
+  <div class="container d-flex justify-content-between my-5">
+
+      <div class="feature mx-3">
+        <%= image_tag('Light-the-fire.svg', class: 'img-small') %>
+        <h4>Sécurisé</h4>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur. Aenean dictum purus scelerisque, molestie odio ut, tempus turpis.</p>
+      </div>
+
+      <div class="feature mx-3">
+        <%= image_tag('Light-the-fire.svg', class: 'img-small') %>
+        <h4>Rapide</h4>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur. Aenean dictum purus scelerisque, molestie odio ut, tempus turpis.</p>
+      </div>
+
+      <div class="feature mx-3">
+        <%= image_tag('Light-the-fire.svg', class: 'img-small') %>
+        <h4>Anonyme</h4>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur. Aenean dictum purus scelerisque, molestie odio ut, tempus turpis.</p>
+      </div>
+
+  </div>
+
+</div>
+
+
+<div class="row stats">
+  <div class="container my-5">
+    <h2>Déjà plus de...</h2>
+    <div class="d-flex justify-content-between my-5">
+      <div class="card-stats">
+        <h2><strong>128</strong></h2>
+        <p>actes signalés</p>
+      </div>
+      <div class="card-stats">
+        <h2><strong>128</strong></h2>
+        <p>actes signalés</p>
+      </div>
+      <div class="card-stats">
+        <h2><strong>128</strong></h2>
+        <p>actes signalés</p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <%= link_to 'Plus de statistiques', '#', class:"btn btn-primary"  %>
+    </div>
+  </div>
+</div>
+
+
+
