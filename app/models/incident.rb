@@ -8,6 +8,7 @@ class Incident < ApplicationRecord
   has_many :incident_motives
   has_many :motives, through: :incident_motives
   has_many :incident_recommendations, through: :incident_category
+  belongs_to :incident_category
 
   validates :date, presence: true
   validates :address, presence: true
