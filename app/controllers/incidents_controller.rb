@@ -1,7 +1,8 @@
 class IncidentsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo]
-  skip_after_action :verify_authorized, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo]
+  skip_before_action :authenticate_user!, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo, :assign_user]
+  skip_after_action :verify_authorized, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo, :assign_user]
   before_action :set_incident, only: [:update, :edit, :show]
+  before_action :sign_up_user!, only: :assign_user
 
   def create
     @incident = Incident.new
@@ -66,10 +67,21 @@ class IncidentsController < ApplicationController
     end
   end
 
+  def assign_user
+    set_incident_init
+    @incident.user = current_user
+    @incident.save
+    redirect_to incident_path(@incident)
+  end
+
   def destroy
   end
 
   private
+
+  def sign_up_user!
+    redirect_to(new_user_registration_path) unless user_signed_in?
+  end
 
   def incident_params
     params.require(:incident).permit(:user, :description, :date, :recurrent, :author_is_victim, :address, :publication_agreement, :place_type, :incident_category, :description_after_feeling, :description_about_testimony)
