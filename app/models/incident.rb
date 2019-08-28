@@ -12,4 +12,8 @@ class Incident < ApplicationRecord
 
   validates :incident_category, presence: true
   validates :place_type, inclusion: { in: PLACE_TYPE }, allow_blank: true
+
+  def get_recommendations
+    self.incident_category.recommendations
+  end
 end
