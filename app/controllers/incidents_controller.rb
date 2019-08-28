@@ -18,6 +18,7 @@ class IncidentsController < ApplicationController
   end
 
   def show
+    @incident = Incident.find(params[:id])
   end
 
   def update
