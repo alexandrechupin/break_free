@@ -17,10 +17,6 @@ class IncidentsController < ApplicationController
   def show
   end
 
-<<<<<<< HEAD
-  def show
-  end
-=======
   def event
     set_incident_init
     @motives = Motive.all
@@ -31,8 +27,6 @@ class IncidentsController < ApplicationController
   end
 
   def edit
-
->>>>>>> master
   end
 
   def update
