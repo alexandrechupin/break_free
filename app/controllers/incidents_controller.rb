@@ -1,6 +1,6 @@
 class IncidentsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create, :event, :localisation, :update_init]
-  skip_after_action :verify_authorized, only: [:new, :create, :event, :localisation, :update_init]
+  skip_before_action :authenticate_user!, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo]
+  skip_after_action :verify_authorized, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo]
   before_action :set_incident, only: [:update, :edit, :show]
 
   def create
@@ -40,19 +40,30 @@ class IncidentsController < ApplicationController
   end
 
   def update_init
-    set_incident_init
-    incident_motives = params[:incident][:motive]
-    incident_motives.each do |incident_motive|
-      motive_id = Motive.find_by(name: incident_motive).id
-      incident_motive = IncidentMotive.new(incident_id: params[:id], motive_id: motive_id)
-      incident_motive.save
-    end
-    @incident.recurrent = params[:incident][:recurrent]
-    @incident.date = params[:incident][:date]
-    if @incident.save
-      redirect_to localisation_incident_path
+    if params[:incident][:motive].nil?
+      redirect_to event_incident_path, alert: 'Merci de spécifier au moins un motif'
     else
-      render :new
+      set_incident_init
+      incident_motives = params[:incident][:motive]
+      incident_motives.each do |incident_motive|
+        motive_id = Motive.find_by(name: incident_motive).id
+        incident_motive = IncidentMotive.new(incident_id: params[:id], motive_id: motive_id)
+        incident_motive.save
+      end
+      if @incident.update(incident_params)
+        redirect_to localisation_incident_path
+      else
+        redirect_to event_incident_path, alert: 'Erreur'
+      end
+    end
+  end
+
+  def update_init_geo
+    set_incident_init
+    if @incident.update(incident_params)
+      redirect_to incident_recommendations_path(@incident)
+    else
+      redirect_to localisation_incident_path, alert: 'Erreur'
     end
   end
 
