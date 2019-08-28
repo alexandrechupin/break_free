@@ -1,6 +1,22 @@
 .alert {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1000;
+  display: flex;
+  padding-bottom: 0;
+  .circle {
+    border-color: $my-orange;
+    position: relative;
+    top: 6px;
+    bottom: 6px;
+  }
+  p {
+    font-weight: 400;
+  }
+  i {
+    position: relative;
+    right: 16px;
+    top: 0px;
+    font-size: 20px;
+  }
+  i:hover {
+    cursor: pointer;
+  }
 }
