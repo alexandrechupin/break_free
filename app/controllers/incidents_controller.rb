@@ -1,7 +1,7 @@
 class IncidentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create, :event, :localisation, :update_init]
   skip_after_action :verify_authorized, only: [:new, :create, :event, :localisation, :update_init]
-  before_action :set_incident, except: [:create]
+  before_action :set_incident, only: [:update, :edit, :show]
 
   def create
     @incident = Incident.new
@@ -14,20 +14,32 @@ class IncidentsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def event
+    set_incident_init
     @motives = Motive.all
   end
 
   def localisation
+    set_incident_init
   end
 
-  def show
+  def edit
   end
 
   def update
+    @user = current_user
+    if @incident.update(incident_params)
+      redirect_to incident_path(@incident)
+    else
+      render :edit
+    end
   end
 
   def update_init
+    set_incident_init
     incident_motives = params[:incident][:motive]
     incident_motives.each do |incident_motive|
       motive_id = Motive.find_by(name: incident_motive).id
@@ -49,10 +61,15 @@ class IncidentsController < ApplicationController
   private
 
   def incident_params
-    params.require(:incident).permit(:user, :description, :date, :recurrent, :author_is_victim, :address, :publication_agreement, :place_type, :incident_category)
+    params.require(:incident).permit(:user, :description, :date, :recurrent, :author_is_victim, :address, :publication_agreement, :place_type, :incident_category, :description_after_feeling, :description_about_testimony)
+  end
+
+  def set_incident_init
+    @incident = Incident.find(params[:id])
   end
 
   def set_incident
     @incident = Incident.find(params[:id])
+    authorize @incident
   end
 end
