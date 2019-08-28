@@ -1,6 +1,6 @@
 class IncidentsController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create, :edit, :update]
-  before_action :set_incident
+  before_action :set_incident, except: :create
 
   def create
     @incident = Incident.new(incident_params)
