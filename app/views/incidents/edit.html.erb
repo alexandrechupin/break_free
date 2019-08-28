@@ -1,2 +1,33 @@
-<h1>Incidents#edit</h1>
-<p>Find me in app/views/incidents/edit.html.erb</p>
+
+<div class="container">
+  <div class="d-inline-flex">
+    <p>Accueil > Dashboard > </p>
+    <p class="font-weight-bold pl-1"> Mon témoignage</p>
+  </div>
+  <div>
+    <h1>Votre témoignage détaillé</h1>
+  </div>
+  <div>
+    <p>Consacrez quelques minutes pour compléter la description de votre événement. Cela permettra à votre témoignage détaillé d'être plus facilement pris en charge.</p>
+  </div>
+  <%if user_signed_in? %>
+    <%= simple_form_for(@incident) do |f| %>
+      <%= f.input :description, label: "Racontez ici le détail de votre événement" %>
+      <%= f.input :description_after_feeling, label: "Après l'événement comment vous êtes vous senti ?" %>
+      <%= f.input :description_about_testimony, label: "Est ce que vous pouvez vous rappelez quelquechose à propos de potentiels témoins ?" %>
+      <%= f.submit "Mettre à jour", id: "submit_description", class: "button-primary" %>
+    <% end %>
+  <% else %>
+    <div class="alert alert-warning position-static mt-5" role="alert">
+       <h4 class="alert-heading">Il est nécessaire de se créer un compte pour poursuivre.</h4>
+        <p>.</p>
+        <hr>
+        <p class="mb-0">Créez un compte pour déposer votre témoignage. A tout de suite pour continuer.</p>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+

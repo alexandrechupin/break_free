@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'recommendations/index'
   devise_for :users
   root to: 'pages#home'
-  resources :incidents, only: [:new, :create] do
+  resources :incidents, only: [:new, :create, :show, :edit, :update] do
     resources :recommendations, only: [:index]
   end
   get '/stats', to: 'pages#stats'
