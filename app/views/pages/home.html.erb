@@ -22,45 +22,19 @@
 
   <div class="row my-5">
 
-      <div class="card-launch">
-        <div class="label">
-          <h4>agression sexuelle</h4>
-          <p>example 1 – example 2 – example 3 - ...</p>
+    <% @incident_categories.each do |incident_category| %>
+      <%= link_to incidents_path(author_is_victim: 'true', incident_category_id: incident_category.id), method: 'post' do  %>
+        <div class="card-launch">
+          <div class="label">
+            <h4><%= incident_category.name %></h4>
+            <p>example 1 – example 2 – example 3 - ...</p>
+          </div>
+          <div class="arrow">
+             <i class="fas fa-arrow-circle-right"></i>
+          </div>
         </div>
-        <div class="arrow">
-           <i class="fas fa-arrow-circle-right"></i>
-        </div>
-      </div>
-
-      <div class="card-launch">
-        <div class="label">
-          <h4>agression <br> verbale</h4>
-          <p>example 1 – example 2 – example 3 - ...</p>
-        </div>
-        <div class="arrow">
-           <i class="fas fa-arrow-circle-right"></i>
-        </div>
-      </div>
-
-      <div class="card-launch">
-        <div class="label">
-          <h4>agression physique</h4>
-          <p>example 1 – example 2 – example 3 - ...</p>
-        </div>
-        <div class="arrow">
-           <i class="fas fa-arrow-circle-right"></i>
-        </div>
-      </div>
-
-      <div class="card-launch">
-        <div class="label">
-          <h4>situation de discrimination</h4>
-          <p>example 1 – example 2 – example 3 - ...</p>
-        </div>
-        <div class="arrow">
-           <i class="fas fa-arrow-circle-right"></i>
-        </div>
-      </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

@@ -1,14 +1,16 @@
 class IncidentsController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create, :edit, :update]
-  before_action :set_incident
+  before_action :set_incident, except: [:create]
 
   def create
-    @incident = Incident.new(incident_params)
+    @incident = Incident.new
     authorize @incident
+    @incident.author_is_victim = params[:author_is_victim]
+    @incident.incident_category = IncidentCategory.find(params[:incident_category_id])
     if @incident.save
       redirect_to incident_recommendations_path(@incident)
     else
-      render :new
+      render 'pages/home'
     end
   end
 
@@ -19,7 +21,6 @@ class IncidentsController < ApplicationController
   end
 
   def update
-
   end
 
   def destroy
