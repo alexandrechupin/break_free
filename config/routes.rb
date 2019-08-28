@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :incidents, only: [:new, :create, :show, :edit, :update] do
     resources :recommendations, only: [:index]
+    member do
+      get 'event'
+      get 'localisation'
+      patch 'update_init'
+    end
   end
   get '/stats', to: 'pages#stats'
   get '/about', to: 'pages#about'
