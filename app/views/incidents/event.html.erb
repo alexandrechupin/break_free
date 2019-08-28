@@ -1,0 +1,94 @@
+<div class="row header-banner">
+
+  <div class="container">
+
+    <div class="row justify-content-center mt-3">
+      <div class="stepper">
+        <div class = "center-step active" >
+          <p class="circle">1</p>
+          <p class="step-title">Événement</p>
+        </div>
+        <div class = "center-step">
+          <p class="circle">2</p>
+          <p class="step-title">Localisation</p>
+        </div>
+        <div class = "center-step">
+          <p class="circle">3</p>
+          <p class="step-title">Recommandations</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="alert alert-warning">
+  <div class="col-md-1">
+    <p class="circle">!</p>
+  </div>
+  <div class="col-md-11">
+    <p>Nous ne sommes pas un organisme officiel, mais simplement un guide pour vous aider à vous orienter vers la démarche la plus adéquate. <br> <strong>En cas d’urgence, veuillez contacter les services compétents (urgences, police, pompiers, etc.)</strong></p>
+  </div>
+  <i class="far fa-times-circle"></i>
+</div>
+
+<div class="container mt-5">
+
+  <%= simple_form_for(@incident, method: :patch, url: update_init_incident_path) do |f| %>
+
+   <div class="form-group">
+    <label>
+      <h5>À votre avis, cet acte malveillant s’est produit en raison de votre...</h5>
+      <p>Aidez-nous à qualifier cet acte. Les motifs de l’acte malveillant que vous avez subi peuvent constituer des circonstances aggravantes qui permettront de faire condamner plus lourdement l’agresseur·se. Vous pouvez sélectionner plusieurs raisons.</p>
+    </label>
+    <div class="motives-choices text-center">
+      <% @motives.each do |motive| %>
+        <input type="checkbox" class="checkbox-hidden" value="<%= motive.name %>" name="incident[motive][]" id="incident_motive<%= motive.name %>">
+        <label for="incident_motive<%= motive.name %>" class="theme-tag">
+          <%= motive.name %>
+        </label>
+      <% end %>
+     </div>
+  </div>
+
+  <div class="form-group">
+    <label>
+      <h5>Votre agresseur a-t-il déjà commis un acte similaire à votre encontre ?</h5>
+      <p>Si l’acte malveillant que vous subissez est répété, il peut s’agir d'un cas de harcèlement</p>
+    </label>
+    <div>
+      <div class="radio-item">
+        <input type="radio" id="true" name="incident[recurrent]" value="true">
+        <label for="true">oui</label>
+      </div>
+      <div class="radio-item">
+        <input type="radio" id="false" name="incident[recurrent]" value="false">
+        <label for="false">non</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>
+      <h5>Quand a eu lieu l’événement que vous souhaitez signaler ?</h5>
+      <p>Aidez-nous à qualifier ce qu’il vous est arrivé afin de vous guider. <br>En fonction de vos réponses, nous vous soumettrons nos recommandations et vous conseillerons les meilleurs réflexes à adopter.</p>
+    </label>
+    <%= f.input :date, as: :date, html5: true, label: false  %>
+  </div>
+
+  <div class="text-center my-5">
+    <%=  link_to root_path do %>
+      <i class="fas fa-arrow-circle-left" style="color: #471F44; font-size: 48px; margin-right: 16px;"></i>
+    <% end %>
+
+    <%= button_tag(type: 'submit', class: 'no-style') do %>
+        <i class="fas fa-arrow-circle-right" style="color: #471F44; font-size: 48px; margin-left: 16px;"></i>
+    <% end %>
+  </div>
+
+  <% end %>
+
+</div>
+
+
+
