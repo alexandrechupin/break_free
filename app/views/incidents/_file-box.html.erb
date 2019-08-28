@@ -8,7 +8,7 @@
       <span><%= link_to "Modifier", edit_incident_path, class: "button-primary mr-3" %></span>
     </div>
     <div class="d-flex justify-content-between pb-3">
-      <% if @incident.description.empty? %>
+      <% if @incident.description.nil? %>
         <h5> ❌ Témoignage</h5>
         <span><%= link_to "Ajouter", edit_incident_path, class: "button-primary mr-3" %></span>
       <% else %>
