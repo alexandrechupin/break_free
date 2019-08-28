@@ -1,0 +1,15 @@
+.file-card-action {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 16px;
+  padding: 16px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $my-light-blue;
+  border-radius: 4px;
+  i {
+    font-size: 36px;
+    color: $my-purple;
+  }
+}

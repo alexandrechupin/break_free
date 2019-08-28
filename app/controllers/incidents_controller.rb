@@ -19,6 +19,7 @@ class IncidentsController < ApplicationController
 
   def show
     @incident = Incident.find(params[:id])
+    authorize @incident
   end
 
   def update
