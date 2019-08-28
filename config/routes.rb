@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :incidents, only: [:new, :create, :show, :edit, :update] do
     resources :recommendations, only: [:index]
+    resources :proofs, only: [:new, :create, :index]
     member do
       get 'event'
       get 'localisation'
@@ -12,5 +13,6 @@ Rails.application.routes.draw do
   end
   get '/stats', to: 'pages#stats'
   get '/about', to: 'pages#about'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
