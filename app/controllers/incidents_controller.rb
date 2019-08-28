@@ -6,7 +6,7 @@ class IncidentsController < ApplicationController
     @incident = Incident.new
     authorize @incident
     @incident.author_is_victim = params[:author_is_victim]
-    @incident.incident_category = IncidentCategory.find(params[:inc_cat_id])
+    @incident.incident_category = IncidentCategory.find(params[:incident_category_id])
     if @incident.save
       redirect_to incident_recommendations_path(@incident)
     else
@@ -21,7 +21,6 @@ class IncidentsController < ApplicationController
   end
 
   def update
-
   end
 
   def destroy
