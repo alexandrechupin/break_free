@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @incident_categories = IncidentCategory.all
+    authorize @incident_categories
   end
 
   def stats
