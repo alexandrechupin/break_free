@@ -15,8 +15,4 @@ class IncidentPolicy < ApplicationPolicy
   def update?
     record.user == user
   end
-
-  def edit?
-    return true
-  end
 end

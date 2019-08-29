@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :incidents, only: [:new, :create, :show, :edit, :update] do
     resources :recommendations, only: [:index]
-    resources :proofs, only: [:new, :create, :index]
+    resources :proofs, only: [:new, :create, :index, :destroy]
     resources :reports, only: [:show]
     member do
       get 'event'

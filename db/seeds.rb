@@ -13,28 +13,28 @@ User.destroy_all
 puts "Finished!"
 
 
-puts 'Creating 4 fake breakfree users ..'
-  user_one = User.new(
-    email: "sarah@gmail.com",
-    password: "123456"
-    )
-  user_one.save!
-  user_two = User.new(
-    email: "lauriane@gmail.com",
-    password: "123456"
-    )
-  user_two.save!
-  user_three = User.new(
-    email: "ishan@gmail.com",
-    password: "123456"
-    )
-  user_three.save!
-  user_four = User.new(
-    email: "alexandre@gmail.com",
-    password: "123456"
-    )
-  user_four.save!
-puts 'Finished!'
+# puts 'Creating 4 fake breakfree users ..'
+#   user_one = User.new(
+#     email: "sarah@gmail.com",
+#     password: "123456"
+#     )
+#   user_one.save!
+#   user_two = User.new(
+#     email: "lauriane@gmail.com",
+#     password: "123456"
+#     )
+#   user_two.save!
+#   user_three = User.new(
+#     email: "ishan@gmail.com",
+#     password: "123456"
+#     )
+#   user_three.save!
+#   user_four = User.new(
+#     email: "alexandre@gmail.com",
+#     password: "123456"
+#     )
+#   user_four.save!
+# puts 'Finished!'
 
 puts "Creating incident categories..."
 category_one = IncidentCategory.create!(name: "Agression physique")
@@ -43,45 +43,43 @@ category_three = IncidentCategory.create!(name: "Agression verbale")
 category_four =IncidentCategory.create!(name: "Discrimination")
 puts "Finished !"
 
+
+
 puts 'Creating 4 breakfree incidents...'
 incident_one =Incident.create!({
-  user: user_one,
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   date: Date.parse('2018-04-15'),
   recurrent: true,
   address: "45 rue oberkampf 75011 Paris",
   publication_agreement: true,
-  place_type: "lieu accueillant du public",
+  place_type: "dans la rue",
   incident_category: category_one
   })
 incident_two =Incident.create!({
-  user: user_two,
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   date: Date.parse('2016-08-31'),
   recurrent: false,
   address: "24 rue parmentier 75011 Paris",
   publication_agreement: false,
-  place_type: "lieu privé",
+  place_type: "dans un lieu accueillant du public",
   incident_category: category_two
   })
 incident_three =Incident.create!({
-  user: user_three,
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   date: Date.parse('2010-12-31'),
   recurrent: false,
   address: "20 rue de La Folie Mericourt 75011 Paris",
   publication_agreement: true,
-  place_type: "rue",
+  place_type: "dans mon lieu de travail",
   incident_category: category_three
   })
 incident_four =Incident.create!({
-  user: user_four,
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   date: Date.parse('2019-01-20'),
   recurrent: true,
-  address: "20 rue de La Folie Mericourt 75011 Paris",
+  address: "167 rue Saint Honoré 75001 Paris",
   publication_agreement: false,
-  place_type: "internet",
+  place_type: "sur internet",
   incident_category: category_four
   })
 puts 'Finished!'
