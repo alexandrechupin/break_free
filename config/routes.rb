@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     member do
       get 'event'
       get 'localisation'
+      get 'modify_event'
       patch 'update_init'
       patch 'update_init_geo'
+      patch 'update_event'
       get 'assign_user'
     end
   end

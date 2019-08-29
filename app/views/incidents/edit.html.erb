@@ -1,12 +1,13 @@
 
-<div class="container">
-  <div class="d-inline-flex">
-    <p>Accueil > Dashboard > </p>
-    <p class="font-weight-bold pl-1"> Mon témoignage</p>
-  </div>
-  <div>
+<div class="row header-banner">
+  <div class="container my-3">
+    <p>Accueil > Dashboard > <strong>Témoignage</strong></p>
     <h1>Votre témoignage détaillé</h1>
   </div>
+</div>
+
+<div class="container my-3">
+
   <div>
     <p>Consacrez quelques minutes pour compléter la description de votre événement. Cela permettra à votre témoignage détaillé d'être plus facilement pris en charge.</p>
   </div>
@@ -14,7 +15,7 @@
     <%= simple_form_for(@incident) do |f| %>
       <%= f.input :description, label: "Racontez ici le détail de votre événement" %>
       <%= f.input :description_after_feeling, label: "Après l'événement comment vous êtes vous senti ?" %>
-      <%= f.input :description_about_testimony, label: "Est ce que vous pouvez vous rappelez quelquechose à propos de potentiels témoins ?" %>
+      <%= f.input :description_about_testimony, label: "Est ce que vous pouvez vous rappelez quelque chose à propos de potentiels témoins ?" %>
       <%= f.submit "Mettre à jour", id: "submit_description", class: "button-primary" %>
     <% end %>
   <% else %>
