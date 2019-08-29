@@ -10,7 +10,6 @@ class IncidentPolicy < ApplicationPolicy
 
   def show?
     record.user == user
-    return true
   end
 
   def update?
