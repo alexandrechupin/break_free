@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="d-inline-flex">
+    <p>Accueil > Dashboard > </p>
+    <p class="font-weight-bold pl-1">Mes preuves</p>
+  </div>
+  <div>
+  <h1>Ajout de preuves</h1>
+  </div>
+
+  <%= simple_form_for [@incident, @proof] do |f| %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit class: "button-primary" %>
+<% end %>
+
+  <% if @proofs.nil? %>
+    <p>Uploadez un fichier pour compléter votre dossier </p>
+  <% else %>
+    <% @proofs.each do |proof| %>
+      <%= cl_image_tag proof.photo, height: 300, width: 400, crop: :fill %>
+    <% end  %>
+  <% end %>
+</div>
