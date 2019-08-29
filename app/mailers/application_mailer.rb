@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'contact@breakfree.com'
+  default from: 'contactus.breakfree@gmail.com'
   layout 'mailer'
 end
