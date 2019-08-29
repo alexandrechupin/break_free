@@ -1,0 +1,13 @@
+.toggle-content {
+  display: none;
+}
+
+.toggle-content.is-visible {
+  display: block;
+}
+
+.tickable {
+  margin-right: 8px;
+  font-size: 20px;
+  color: $my-purple;
+}

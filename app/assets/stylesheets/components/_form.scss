@@ -5,3 +5,19 @@
 .no-style {
   border: none;
 }
+
+.no-style:hover {
+  border: none;
+}
+
+.no-style:focus,.no-style:active {
+   outline: none !important;
+   box-shadow: none;
+}
+
+.no-radio {
+  input {
+    visibility:hidden;
+    padding: 0;
+  }
+}

@@ -1,5 +1,5 @@
 class Incident < ApplicationRecord
-  PLACE_TYPE = ["rue", "lieu accueillant du public", "lieu de travail", "lieu privé", "internet"]
+  PLACE_TYPE = ["dans la rue", "dans un lieu accueillant du public", "dans mon lieu de travail", "dans un lieu privé", "sur internet"]
 
   belongs_to :user, optional: true
   has_many :reports
@@ -12,4 +12,8 @@ class Incident < ApplicationRecord
 
   validates :incident_category, presence: true
   validates :place_type, inclusion: { in: PLACE_TYPE }, allow_blank: true
+
+  def get_recommendations
+    self.incident_category.recommendations
+  end
 end

@@ -1,7 +1,8 @@
 class IncidentsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create, :event, :localisation, :update_init]
-  skip_after_action :verify_authorized, only: [:new, :create, :event, :localisation, :update_init]
+  skip_before_action :authenticate_user!, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo, :assign_user]
+  skip_after_action :verify_authorized, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo, :assign_user]
   before_action :set_incident, only: [:update, :edit, :show]
+  before_action :sign_up_user!, only: :assign_user
 
   def create
     @incident = Incident.new
@@ -39,26 +40,48 @@ class IncidentsController < ApplicationController
   end
 
   def update_init
-    set_incident_init
-    incident_motives = params[:incident][:motive]
-    incident_motives.each do |incident_motive|
-      motive_id = Motive.find_by(name: incident_motive).id
-      incident_motive = IncidentMotive.new(incident_id: params[:id], motive_id: motive_id)
-      incident_motive.save
-    end
-    @incident.recurrent = params[:incident][:recurrent]
-    @incident.date = params[:incident][:date]
-    if @incident.save
-      redirect_to localisation_incident_path
+    if params[:incident][:motive].nil?
+      redirect_to event_incident_path, alert: 'Merci de spécifier au moins un motif'
     else
-      render :new
+      set_incident_init
+      incident_motives = params[:incident][:motive]
+      incident_motives.each do |incident_motive|
+        motive_id = Motive.find_by(name: incident_motive).id
+        incident_motive = IncidentMotive.new(incident_id: params[:id], motive_id: motive_id)
+        incident_motive.save
+      end
+      if @incident.update(incident_params)
+        redirect_to localisation_incident_path
+      else
+        redirect_to event_incident_path, alert: 'Erreur'
+      end
     end
+  end
+
+  def update_init_geo
+    set_incident_init
+    if @incident.update(incident_params)
+      redirect_to incident_recommendations_path(@incident)
+    else
+      redirect_to localisation_incident_path, alert: 'Erreur'
+    end
+  end
+
+  def assign_user
+    set_incident_init
+    @incident.user = current_user
+    @incident.save
+    redirect_to incident_path(@incident)
   end
 
   def destroy
   end
 
   private
+
+  def sign_up_user!
+    redirect_to(new_user_registration_path) unless user_signed_in?
+  end
 
   def incident_params
     params.require(:incident).permit(:user, :description, :date, :recurrent, :author_is_victim, :address, :publication_agreement, :place_type, :incident_category, :description_after_feeling, :description_about_testimony)

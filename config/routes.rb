@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get 'event'
       get 'localisation'
       patch 'update_init'
+      patch 'update_init_geo'
+      get 'assign_user'
     end
   end
   get '/stats', to: 'pages#stats'
