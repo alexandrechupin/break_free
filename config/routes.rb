@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'recommendations/index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'pages#home'
-  resources :incidents, only: [:new, :create, :show, :edit, :update] do
+  resources :incidents, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :recommendations, only: [:index]
     resources :proofs, only: [:new, :create, :index]
     member do

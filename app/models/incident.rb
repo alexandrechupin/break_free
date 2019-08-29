@@ -5,8 +5,8 @@ class Incident < ApplicationRecord
   has_many :reports
   has_many :testimonies
   has_many :proofs
-  has_many :incident_motives
-  has_many :motives, through: :incident_motives
+  has_many :incident_motives, dependent: :destroy
+  has_many :motives, through: :incident_motives, dependent: :destroy
   has_many :incident_recommendations, through: :incident_category
   belongs_to :incident_category
 

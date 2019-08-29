@@ -1,7 +1,7 @@
 class IncidentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo, :assign_user]
   skip_after_action :verify_authorized, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo, :assign_user]
-  before_action :set_incident, only: [:update, :edit, :show]
+  before_action :set_incident, only: [:update, :edit, :show, :destroy]
 
   def create
     @incident = Incident.new
@@ -78,6 +78,10 @@ class IncidentsController < ApplicationController
   end
 
   def destroy
+    @incident.destroy
+    sign_out current_user
+    redirect_to root_path
+    flash[:notice] = "Votre dossier a été supprimé avec succès."
   end
 
   private
