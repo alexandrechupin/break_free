@@ -1,6 +1,12 @@
 <div class="d-flex align-items-center justify-content-center file-banner pt-3 pb-3">
   <p class="circle mb-0">!</p>
-  <span class="pl-3">Votre dossier n’est complet qu’à 20%. Certains actions requièrent un dossier complet afin que nous puissions vous aider au mieux.</span>
+    <% if @incident.description.nil? && @incident.proofs.empty? %>
+      <span class="pl-3">Votre dossier n’est complet qu’à 40%. Certains actions requièrent un dossier complet afin que nous puissions vous aider au mieux.</span>
+    <% elsif @incident.description.nil? || @incident.proofs.empty? %>
+      <span class="pl-3">Votre dossier n’est complet qu’à 70%. Certains actions requièrent un dossier complet afin que nous puissions vous aider au mieux.</span>
+    <% else %>
+      <span class="pl-3">félicitations, votre dossier est complet à 100%.</span>
+    <% end %>
 </div>
 
 <div class="container mt-5 pb-3">
