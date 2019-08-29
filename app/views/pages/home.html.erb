@@ -16,26 +16,40 @@
 
 <div class="container launch mt-5">
 
+  <% if user_signed_in? %>
+
   <div class="row justify-content-center">
-    <h4 class="mt-3">je suis ou j'ai été <em>témoin/victime</em> d'une</h4>
+    <h2>Vous avez déclaré un acte malveillant.</h2>
   </div>
 
-  <div class="row my-5">
+  <div class="row justify-content-center my-5">
+    <%= link_to "Votre dossier", incident_path(current_user.incident), class: 'button-primary' %>
+  </div>
 
-    <% @incident_categories.each do |incident_category| %>
-      <%= link_to incidents_path(author_is_victim: 'true', incident_category_id: incident_category.id), method: 'post' do  %>
-        <div class="card-launch">
-          <div class="label">
-            <h4><%= incident_category.name %></h4>
-            <p>example 1 – example 2 – example 3 - ...</p>
+
+  <% else %>
+
+    <div class="row justify-content-center">
+      <h4 class="mt-3">je suis ou j'ai été <em>témoin/victime</em> d'une</h4>
+    </div>
+
+    <div class="row my-5">
+      <% @incident_categories.each do |incident_category| %>
+        <%= link_to incidents_path(author_is_victim: 'true', incident_category_id: incident_category.id), method: 'post' do  %>
+          <div class="card-launch">
+            <div class="label">
+              <h4><%= incident_category.name %></h4>
+              <p>example 1 – example 2 – example 3 - ...</p>
+            </div>
+            <div class="arrow">
+               <i class="fas fa-arrow-circle-right"></i>
+            </div>
           </div>
-          <div class="arrow">
-             <i class="fas fa-arrow-circle-right"></i>
-          </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+
+  <% end %>
 </div>
 
 <div class="row explanations">

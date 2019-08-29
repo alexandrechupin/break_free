@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="d-flex align-items-center justify-content-center file-banner pt-3 pb-3">
   <p class="circle mb-0">!</p>
     <% if @incident.description.nil? && @incident.proofs.empty? %>
@@ -7,6 +8,19 @@
     <% else %>
       <span class="pl-3">félicitations, votre dossier est complet à 100%.</span>
     <% end %>
+<!-- =======
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <div class="col-md-1">
+    <p class="circle">!</p>
+  </div>
+  <div class="col-md-11 d-flex align-items-center">
+    <p>Votre dossier n’est complet qu’à 20%. Certains actions requièrent un dossier complet afin que nous puissions vous aider au mieux.</p>
+  </div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+>>>>>>> master -->
 </div>
 
 <div class="container mt-5 pb-3">
@@ -21,7 +35,17 @@
 
   <div class="mt-5">
 
+
+
     <h2>Ce que vous pouvez faire</h2>
+
+    <%= link_to incident_recommendations_path(@incident) do %>
+      <div class="card-action ml-0 mt-3">
+        <h5>📖 Consulter les recommandations applicables à votre situation</h5>
+        <i class="fas fa-arrow-circle-right"></i>
+      </div>
+    <% end %>
+
     <% @incident.incident_category.recommendations.each do |recommendation| %>
       <% if recommendation.is_an_action %>
         <div class="card-action ml-0 mt-3">
@@ -30,5 +54,10 @@
         </div>
       <% end %>
     <% end %>
+
+
+
+
   </div>
 </div>
+
