@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="d-inline-flex">
+    <p>Accueil > Dashboard > </p>
+    <p class="font-weight-bold pl-1">Mes preuves</p>
+  </div>
+  <div>
+  <h1>Ajout de preuves</h1>
+  </div>
+  <p>Uploadez ici vos photos, vidéos et fichiers audio</p>
+  <%= simple_form_for [@incident, @proof] do |f| %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit class: "button-primary" %>
+<% end %>
+
+  <% if @proofs.nil? %>
+    <p>Uploadez un fichier pour compléter votre dossier </p>
+  <% else %>
+    <% @proofs.each do |proof| %>
+      <ul>
+        <li>
+          <%= proof.content_type %>
+          <%= proof.original_filename %>
+          <%= link_to "Supprimer", incident_proof_path(@incident, proof), method: :delete, class: 'btn btn-danger' %>
+        </li>
+      </ul>
+    <% end  %>
+  <% end %>
+</div>
