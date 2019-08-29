@@ -4,10 +4,16 @@
 
 <hr>
 
-<h4> Type d'incident : <%= @report.incident.incident_category.name %></h4>
-<h4> Date de l'incident : </h4>  <h5><%= @report.incident.date %></h5>
-<h4>Description de l'incident :</h4> <h5> <%= @report.incident.description %> </h5>
-
-<% if @report.incident.recurrent %>
+<div>
+  <h4> Type d'incident : <%= @report.incident.incident_category.name %></h4>
+  <% if @report.incident.recurrent %>
   <p> Il s'agit d'un acte répété et potentiellement un acte de harcèlement. </p>
 <% end %>
+</div>
+
+<div>
+  <h4> Date de l'incident : </h4>  <p><%= @report.incident.date %></p>
+</div>
+
+<h4>Description de l'incident :</h4>
+<p> <%= @report.incident.description %> </p>
