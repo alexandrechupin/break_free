@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'recommendations/index'
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users
   root to: 'pages#home'
   resources :incidents, only: [:new, :create, :show, :edit, :update] do
     resources :recommendations, only: [:index]

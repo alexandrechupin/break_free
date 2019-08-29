@@ -12,18 +12,23 @@
     <%= f.input :photo_cache, as: :hidden %>
     <%= f.submit class: "button-primary" %>
 <% end %>
-
-  <% if @proofs.nil? %>
-    <p>Uploadez un fichier pour compléter votre dossier </p>
-  <% else %>
-    <% @proofs.each do |proof| %>
-      <ul>
-        <li>
-          <%= proof.content_type %>
-          <%= proof.original_filename %>
-          <%= link_to "Supprimer", incident_proof_path(@incident, proof), method: :delete, class: 'btn btn-danger' %>
-        </li>
-      </ul>
-    <% end  %>
-  <% end %>
+  <div class="manage_proofs">
+    <h2>Gestion de vos médias preuves</h2>
+    <% if @proofs.nil? %>
+      <div class="proofs_container">
+        <p>Uploadez un fichier pour compléter votre dossier </p>
+      </div>
+    <% else %>
+      <div>
+        <% @proofs.each do |proof| %>
+          <div class="proofs_container">
+            <div class="card"></div>
+            <%= proof.content_type %>
+            <%= proof.original_filename %>
+            <%= link_to "Supprimer", incident_proof_path(@incident, proof), method: :delete, class: 'btn btn-danger' %>
+          </div>
+        <% end  %>
+      </div>
+    <% end %>
+  </div>
 </div>
