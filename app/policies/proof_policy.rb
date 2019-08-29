@@ -8,4 +8,8 @@ class ProofPolicy < ApplicationPolicy
   def show?
     @record.incident = @user.incident
   end
+
+  def create?
+    true
+  end
 end

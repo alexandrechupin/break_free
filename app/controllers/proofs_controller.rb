@@ -4,16 +4,24 @@ class ProofsController < ApplicationController
 
   def index
     @proofs = policy_scope(Proof)
-  end
-
-  def new
+    @proof = Proof.new
   end
 
   def create
+    @proof = Proof.new(proof_params)
+    @proof.incident = @incident
+    if @proof.save
+      redirect_to incident_proofs_path(@incident)
+    else
+      render 'index'
+    end
+    authorize @proof
   end
 
-  def incident_params
-    params.require(:proof).permit(:media_url)
+  private
+
+  def proof_params
+    params.require(:proof).permit(:photo, :photo_cache)
   end
 
   def set_incident
