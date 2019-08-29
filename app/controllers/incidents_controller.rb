@@ -2,7 +2,6 @@ class IncidentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo, :assign_user]
   skip_after_action :verify_authorized, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo, :assign_user]
   before_action :set_incident, only: [:update, :edit, :show]
-  before_action :sign_up_user!, only: :assign_user
 
   def create
     @incident = Incident.new
@@ -69,9 +68,13 @@ class IncidentsController < ApplicationController
 
   def assign_user
     set_incident_init
-    @incident.user = current_user
-    @incident.save
-    redirect_to incident_path(@incident)
+    if user_signed_in?
+      @incident.user = current_user
+      @incident.save
+      return redirect_to incident_path(@incident)
+    end
+    session[:incident_id] = @incident.id
+    sign_up_user!
   end
 
   def destroy
