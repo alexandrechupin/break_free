@@ -1,7 +1,7 @@
 class IncidentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo, :assign_user]
   skip_after_action :verify_authorized, only: [:new, :create, :event, :localisation, :update_init, :update_init_geo, :assign_user]
-  before_action :set_incident, only: [:update, :edit, :show, :destroy]
+  before_action :set_incident, only: [:update, :edit, :show, :modify_event, :update_event, :destroy]
 
   def create
     @incident = Incident.new
@@ -26,6 +26,10 @@ class IncidentsController < ApplicationController
     set_incident_init
   end
 
+  def modify_event
+    @motives = Motive.all
+  end
+
   def edit
   end
 
@@ -35,6 +39,27 @@ class IncidentsController < ApplicationController
       redirect_to incident_path(@incident)
     else
       render :edit
+    end
+  end
+
+  def update_event
+    unless params[:incident][:motive].nil?
+      modified_motives = params[:incident][:motive]
+      modified_motives.each do |modified_motive|
+        modified_motive_instance = Motive.find_by(name: modified_motive)
+        motive_id = modified_motive_instance.id
+        if @incident.motives.include?(modified_motive_instance)
+          IncidentMotive.where(incident_id: @incident.id, motive_id: motive_id).destroy_all
+        else
+          incident_motive = IncidentMotive.new(incident_id: params[:id], motive_id: motive_id)
+          incident_motive.save
+        end
+      end
+    end
+    if @incident.update(incident_params)
+      redirect_to incident_path(@incident)
+    else
+      render :modify_event
     end
   end
 

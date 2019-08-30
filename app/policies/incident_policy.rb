@@ -12,11 +12,20 @@ class IncidentPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def modify_event?
+    record.user == user
+  end
+
   def update?
     record.user == user
   end
 
+
   def destroy?
+    record.user == user
+  end
+
+  def update_event?
     record.user == user
   end
 end
