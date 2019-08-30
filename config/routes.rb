@@ -3,15 +3,17 @@ Rails.application.routes.draw do
   get 'recommendations/index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'pages#home'
-  resources :incidents, only: [:new, :create, :show, :edit, :update] do
+  resources :incidents, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :recommendations, only: [:index]
     resources :proofs, only: [:new, :create, :index, :destroy]
-    resources :reports, only: [:show]
+    resources :reports, only: [:show, :create]
     member do
       get 'event'
       get 'localisation'
+      get 'modify_event'
       patch 'update_init'
       patch 'update_init_geo'
+      patch 'update_event'
       get 'assign_user'
     end
   end
