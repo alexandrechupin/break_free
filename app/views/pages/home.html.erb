@@ -121,16 +121,16 @@
     <h2>Déjà plus de...</h2>
     <div class="d-flex justify-content-between my-5">
       <div class="card-stats">
-        <h2><strong>128</strong></h2>
+        <h2><strong><%= Incident.count %></strong></h2>
         <p>actes signalés</p>
       </div>
       <div class="card-stats">
-        <h2><strong>128</strong></h2>
-        <p>actes signalés</p>
+        <h2><strong><%= Incident.where(publication_agreement: true).count %></strong></h2>
+        <p>actes géolocalisés</p>
       </div>
       <div class="card-stats">
-        <h2><strong>128</strong></h2>
-        <p>actes signalés</p>
+        <h2><strong><%= Incident.where(user_id: (1..100).to_a).count %></strong></h2>
+        <p>dossiers créés</p>
       </div>
     </div>
     <div class="row justify-content-center">
