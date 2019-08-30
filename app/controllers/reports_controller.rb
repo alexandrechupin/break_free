@@ -3,13 +3,9 @@ class ReportsController < ApplicationController
   before_action :set_report, only: :show
 
   def create
-    if @incident.reports.any?
-      @report = @incident.reports.first
-    else
       @report = Report.new
       @report.incident = @incident
       @report.save
-    end
     authorize @report
     redirect_to incident_report_path(@incident, @report)
   end
@@ -18,7 +14,9 @@ class ReportsController < ApplicationController
     content = ApplicationController.render(
       formats: :html,
       template: "reports/report_pdf.html.erb",
+      encoding: 'utf-8',
       layout: 'pdf.html',
+      page_size: 'A4',
       assigns: { report: @report }
     )
     pdf = WickedPdf.new.pdf_from_string(content)
