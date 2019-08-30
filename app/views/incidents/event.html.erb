@@ -75,7 +75,7 @@
       <h5>Quand a eu lieu l’événement que vous souhaitez signaler ?</h5>
       <p>Aidez-nous à qualifier ce qu’il vous est arrivé afin de vous guider. <br>En fonction de vos réponses, nous vous soumettrons nos recommandations et vous conseillerons les meilleurs réflexes à adopter.</p>
     </label>
-    <%= f.input :date, as: :date, html5: true, label: false  %>
+    <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
   </div>
 
   <div class="text-center my-5">
