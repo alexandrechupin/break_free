@@ -23,7 +23,8 @@
 
 <div class="mt-5 mb-5">
   <h1>Les bons réflexes</h1>
-
+  <%# if @incident.place_type == "dans un lieu accueillant du public" || "dans mon lieu de travail"%>
+     <%# end %>
   <% @recommendations.each do |recommendation| %>
     <div class="mt-3">
       <h3>
