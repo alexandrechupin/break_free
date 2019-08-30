@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   get 'recommendations/index'
   devise_for :users
   root to: 'pages#home'
-  resources :incidents, only: [:new, :create, :show, :edit, :update] do
+  resources :incidents, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :recommendations, only: [:index]
     resources :proofs, only: [:new, :create, :index, :destroy]
-    resources :reports, only: [:show]
+    resources :reports, only: [:show, :create]
     member do
       get 'event'
       get 'localisation'
