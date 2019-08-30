@@ -1,14 +1,19 @@
-const previewEmail = document.getElementById("inputEmail3");
-const preview = document.querySelector(".preview-box");
-const emailEstablishment = document.getElementById("email_establishment");
-const validateButton = document.getElementById("validate-button");
+const formEmail = () => {
 
-validateButton.addEventListener("click", (event) => {
-  preview.style.display = "";
-  emailEstablishment.value = `${inputEmail3.value}`;
-});
+  const emailEstablishment = document.querySelector("#email_establishment span");
+  const validateButton = document.getElementById("validate-button");
 
-export { validateButton };
+  validateButton.addEventListener("click", (event) => {
+    const previewEmail = document.getElementById("inputEmail3").value;
+    // console.log(previewEmail);
+    const preview = document.querySelector(".preview-box");
+    preview.style.display = "block";
+    emailEstablishment.innerHTML = previewEmail;
+  });
+
+};
+
+export { formEmail };
 
 
 
