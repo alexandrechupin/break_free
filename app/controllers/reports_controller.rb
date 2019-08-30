@@ -1,14 +1,20 @@
 class ReportsController < ApplicationController
-  before_action :set_incident, only: :show
+  before_action :set_incident, only: [:show, :create]
+  before_action :set_report, only: :show
 
-  def show
+  def create
     if @incident.reports.any?
-      @report = Report.find(params[:id])
+      @report = @incident.reports.first
     else
-      @report.create(incident: @incident)
+      @report = Report.new
+      @report.incident = @incident
+      @report.save
     end
     authorize @report
+    redirect_to incident_report_path(@incident, @report)
+  end
 
+  def show
     content = ApplicationController.render(
       formats: :html,
       template: "reports/report_pdf.html.erb",
@@ -21,8 +27,9 @@ class ReportsController < ApplicationController
       f << pdf
     end
 
-    pdf = Cloudinary::Uploader.upload(file.path, :public_id => "incident#{@incident.id}_report#{@report.id}")
-    @report.remote_photo_url = pdf["url"]
+    @report.photo = "incident#{@incident.id}_report#{@report.id}"
+
+    pdf = Cloudinary::Uploader.upload(file.path, :public_id => @report.photo)
     @report.save
   end
 
@@ -30,5 +37,14 @@ class ReportsController < ApplicationController
 
   def set_incident
     @incident = Incident.find(params[:incident_id])
+  end
+
+  def set_report
+    @report = Report.find(params[:id])
+    authorize @report
+  end
+
+  def report_params
+    params.require(:report).permit(:incident, :photo, :photo_cache)
   end
 end
