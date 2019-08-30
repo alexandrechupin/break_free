@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   after_create :send_welcome_email
-  has_one :incident, dependent: :destroy
+  has_one :incident
 
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true, uniqueness: true
