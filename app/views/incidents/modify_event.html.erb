@@ -1,0 +1,144 @@
+<div class="row header-banner">
+  <div class="container my-3">
+    <p><%= link_to "Accueil", root_path %> > <%= link_to "Mon dossier", incident_path(@incident) %> > <strong>Événément</strong></p>
+    <h1>Modifier votre signalement</h1>
+  </div>
+</div>
+
+<div class="container mt-5">
+
+  <%= simple_form_for(@incident, method: :patch, url: update_event_incident_path) do |f| %>
+
+   <div class="form-group">
+    <label>
+      <h5>Modifier les motifs de votre agression</h5>
+    </label>
+    <div class="motives-choices text-center">
+      <% @motives.each do |motive| %>
+        <input type="checkbox"
+               class="checkbox-hidden"
+               value="<%= motive.name %>"
+               name="incident[motive][]"
+               id="incident_motive<%= motive.name %>">
+        <label for="incident_motive<%= motive.name %>"
+               <% if @incident.motives.include?(motive) %>
+                class="theme-tag active"
+               <% else %>
+                class="theme-tag"
+               <% end %> >
+          <%= motive.name %>
+        </label>
+      <% end %>
+     </div>
+  </div>
+
+  <div class="form-group">
+    <label>
+      <h5>S'agit-il d'un acte répété ?</h5>
+    </label>
+    <div>
+      <div class="radio-item">
+        <input type="radio"
+               id="true"
+               name="incident[recurrent]"
+               value="true"
+               <% if @incident.recurrent %>
+                 checked
+               <% end %>>
+        <label for="true">oui
+        </label>
+      </div>
+      <div class="radio-item">
+        <input type="radio"
+               id="false"
+               name="incident[recurrent]"
+               value="false"
+               <% unless @incident.recurrent %>
+                 checked
+               <% end %>>
+        <label for="false">non
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>
+      <h5>Quand a eu lieu l’événement que vous souhaitez signaler ?</h5>
+    </label>
+    <%= f.input :date, as: :date, html5: true, label: false  %>
+  </div>
+
+   <div class="form-group">
+    <label>
+      <h5>Où a eu lieu l’événement ?</h5>
+    </label>
+    <div class="text-center">
+      <% Incident::PLACE_TYPE.each do |place_type| %>
+
+        <div class="radio-item">
+          <input type="radio"
+                id="incident_place_type<%= place_type %>"
+                name="incident[place_type]"
+                value="<%= place_type %>"
+                <% if @incident.place_type == place_type %>
+                  checked
+                <% end %>>
+          <label for="incident_place_type<%= place_type %>"><%= place_type %></label>
+        </div>
+
+      <% end %>
+     </div>
+  </div>
+
+  <div class="form-group">
+    <label>
+      <h5>Pourriez-vous préciser l'adresse ou la localisation approximative de l'événement ?</h5>
+    </label>
+    <div class="col-6">
+      <%= f.input :address, label: false  %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>
+      <h5>Êtes-vous d’accord pour référencer cet événement, de manière anonyme, sur notre carte ?</h5>
+      <p>Référencer l’acte malveillant sur notre carte publique permet de lever le voile sur la persistance d’actes malveillants en France et peut contribuer à éveiller les consciences des autorités et de la société </p>
+    </label>
+    <div>
+      <div class="radio-item">
+        <input type="radio"
+               id="pub_true"
+               name="incident[publication_agreement]"
+               value="true"
+               <% if @incident.publication_agreement %>
+                 checked
+               <% end %>>
+        <label for="pub_true">oui</label>
+      </div>
+      <div class="radio-item">
+        <input type="radio" id="pub_false" name="incident[publication_agreement]"
+               value="false"
+               <% unless @incident.publication_agreement %>
+                 checked
+               <% end %>>
+        <label for="pub_false">non</label>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="d-flex justify-content-center my-5">
+
+    <%= button_tag(type: 'submit', class: 'button-primary') do %>
+      Enregistrer
+    <% end %>
+
+  </div>
+
+  <% end %>
+
+</div>
+
+
+
