@@ -28,19 +28,19 @@ puts "Finished!"
 #     email: "ishan@gmail.com",
 #     password: "123456"
 #     )
-#   user_three.save!
-#   user_four = User.new(
-#     email: "alexandre@gmail.com",
-#     password: "123456"
-#     )
-#   user_four.save!
+#user_three.save!
+#user_four = User.new(
+#email: "alexandre@gmail.com",
+#password: "123456"
+#)
+#user_four.save!
 # puts 'Finished!'
 
-puts "Creating incident categories..."
-category_one = IncidentCategory.create!(name: "Agression physique")
-category_two = IncidentCategory.create!(name: "Agression sexuelle")
-category_three = IncidentCategory.create!(name: "Agression verbale")
-category_four =IncidentCategory.create!(name: "Discrimination")
+puts "Creating incident categories and description..."
+category_one = IncidentCategory.create!({name: "Agression physique",description: "Coups et blessures volontaires"})
+category_two = IncidentCategory.create!({name: "Agression sexuelle",description: "Acte sexuel non consenti"})
+category_three = IncidentCategory.create!({name: "Agression verbale",description: "Agression de forme verbale"})
+category_four = IncidentCategory.create!({name: "Discrimination",description: "Traitement différent des autres"})
 puts "Finished !"
 
 
@@ -168,7 +168,7 @@ recommendation4 = Recommendation.create!({
   })
 recommendation5 = Recommendation.create!({
     title: "Recueillir des preuves",
-    description: "Il est impératif de récolter autant de preuves que possible (enregistrements, captures d’écran, témoignages, etc.).",
+    description: "Il est impératif de récolter autant de preuves que possible (enregistrements, photos, vidéos, captures d’écran, témoignages, etc.).",
     is_an_action: true
 })
 puts "Finished !"
@@ -176,33 +176,45 @@ puts "Finished !"
 puts "Creating incident recommendations"
 incident_recommendation1 = IncidentRecommendation.create!({
     incident_category: category_one,
-    recommendation: recommendation1
+    recommendation: recommendation3
   })
 incident_recommendation2 = IncidentRecommendation.create!({
     incident_category: category_one,
-    recommendation: recommendation2
+    recommendation: recommendation4
   })
 incident_recommendation3 = IncidentRecommendation.create!({
+    incident_category: category_one,
+    recommendation: recommendation1
+  })
+incident_recommendation4 = IncidentRecommendation.create!({
     incident_category: category_two,
     recommendation: recommendation3
   })
-incident_recommendation4 = IncidentRecommendation.create!({
+incident_recommendation5 = IncidentRecommendation.create!({
     incident_category: category_two,
-    recommendation: recommendation1
-  })
-incident_recommendation4 = IncidentRecommendation.create!({
-    incident_category: category_three,
     recommendation: recommendation4
   })
-incident_recommendation5 = IncidentRecommendation.create!({
-    incident_category: category_three,
-    recommendation: recommendation1
-  })
 incident_recommendation6 = IncidentRecommendation.create!({
-    incident_category: category_four,
+    incident_category: category_two,
     recommendation: recommendation5
   })
 incident_recommendation7 = IncidentRecommendation.create!({
+    incident_category: category_two,
+    recommendation: recommendation1
+  })
+incident_recommendation8 = IncidentRecommendation.create!({
+    incident_category: category_three,
+    recommendation: recommendation5
+  })
+incident_recommendation9 = IncidentRecommendation.create!({
+    incident_category: category_three,
+    recommendation: recommendation1
+  })
+incident_recommendation10 = IncidentRecommendation.create!({
+    incident_category: category_four,
+    recommendation: recommendation5
+  })
+incident_recommendation11 = IncidentRecommendation.create!({
     incident_category: category_four,
     recommendation: recommendation1
   })
