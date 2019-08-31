@@ -1,20 +1,28 @@
+<section id="section1">
+  <svg viewbox="0 0 100 25">
+    <!-- <path fill="#EDE6DC" opacity="0.5" d="M0 30 V15 Q30 3 60 15 V30z" /> -->
+    <path fill="#EDE6DC" d="M0 30 V12 Q30 17 55 12 T100 11 V30z" />
+  </svg>
+</section>
+
 <div class="home-banner">
-  <div class="container">
+  <div>
     <div class="row">
-      <div class="col-md-4">
-        <%= image_tag('Light-the-fire.svg', class: 'img-large') %>
-      </div>
-      <div class="col-md-8 d-flex align-items-center">
+      <!-- <div class="col-md-4"> -->
+<!--         <%= image_tag('Light-the-fire.svg', class: 'img-large') %> -->
+      <!-- </div> -->
+      <div class="col-md-10 d-flex align-items-center">
         <div>
-          <h1>Je signale une <strong>agression</strong> <br> ou une <strong>situation de discrimination</strong></h1>
-          <h3>Ayez les bons réflexes pour réagir face <br> aux comportements inappropriés.</h3>
+          <h1>Je signale une <strong>agression</strong> ou une <strong>situation de discrimination</strong></h1>
+          <h3>Ayez les bons réflexes pour réagir face aux comportements inappropriés.</h3>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container launch mt-5">
+
+<div class="container launch">
 
 
   <% if user_signed_in? %>
@@ -35,7 +43,7 @@
   <% else %>
 
     <div class="row justify-content-center">
-      <h4 class="theme-title mt-3">je suis ou j'ai été <strong>victime</strong> d'une</h4>
+      <h3 class="theme-title mt-3 pt-3">Je suis ou j'ai été <strong>victime</strong> d'une</h3>
     </div>
 
     <div class="row my-5">

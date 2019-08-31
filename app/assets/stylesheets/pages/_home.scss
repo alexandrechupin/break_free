@@ -1,9 +1,11 @@
 // Specific CSS for your home-page
 .home-banner {
   height: 40vh;
-  padding: 64px;
-  padding-bottom: 32px;
-  background-color: $my-light-blue;
+  padding-top: 35px;
+  padding-bottom: 20px;
+  padding-left: 250px;
+  text-align: center;
+  background-color: #EDE6DC;
   .img-large {
     width: 100%;
   }
@@ -13,7 +15,12 @@
 }
 
 .launch {
-  height: 50vh;
+  height: 60vh;
+  background-color: white;
+  right: 197px;
+  top: 870px;
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // max-width: 1066px !important ;
 }
 
 .explanations {
@@ -41,4 +48,26 @@
     color: $my-purple;
   }
 }
+
+
+#section1 {
+  position:relative;
+  background-color: black;
+  background-image: url('https://cdn.dribbble.com/users/63407/screenshots/4982712/dribbble_bright_sushine.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width:100%;
+  height:700px;
+}
+
+svg{
+  position:absolute;
+  bottom:-150px; left:0;
+  display:block;
+  background-size: cover;
+  width: 100%;
+  display: block;
+}
+
 
