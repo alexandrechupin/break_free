@@ -4,6 +4,7 @@
 
 .no-style {
   border: none;
+  background-color: #F8F8F8;
 }
 
 .no-style:hover {
@@ -19,5 +20,11 @@
   input {
     visibility:hidden;
     padding: 0;
+  }
+}
+
+.questions {
+  p{
+    font-size: 14px;
   }
 }

@@ -38,7 +38,7 @@
 
   <%= simple_form_for(@incident, method: :patch, url: update_init_incident_path) do |f| %>
 
-   <div class="form-group">
+   <div class="form-group questions">
     <label>
       <h5>À votre avis, cet acte malveillant s’est produit en raison de votre...</h5>
       <p>Aidez-nous à qualifier cet acte. Les motifs de l’acte malveillant que vous avez subi peuvent constituer des circonstances aggravantes qui permettront de faire condamner plus lourdement l’agresseur·se. Vous pouvez sélectionner plusieurs raisons.</p>
@@ -53,7 +53,7 @@
      </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group questions mt-5">
     <label>
       <h5>Votre agresseur a-t-il déjà commis un acte similaire à votre encontre ?</h5>
       <p>Si l’acte malveillant que vous subissez est répété, il peut s’agir d'un cas de harcèlement</p>
@@ -70,7 +70,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group questions mt-5">
     <label>
       <h5>Quand a eu lieu l’événement que vous souhaitez signaler ?</h5>
       <p>Aidez-nous à qualifier ce qu’il vous est arrivé afin de vous guider. <br>En fonction de vos réponses, nous vous soumettrons nos recommandations et vous conseillerons les meilleurs réflexes à adopter.</p>
@@ -80,11 +80,11 @@
 
   <div class="text-center my-5">
     <%=  link_to root_path do %>
-      <i class="fas fa-arrow-circle-left" style="color: #471F44; font-size: 48px; margin-right: 16px;"></i>
+      <i class="fas fa-arrow-circle-left" style="color: #471F44; background-color: #F8F8F8;font-size: 48px; margin-right: 16px;"></i>
     <% end %>
 
     <%= button_tag(type: 'submit', class: 'no-style') do %>
-        <i class="fas fa-arrow-circle-right" style="color: #471F44; font-size: 48px; margin-left: 16px;"></i>
+        <i class="fas fa-arrow-circle-right" style="color: #471F44; background-color: #F8F8F8;font-size: 48px; margin-left: 16px;"></i>
     <% end %>
   </div>
 
