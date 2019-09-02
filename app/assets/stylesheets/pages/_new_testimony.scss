@@ -1,0 +1,20 @@
+
+.card-incident {
+  display: flex;
+  width: 100%;
+  height: 65px;
+  margin: auto;
+  margin-bottom: 16px;
+  padding: 16px;
+  justify-content: space-between;
+  background-color: $my-light-blue;
+  border-radius: 4px;
+}
+
+.new_testimony_contacts{
+  display: flex;
+  justify-content: space-around;
+  .new_testimony_input{
+     width: 250px;
+  }
+}

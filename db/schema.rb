@@ -111,6 +111,10 @@ ActiveRecord::Schema.define(version: 2019_09_02_144725) do
     t.string "cerfa_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "witness_email"
+    t.string "witness_name"
+    t.string "witness_family_name"
+    t.boolean "witness_gdpr"
     t.index ["incident_id"], name: "index_testimonies_on_incident_id"
   end
 
