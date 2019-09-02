@@ -18,13 +18,3 @@ const formEmail = () => {
 export { formEmail };
 
 
-
-// // Hide
-// preview.style.display = "none";
-
-// // Show
-// preview.style.display = "";
-
-
-// // Write
-// emailEstablishment.value = `${inputEmail3.value}`;
