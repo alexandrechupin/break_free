@@ -29,19 +29,4 @@ document.querySelectorAll('.toggle').forEach((link) => {
 
 }
 
-
-const complaintFiller = () => {
-
-  console.log('Horray! Someone wrote something');
-
-  // const userFirstName = document.getElementById("user-first-name");
-
-  // userFirstName.addEventListener('input', function (event) {
-  //   console.log('Horray! Someone wrote something');
-  // });
-
-};
-
-export { complaintFiller };
-
 export {showHide};

@@ -12,6 +12,7 @@ IncidentCategory.destroy_all
 User.destroy_all
 puts "Finished!"
 
+require 'csv'
 
 # puts 'Creating 4 fake breakfree users ..'
 #   user_one = User.new(
@@ -219,5 +220,30 @@ incident_recommendation11 = IncidentRecommendation.create!({
     recommendation: recommendation1
   })
 puts "Finished !"
+
+
+# Parse the Tribunal Grand Instance file
+
+require 'csv'
+
+puts "Parsing CSV of TGIs"
+
+csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
+filepath = File.join(Rails.root, 'db', 'annuaire_ti.csv')
+
+CSV.foreach(filepath, csv_options) do |row|
+  tribunal = Tribunal.create!({
+    name: row[1],
+    address: "#{row[3]} – #{row[4]}",
+    zipcode: row[6],
+    city: row[7],
+    phone: row[8],
+    timings: row[9],
+    url: row[13]
+  })
+end
+
+puts "Oof. I've finished! Everything went alright 😉"
+
 
 

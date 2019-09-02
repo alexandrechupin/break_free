@@ -10,6 +10,8 @@ const complaintFiller = () => {
         var inputPreviews = document.querySelectorAll(`.user-${inputType}-preview`);
           inputPreviews.forEach((inputPreview) => {
             inputPreview.innerHTML = inputValue;
+            inputPreview.classList.toggle('text-salmon')
+            setTimeout(function() {inputPreview.classList.toggle('text-salmon');}, 750);
           });
       });
     };

@@ -1,0 +1,2 @@
+class Tribunal < ApplicationRecord
+end

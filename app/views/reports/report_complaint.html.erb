@@ -16,7 +16,8 @@
   <strong>Nous n'enregistrons pas vos informations personnelles. Il vous faudra donc resaisir ces quelques champs à chaque génération de courrier.</strong>
   </p>
 
-  <form id='personal-info'>
+  <%= simple_form_for(@incident, html: { id: "personal-info"}, method: :patch, url: update_zipcode_incident_path, remote: true) do |f| %>
+    <%= f.hidden_field :incident_id, value: @incident.id %>
     <div class="row">
       <div class="form-group col-6">
         <label for="user-first-name">Prénom</label>
@@ -33,22 +34,33 @@
     </div>
     <div class="row">
       <div class="form-group col-6">
-        <label for="user-zipcode">Code Postal</label>
-        <input type="text" class="form-control" id="user-zipcode" autocomplete="none">
-        <small id="zipcodeHelp" class="form-text text-muted">Le code postal est utilisé pour déterminer votre tribunal d'instance de référence.</small>
-      </div>
-      <div class="form-group col-6">
         <label for="user-city">Commune</label>
         <input type="text" class="form-control" id="user-city" autocomplete="none">
       </div>
+      <div class="form-group col-6">
+        <label for="user-phone">Téléphone</label>
+        <input type="text" class="form-control" id="user-phone" autocomplete="none">
+      </div>
     </div>
-    <div class="form-group">
-      <label for="user-phone">Téléphone</label>
-      <input type="text" class="form-control" id="user-phone" autocomplete="none">
+    <div class="row">
+      <div class="form-group col-4">
+        <label for="user-zipcode">Code Postal</label>
+        <input name="incident[zipcode]" type="text" class="form-control" id="user-zipcode" autocomplete="none">
+        <small id="zipcodeHelp" class="form-text text-muted">Le code postal est utilisé pour déterminer votre tribunal d'instance de référence.</small>
+      </div>
+      <div class="col-8">
+        <%= button_tag(type: 'submit', class: 'button-secondary mt-4') do %>
+          Trouver mon tribunal
+        <% end %>
+      </div>
     </div>
-  </form>
+  <% end %>
+</div>
 
+<span id="tribunal-info">
+</span>
 
+<div class="container">
     <div class="preview-box-complaint ml-0 mb-0 mt-5">
       <div class="ml-3">
         <p class="h6 mt-3">
@@ -67,11 +79,11 @@
         <p class="h6 mt-3 text-right" id="email_establishment" value="email">
           <strong>Madame, Monsieur le procureur de la République</strong>
           <br>
-          Tribunal de grande instance de [Commune]
+          <span id="tribunal-name-preview"> [Nom du tribunal d'instance]</span>
           <br>
-          [Adresse]
+          <span id="tribunal-address-preview"> [Adresse du tribunal d'instance]</span>
           <br>
-          [Code postal] [Commune]
+          <span id="tribunal-zipcode-preview">[Code Postal]</span> – <span id="tribunal-city-preview">[Commune]</span>
         </p>
       </div>
       <div class="ml-3">
@@ -106,6 +118,10 @@
           <br>
           <br>
         Je vous remercie de considérer ce courrier comme un dépôt de plainte.
+
+        <br>
+        <br>
+        Documents de preuve : certificats médicaux constatant les blessures, arrêts de travail, factures diverses, constats en cas de dégâts matériels
           <br>
           <br>
         Dans l'attente des suites que vous donnerez à ce courrier, je vous prie d'agréer, Madame, Monsieur le procureur de la République, l'expression de ma plus haute considération.</p>

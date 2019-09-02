@@ -30,6 +30,10 @@ class ApplicationPolicy
     true
   end
 
+  def update_zipcode?
+    true
+  end
+
   def edit?
     update?
   end

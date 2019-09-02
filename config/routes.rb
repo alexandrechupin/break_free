@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       patch 'update_init_geo'
       patch 'update_event'
       get 'assign_user'
+      patch 'update_zipcode'
     end
   end
 
