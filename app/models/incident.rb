@@ -14,8 +14,8 @@ class Incident < ApplicationRecord
   validates :place_type, inclusion: { in: PLACE_TYPE }, allow_blank: true
 
   def get_recommendations
-    recommendations = self.incident_category.recommendations
-    if self.place_type == PLACE_TYPE[1] || self.place_type == PLACE_TYPE[2]
+    recommendations = [] + incident_category.recommendations
+    if place_type == PLACE_TYPE[1] || place_type == PLACE_TYPE[2]
       recommendations << Recommendation.find_by_title("Transmettre un rapport anonyme à l'établissement concerné")
     end
     recommendations
