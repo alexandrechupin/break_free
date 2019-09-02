@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_145344) do
+ActiveRecord::Schema.define(version: 2019_09_02_144725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_08_29_145344) do
     t.bigint "incident_category_id"
     t.string "description_after_feeling"
     t.string "description_about_testimony"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["incident_category_id"], name: "index_incidents_on_incident_category_id"
     t.index ["user_id"], name: "index_incidents_on_user_id"
   end
