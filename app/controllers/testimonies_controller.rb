@@ -11,7 +11,6 @@ class TestimoniesController < ApplicationController
 
   def new
     @testimony = Testimony.new
-
     # build 4 proofs: cerfa + 3 others
     4.times { @testimony.proofs.build }
     skip_authorization
@@ -25,7 +24,6 @@ class TestimoniesController < ApplicationController
     @testimony.proofs.each do |proof|
       proof.incident = @incident
       next if proof.photo.blank?
-
       proof.content_type = proof.photo.content_type
       proof.original_filename = proof.photo.file.original_filename
     end
