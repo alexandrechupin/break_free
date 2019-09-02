@@ -122,9 +122,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_144725) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "incident_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["incident_id"], name: "index_users_on_incident_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -139,5 +137,4 @@ ActiveRecord::Schema.define(version: 2019_09_02_144725) do
   add_foreign_key "proofs", "testimonies"
   add_foreign_key "reports", "incidents"
   add_foreign_key "testimonies", "incidents"
-  add_foreign_key "users", "incidents"
 end

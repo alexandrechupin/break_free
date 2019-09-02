@@ -32,7 +32,7 @@
       </div>
     <% end %>
 
-    <% @incident.incident_category.recommendations.each do |recommendation| %>
+    <% @incident.get_recommendations.each do |recommendation| %>
       <% if recommendation.title == "Transmettre un rapport anonyme à l'établissement concerné" %>
         <%= link_to(incident_reports_path(@incident), :method => :post) do %>
         <div class="card-action ml-0 mt-3">
@@ -53,7 +53,7 @@
     <%= link_to incident_path(@incident), method: 'delete', data: {:confirm => 'Cette action détruira toute trace de votre dossier. Nous supprimerons également votre témoignage et toutes les preuves afférentes de notre base. Votre compte sera également supprimé. Êtes-vous sûrs ?'} do %>
       <div class="card-action ml-0 mt-3">
         <div>
-        <h5>❌ Détruire mon dossier<p>Cela supprimera définitivement votre compte</p> </h5>
+        <h5 class="pt-3">❌ Détruire mon dossier<p>Cela supprimera définitivement votre compte</p> </h5>
         </div>
         <i class="fas fa-arrow-circle-right"></i>
       </div>

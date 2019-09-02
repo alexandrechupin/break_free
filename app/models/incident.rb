@@ -14,7 +14,8 @@ class Incident < ApplicationRecord
   validates :place_type, inclusion: { in: PLACE_TYPE }, allow_blank: true
 
   def get_recommendations
-    recommendations = [] + incident_category.recommendations
+    recommendations = incident_category.recommendations.to_a
+    # garder le to_a pour eviter d'inserer une nouvelle association en db
     if place_type == PLACE_TYPE[1] || place_type == PLACE_TYPE[2]
       recommendations << Recommendation.find_by_title("Transmettre un rapport anonyme à l'établissement concerné")
     end
