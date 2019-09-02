@@ -1,5 +1,6 @@
 .step-title {
-  color: $my-gray;
+  color: white;
+  font-size: 16px;
 }
 
 // .line {
@@ -11,7 +12,8 @@
 .stepper {
   display: flex;
   align-items: center;
-  justify-contenr: center;
+  justify-content: center;
+  color: white;
 }
 
 .center-step {
@@ -19,16 +21,27 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 16px;
-  margin-right: 16px;
+  margin-left: 80px;
+  margin-right: 25px;
+  line-height: 2.2px;
+  color: white;
+}
+
+.center-step:first-child {
+  padding-right: 10px;
 }
 
 .active {
   .circle {
-    border: 3px solid;
-    font-weight: 700;
+    border: 3px solid #7D4E60;
+    font-weight: 600;
+    line-height: 34.1px;
+    color: white;
+    background-color: #7D4E60;
   }
   .step-title {
-    font-weight: 700;
+    color: #7D4E60;
+    font-size: 18px;
+    font-weight: 500;
   }
 }
