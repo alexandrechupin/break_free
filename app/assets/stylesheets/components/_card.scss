@@ -2,11 +2,13 @@
   padding: 8px;
   display: flex;
   width: 209px;
-  height: 100px;
+  height: 200px;
   margin: 8px;
+  border-radius: 2px;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.1);
   justify-content: space-between;
   align-items: center;
-  background-color: $my-light-blue;
+  background-color: #F8F8F8;
   i {
     font-size: 36px;
     color: $my-purple;
@@ -23,9 +25,9 @@
     padding-bottom: 0px;
     margin-bottom: 0px;
   }
-  .arrow {
-    margin-left: 8px;
-  }
+  // .arrow {
+  //   margin-left: 8px;
+  // }
   .label {
     justify-content: space-between;
     display: flex;
@@ -34,7 +36,8 @@
 }
 
 .card-launch:hover {
-  background-color: $my-beige;
+  background-color: #7D4E60;
+  color: white;
   cursor: pointer;
   i {
     color: $my-gray;
@@ -48,7 +51,7 @@
   width: 380px;
   height: 180px;
   background-color: white;
-  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.1);
 }
 
 
