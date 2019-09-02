@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag ("logo-b-f.png"), class: "ml-5" %>
     <% end %>
@@ -10,10 +10,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li class="nav-item mr-5">
         <%= link_to "A propos de nous", about_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
+      <li class="nav-item mr-5">
         <%= link_to "Statistiques", stats_path, class: "nav-link" %>
       </li>
       <% if user_signed_in? %>
@@ -28,8 +28,8 @@
         </li>
       <% else %>
         <li class="nav-item d-inline-flex">
-          <%= link_to "Mon dossier", new_user_session_path, class: "nav-link" %>
           <i class="fas fa-user picto"></i>
+          <%= link_to "Mon dossier", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>
