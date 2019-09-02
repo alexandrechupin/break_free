@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :recommendations, only: [:index]
     resources :proofs, only: [:new, :create, :index, :destroy]
     resources :reports, only: [:show, :create]
+    resources :testimonies, only: [:new, :create, :index, :destroy, :edit, :update]
     member do
       get 'event'
       get 'localisation'
