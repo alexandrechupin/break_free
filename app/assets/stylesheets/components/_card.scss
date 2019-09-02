@@ -1,6 +1,9 @@
 .card-launch {
   padding: 8px;
   display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-bottom: 35px;
   width: 209px;
   height: 200px;
   margin: 8px;
@@ -88,3 +91,18 @@
     color: $my-gray;
   }
 }
+
+.show-button {
+  .button-primary {
+    width: 130px;
+  }
+}
+
+.show{
+   display: none;
+}
+
+.card-launch:hover .show{
+   display : block;
+ }
+
