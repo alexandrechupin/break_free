@@ -1,0 +1,121 @@
+<div class="row header-banner">
+  <div class="container my-3">
+    <p><%= link_to "Accueil", root_path %> > <%= link_to "Mon dossier", incident_path(@incident) %> > <strong>Porter plainte</strong></p>
+    <h1>Porter plainte</h1>
+  </div>
+</div>
+
+<div class="container my-5">
+
+<h2>Transmettre un courrier au procureur de la République</h2>
+
+  <p>Ce service vous permet de rédiger le courrier de dépôt de plainte auprès du procureur de la République. <br>
+  Le document est rédigé au fur et à mesure de vos réponses. Une fois complété, vous pouvez copier le texte pour le modifier à votre guise.<br>
+  Vous pourrez alors l'imprimer, le signer et l'envoyer au tribunal de votre domicile, du domicile de l'auteur des faits ou du lieu de l'infraction.
+  <br>
+  <strong>Nous n'enregistrons pas vos informations personnelles. Il vous faudra donc resaisir ces quelques champs à chaque génération de courrier.</strong>
+  </p>
+
+  <form id='personal-info'>
+    <div class="row">
+      <div class="form-group col-6">
+        <label for="user-first-name">Prénom</label>
+        <input type="text" class="form-control" id="user-first-name" autocomplete="none">
+      </div>
+      <div class="form-group col-6">
+        <label for="user-last-name">Nom</label>
+        <input type="text" class="form-control" id="user-last-name" autocomplete="none">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="user-address">Adresse</label>
+      <input type="text" class="form-control" id="user-address" autocomplete="none">
+    </div>
+    <div class="row">
+      <div class="form-group col-6">
+        <label for="user-zipcode">Code Postal</label>
+        <input type="text" class="form-control" id="user-zipcode" autocomplete="none">
+        <small id="zipcodeHelp" class="form-text text-muted">Le code postal est utilisé pour déterminer votre tribunal d'instance de référence.</small>
+      </div>
+      <div class="form-group col-6">
+        <label for="user-city">Commune</label>
+        <input type="text" class="form-control" id="user-city" autocomplete="none">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="user-phone">Téléphone</label>
+      <input type="text" class="form-control" id="user-phone" autocomplete="none">
+    </div>
+  </form>
+
+
+    <div class="preview-box-complaint ml-0 mb-0 mt-5">
+      <div class="ml-3">
+        <p class="h6 mt-3">
+          <strong> <span class="user-first-name-preview">[Prénom]</span> <span class="user-last-name-preview">[Nom]</span></strong>
+          <br>
+          <span class="user-address-preview">[Adresse]</span>
+          <br>
+          <span class="user-zipcode-preview">[Code postal]</span> – <span class="user-city-preview">[Commune]</span>
+          <br>
+          <%= current_user.email %>
+          <br>
+          <span class="user-phone-preview">[Téléphone]</span>
+        </p>
+      </div>
+      <div class="ml-3">
+        <p class="h6 mt-3 text-right" id="email_establishment" value="email">
+          <strong>Madame, Monsieur le procureur de la République</strong>
+          <br>
+          Tribunal de grande instance de [Commune]
+          <br>
+          [Adresse]
+          <br>
+          [Code postal] [Commune]
+        </p>
+      </div>
+      <div class="ml-3">
+        <p class="h6 mt-5 text-right"><span class="user-city-preview">[Commune]</span>, le <%= DateTime.now.to_date.strftime("%d/%m/%Y") %></p>
+        <p class="h6 mt-5"><strong>Objet :</strong> Dépôt de plainte</p>
+      </div>
+      <div class="ml-3 mt-5">
+        <p class="h6 mt-3">Madame, Monsieur le procureur de la République,
+          <br>
+          <br>
+        J'ai l'honneur de vous informer des faits suivants : j'ai été
+          <% if @incident.author_is_victim %>
+          victime
+          <% else %>
+          témoin
+          <% end %>
+           d'une <%= @incident.incident_category.name.downcase %>
+           en raison de mon : <% @incident.motives.each do |motive| %>
+            <%= motive.name.downcase %> ;
+            <% end %>
+             cet incident a eu lieu le <%= @incident.date.strftime("%d/%m/%Y") %> à l'adresse suivante : <%= @incident.address %>.
+
+           <br>
+           <br>
+           En conséquence, je souhaite porter plainte [contre X /contre Monsieur...] pour ces faits.
+           Nom de l'auteur supposé si vous le connaissez (sinon, il convient de déposer plainte contre X)
+          <br>
+          <br>
+        Je vous précise [ne pas disposer de témoin de ces faits/qu'il y a un témoin de ces faits/qu'il y a des témoins de ces faits].
+        <br>
+        Noms et adresses des éventuels témoins de l'infraction
+          <br>
+          <br>
+        Je vous remercie de considérer ce courrier comme un dépôt de plainte.
+          <br>
+          <br>
+        Dans l'attente des suites que vous donnerez à ce courrier, je vous prie d'agréer, Madame, Monsieur le procureur de la République, l'expression de ma plus haute considération.</p>
+        <p><button type="submit" class="btn btn-primary mt-5">Télécharger le pdf</button></p>
+      </div>
+    </div>
+
+
+    <div class="d-flex justify-content-center p-3 mb-4">
+        <%= link_to 'Retour au dossier', incident_path(current_user.incident),class: 'button-primary' %>
+    </div>
+
+</div>

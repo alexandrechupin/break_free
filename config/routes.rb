@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   resources :incidents, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :recommendations, only: [:index]
     resources :proofs, only: [:new, :create, :index, :destroy]
-    resources :reports, only: [:show, :create]
+    resources :reports, only: [:show, :create] do
+      member do
+        get 'create_complaint'
+        get 'report_complaint'
+      end
+    end
     member do
       get 'event'
       get 'localisation'

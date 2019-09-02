@@ -12,4 +12,12 @@ class ReportPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def create_complaint?
+    true
+  end
+
+  def report_complaint?
+    true
+  end
 end
