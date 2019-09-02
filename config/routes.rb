@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         get 'report_complaint'
       end
     end
+    resources :testimonies, only: [:new, :create, :index, :destroy, :edit, :update]
     member do
       get 'event'
       get 'localisation'

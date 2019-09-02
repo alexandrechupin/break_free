@@ -32,7 +32,7 @@
       </div>
     <% end %>
 
-    <% @incident.incident_category.recommendations.each do |recommendation| %>
+    <% @incident.get_recommendations.each do |recommendation| %>
       <% if recommendation.title == "Transmettre un rapport anonyme à l'établissement concerné" %>
         <%= link_to(incident_reports_path(@incident), :method => :post) do %>
         <div class="card-action ml-0 mt-3">

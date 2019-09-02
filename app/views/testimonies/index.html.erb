@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="d-inline-flex">
+    <p>Accueil > Dashboard > </p>
+    <p class="font-weight-bold pl-1">Vos témoignages</p>
+  </div>
+  <div class="manage_testimonies">
+    <h1>Collecte de témoignages </h1>
+    <p>Partagez l'url de votre témoignage </p>
+    <input type="text" value="Hello World" id="myInput">
+    <button onclick="myFunction()">Copier URL</button>
+  </div>
+  <div class="manage_testimonies">
+    <h3>Collecte de témoignages </h3>
+    <p>Vos témoignages collectés</p>
+      <% @testimonies.each do |testimony| %>
+        <%= testimony.witness_name %>
+        <%= testimony.witness_family_name %>
+        <%= testimony.witness_email %>
+      <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
