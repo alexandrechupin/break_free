@@ -1,7 +1,6 @@
 class ReportsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :show]
-  before_action :set_incident, only: [:show, :create, :create_complaint, :report_complaint]
-  before_action :set_report, only: [:show, :report_complaint]
+  before_action :set_incident, only: [:show, :create, :create_complaint, :report_complaint, :update_report, :send_anonymous_report]
+  before_action :set_report, only: [:show, :report_complaint, :update_report, :send_anonymous_report]
 
   def create
     @report = Report.new
@@ -45,6 +44,15 @@ class ReportsController < ApplicationController
   def report_complaint
   end
 
+  def update_report
+    @report.recipient_email = params[:report][:recipient_email]
+    @report.save
+  end
+
+  def send_anonymous_report
+    UserMailer.with(user: @report.recipient_email).report.deliver_now
+  end
+
   private
 
   def set_incident
@@ -57,6 +65,6 @@ class ReportsController < ApplicationController
   end
 
   def report_params
-    params.require(:report).permit(:incident, :photo, :photo_cache)
+    params.require(:report).permit(:incident, :photo, :photo_cache, :recipient_email)
   end
 end
