@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       member do
         get 'create_complaint'
         get 'report_complaint'
+        patch 'update_report'
+        get 'send_anonymous_report'
       end
     end
     resources :testimonies, only: [:new, :create, :index, :destroy, :edit, :update]
