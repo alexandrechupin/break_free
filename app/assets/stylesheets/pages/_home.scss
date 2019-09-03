@@ -31,39 +31,30 @@
 }
 
 .explanations {
-  background-color: #7E4E60;
+  background: linear-gradient(#fae7db, #fff8f3);;
   padding: 16px;
   position: relative;
-  height:450px;
-  h1 {
-    color: white;
-    font-size: 28px;
-    font-weight: 500;
-  }
+  height:65vh;
+  color: $my-purple !important;
   h3 {
-    font-size: 20px;
+    font-weight: 400;
+  }
+  h5 {
+    font-weight: 200;
   }
 }
 
-.explanations-blocs {
-  position: absolute;
-  top: -152px;
-  right: 330px;
-  left: -181px;
+.explanations {
   .first-title{
-    position: absolute;
-    top: 279px;
-    left: -60px;
-  }
-  .second-form {
-    top: -364px;
-    right: -345px;
+    position: relative;
+    top: 50px;
+    left: 100px;
   }
   .second-title {
-    position: absolute;
+    position: relative;
     text-align: right;
-    top: -98px;
-    right: -406px;
+    left: 800px;
+    top: 0px;
   }
 }
 
@@ -98,11 +89,11 @@
   align-items: center;
   h4 {
     color: white;
-    font-size: 35px;
+    font-size: 28px;
   }
   p {
     color: white;
-    font-size: 28px;
+    font-size: 24px;
   }
 }
 
