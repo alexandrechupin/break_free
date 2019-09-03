@@ -1,10 +1,12 @@
 class ReportsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :show]
   before_action :set_incident, only: [:show, :create, :create_complaint, :report_complaint]
   before_action :set_report, only: [:show, :report_complaint]
 
   def create
     @report = Report.new
     @report.incident = @incident
+    @report.report_type = "anonymous report"
     @report.save
     authorize @report
     redirect_to incident_report_path(@incident, @report)
