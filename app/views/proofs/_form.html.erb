@@ -1,7 +1,7 @@
 <div class="row header-banner">
   <div class="container my-3">
     <p><%= link_to "Accueil", root_path %> > <%= link_to "Mon dossier", incident_path(@incident) %> > <strong>Preuves</strong></p>
-    <h1>Mes preuves</h1>
+    <h1>Gestion des preuves</h1>
   </div>
 </div>
 
@@ -35,7 +35,7 @@
           <% end %>
         <% end  %>
       </div>
-          <h3>Preuves collectées par vos témoins </h3>
+          <h3>Preuves fournies par vos témoins </h3>
       <div>
         <% @proofs.each do |proof| %>
           <% if proof.testimony_id.blank? == false %>
