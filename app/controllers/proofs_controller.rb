@@ -1,6 +1,6 @@
 class ProofsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :index, :destroy]
-  before_action :set_incident, only: [:index, :new, :create, :destroy]
+  before_action :set_incident, only: [:index, :new, :create, :destroy, :get_content_type]
   before_action :set_proof, only: [:destroy]
 
   def index
@@ -12,6 +12,7 @@ class ProofsController < ApplicationController
     @proof = Proof.new(proof_params)
     @proof.incident = @incident
     @proof.content_type = params[:proof][:photo].content_type if params[:proof][:photo].content_type
+    @proof.content_type = "attestation de temoin/pdf" if @proof.content_type == "application/pdf"
     @proof.original_filename = params[:proof][:photo].original_filename if params[:proof][:photo].original_filename
     if @proof.save
       redirect_to incident_proofs_path(@incident)
@@ -25,6 +26,12 @@ class ProofsController < ApplicationController
     @proof.destroy
     redirect_to incident_proofs_path(@incident)
     authorize @proof
+  end
+
+  def get_content_type
+    @incident.proofs.pluck(:content_type).uniq.map do |type|
+      type.split("/")[0]
+    end
   end
 
   private

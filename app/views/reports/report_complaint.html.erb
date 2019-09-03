@@ -96,34 +96,56 @@
           <br>
         J'ai l'honneur de vous informer des faits suivants : j'ai été
           <% if @incident.author_is_victim %>
-          victime
+            victime
           <% else %>
-          témoin
+            témoin
           <% end %>
            d'une <%= @incident.incident_category.name.downcase %>
-           en raison de mon : <% @incident.motives.each do |motive| %>
-            <%= motive.name.downcase %> ;
+           en raison <% @incident.motives.each do |motive| %>
+              <% if motive.name == "Genre" || motive.name == "Orientation sexuelle" || motive.name == "Statut sérologique" || motive.name == "Origine" %>
+                de mon
+              <% elsif motive.name == "Situation de handicap"%>
+                ma
+              <% else %>
+                d'un motif inconnu
+              <% end %>
+              <%= motive.name.downcase %>;
             <% end %>
              cet incident a eu lieu le <%= @incident.date.strftime("%d/%m/%Y") %> à l'adresse suivante : <%= @incident.address %>.
-
-           <br>
-           <br>
-           En conséquence, je souhaite porter plainte [contre X /contre Monsieur...] pour ces faits.
-           Nom de l'auteur supposé si vous le connaissez (sinon, il convient de déposer plainte contre X)
+            <br>
+            <br>
+            <% if @incident.description %>
+              <%= @incident.description.capitalize %>
+            <br>
+            <br>
+            <% end %>
+           <% if @incident.offender %>
+            En conséquence, je souhaite porter plainte contre <%= @incident.offender %> pour ces faits.
+           <% else %>
+            En conséquence, je souhaite porter plainte contre X pour ces faits.
+           <% end %>
           <br>
           <br>
-        Je vous précise [ne pas disposer de témoin de ces faits/qu'il y a un témoin de ces faits/qu'il y a des témoins de ces faits].
+          <% unless @incident.testimonies.empty? %>
+            Je vous précise qu'il y a un/des témoin(s) de ces faits :
+            <ul>
+              <% @incident.testimonies.each do |testimony| %>
+               <li><%= testimony.witness_name %> <%= testimony.witness_family_name %> </li>
+              <% end %>
+            </ul>
+          <% else %>
+            Je vous précise ne pas disposer de témoin de ces faits.
+          <% end %>
         <br>
-        Noms et adresses des éventuels témoins de l'infraction
-          <br>
-          <br>
+        <br>
         Je vous remercie de considérer ce courrier comme un dépôt de plainte.
-
         <br>
         <br>
-        Documents de preuve : certificats médicaux constatant les blessures, arrêts de travail, factures diverses, constats en cas de dégâts matériels
+        <% unless @incident.proofs.empty? %>
+          Documents de preuve : <%= @incident.get_content_type %>.
           <br>
           <br>
+        <% end %>
         Dans l'attente des suites que vous donnerez à ce courrier, je vous prie d'agréer, Madame, Monsieur le procureur de la République, l'expression de ma plus haute considération.</p>
         <p><button type="submit" class="btn btn-primary mt-5">Télécharger le pdf</button></p>
       </div>
