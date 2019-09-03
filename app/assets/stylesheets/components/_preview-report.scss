@@ -9,3 +9,18 @@
   position: relative;
   display: none;
 }
+
+.preview-box-complaint {
+  width: 95%;
+  height: 110%;
+  margin: auto;
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: $my-beige;
+  border-radius: 4px;
+  position: relative;
+}
+
+.text-salmon {
+  color: $my-salmon;
+}

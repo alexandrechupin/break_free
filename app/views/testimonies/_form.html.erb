@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="d-inline-flex">
+    <p>Accueil > Incident > </p>
+    <p class="font-weight-bold pl-1">Collecte de témoignages</p>
+  </div>
+  <h1>Témoignez pour un incident</h1>
+  <p>Vous êtes invités à témoigner pour l'incident suivant</p>
+  <div class="card-incident">
+    <div>
+      <%= incident.description %>
+    </div>
+    <div>
+      <%= incident.date %>
+    </div>
+    <div>
+      <%= incident.address %>
+    </div>
+    <div>
+      <%= incident.place_type %>
+    </div>
+  </div>
+  <%= simple_form_for [incident, testimony] do |f| %>
+    <div class="new_testimony_container">
+      <h3>Renseignez vos informations de contact </h3>
+      <p>Vous pourrez être recontactés si besoin de précisions supplémentaires.</p>
+      <div class="new_testimony_contacts">
+        <div class="new_testimony_input">
+          <%= f.input :witness_name, label: 'Prénom'%>
+        </div>
+        <div class="new_testimony_input">
+          <%= f.input :witness_family_name, label: 'Nom'%>
+        </div>
+        <div class="new_testimony_input">
+          <%= f.input :witness_email, label: 'Email'%>
+        </div>
+      </div>
+      <div class="new_testimony_contacts">
+        <div>
+          <%= f.input :witness_gdpr, label: 'Confirmez que vous souhaitez être recontactés'%>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="new_testimony_container">
+      <h3>Complétez le formulaire Cerfa de dépôt de plainte </h3>
+      <p>Téléchargez le formulaire cerfa de dépôt de plainte </p>
+      <%= link_to "Téléchargez le formulaire cerfa", cl_image_path("cerfa_attestation_temoin",:width=>200, :height=>250, :page=>1, :crop=>"fill"), target: "_blank" %>
+       <p>Uploadez votre formulaire cerfa complété </p>
+        <%= f.simple_fields_for :proofs do |n| %>
+          <%= n.input :photo, as: :file, label: (n.index.zero? ? 'Votre pdf' : 'Votre fichier') %>
+          <%= n.input :photo_cache, as: :hidden %>
+          <% if n.index.zero? %>
+            <h3>Ajoutez jusqu'à trois médias : photos, vidéos, audio  </h3>
+          <% end %>
+        <% end %>
+    </div>
+    <br>
+    <div class="new_testimony_container">
+      <div>
+        <%= f.button :submit, 'Valider', class: "button-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

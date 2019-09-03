@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   resources :incidents, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :recommendations, only: [:index]
     resources :proofs, only: [:new, :create, :index, :destroy]
-    resources :reports, only: [:show, :create]
+    resources :reports, only: [:show, :create] do
+      member do
+        get 'create_complaint'
+        get 'report_complaint'
+      end
+    end
+    resources :testimonies, only: [:new, :create, :index, :destroy, :edit, :update]
     member do
       get 'event'
       get 'localisation'
@@ -15,6 +21,7 @@ Rails.application.routes.draw do
       patch 'update_init_geo'
       patch 'update_event'
       get 'assign_user'
+      patch 'update_zipcode'
     end
   end
 

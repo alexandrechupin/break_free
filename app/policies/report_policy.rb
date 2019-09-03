@@ -6,10 +6,18 @@ class ReportPolicy < ApplicationPolicy
   end
 
   def show?
-    return true
+    @record.incident = @user.incident
   end
 
   def create?
+    @record.incident = @user.incident
+  end
+
+  def create_complaint?
+    true
+  end
+
+  def report_complaint?
     true
   end
 end

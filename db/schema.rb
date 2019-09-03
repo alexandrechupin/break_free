@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_145344) do
+ActiveRecord::Schema.define(version: 2019_09_02_153947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(version: 2019_08_29_145344) do
     t.bigint "incident_category_id"
     t.string "description_after_feeling"
     t.string "description_about_testimony"
+    t.string "zipcode"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["incident_category_id"], name: "index_incidents_on_incident_category_id"
     t.index ["user_id"], name: "index_incidents_on_user_id"
   end
@@ -109,7 +112,21 @@ ActiveRecord::Schema.define(version: 2019_08_29_145344) do
     t.string "cerfa_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "witness_email"
+    t.string "witness_name"
+    t.string "witness_family_name"
+    t.boolean "witness_gdpr"
     t.index ["incident_id"], name: "index_testimonies_on_incident_id"
+  end
+
+  create_table "tribunals", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "zipcode"
+    t.string "city"
+    t.string "phone"
+    t.string "timings"
+    t.string "url"
   end
 
   create_table "users", force: :cascade do |t|
@@ -120,6 +137,11 @@ ActiveRecord::Schema.define(version: 2019_08_29_145344) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "zipcode"
+    t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -49,7 +49,29 @@
       <p>Si vous le souhaitez, vous pouvez géolocaliser le lieu de l'événement</p>
     </label>
     <div class="col-6">
-      <%= f.input :address, label: false  %>
+      <input type="search" id="address" class="form-control" placeholder="Recherchez votre adresse" name="incident[address]"/>
+      <script src="https://cdn.jsdelivr.net/npm/places.js@1.16.4"></script>
+      <script>
+        (function() {
+        var placesAutocomplete = places({
+          appId: 'plPHSAJK8FM4',
+          apiKey: 'b8365a71a64c6ca8b704a7648011428b',
+          container: document.querySelector('#address')
+        });
+
+        var $address = document.querySelector('#address-value')
+        placesAutocomplete.on('change', function(e) {
+          $address.textContent = e.suggestion.value
+        });
+
+        placesAutocomplete.on('clear', function() {
+          $address.textContent = 'none';
+        });
+
+        })();
+      </script>
+
+
     </div>
   </div>
 
