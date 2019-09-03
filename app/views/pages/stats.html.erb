@@ -4,24 +4,29 @@
   </div>
 </div>
 
-<div class="row">
+
+<div style="width: 600px" class="chart mt-5">
+  <canvas id="myChart" width="200" height="200"></canvas>
+</div>
+
+<div class="row invisible">
+
   <div class="container my-5">
     <h2>Déjà plus de...</h2>
     <div class="d-flex justify-content-between my-5">
       <div class="card-stats">
-        <h2><strong><%= Incident.count %></strong></h2>
+        <h2 id="number-acts" data-acts="<%= Incident.count %>"><strong><%= Incident.count %></strong></h2>
         <p>actes signalés</p>
       </div>
       <div class="card-stats">
-        <h2><strong><%= Incident.where(publication_agreement: true).count %></strong></h2>
+        <h2 id="number-acts-localized" data-acts-localized="<%= Incident.where(publication_agreement: true).count %>"><strong><%= Incident.where(publication_agreement: true).count %></strong></h2>
         <p>actes géolocalisés</p>
       </div>
       <div class="card-stats">
-        <h2><strong><%= Incident.where(user_id: (1..100).to_a).count %></strong></h2>
+        <h2 id="number-files" data-acts-files="<%= Incident.where(user_id: (1..100).to_a).count %>"><strong><%= Incident.where(user_id: (1..100).to_a).count %></strong></h2>
         <p>dossiers créés</p>
       </div>
     </div>
   </div>
 </div>
-
 
