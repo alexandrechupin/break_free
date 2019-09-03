@@ -1,11 +1,11 @@
 class ReportsController < ApplicationController
-  before_action :set_incident, only: [:show, :create]
-  before_action :set_report, only: :show
+  before_action :set_incident, only: [:show, :create, :create_complaint, :report_complaint]
+  before_action :set_report, only: [:show, :report_complaint]
 
   def create
-      @report = Report.new
-      @report.incident = @incident
-      @report.save
+    @report = Report.new
+    @report.incident = @incident
+    @report.save
     authorize @report
     redirect_to incident_report_path(@incident, @report)
   end
@@ -29,6 +29,18 @@ class ReportsController < ApplicationController
 
     pdf = Cloudinary::Uploader.upload(file.path, :public_id => @report.photo)
     @report.save
+  end
+
+  def create_complaint
+    @report = Report.new
+    @report.incident = @incident
+    @report.report_type = "complaint"
+    @report.save
+    authorize @report
+    redirect_to report_complaint_incident_report_path(@incident, @report)
+  end
+
+  def report_complaint
   end
 
   private

@@ -1,0 +1,54 @@
+const userZipcode = document.getElementById('user-zipcode').value;
+const form = document.getElementById('personal-info');
+
+function refreshForm(innerHTML) {
+  const alert = document.getElementById("tribunal-info");
+  alert.innerHTML = innerHTML;
+};
+
+function addNamePreview(innerHTML) {
+  const insertNamePreview = document.getElementById(`tribunal-name-preview`);
+  insertNamePreview.innerHTML = innerHTML;
+};
+
+function addAddressPreview(innerHTML) {
+  const insertAddressPreview = document.getElementById(`tribunal-address-preview`);
+  insertAddressPreview.innerHTML = innerHTML;
+};
+
+function addZipcodePreview(innerHTML) {
+  const insertZipcodePreview = document.getElementById(`tribunal-zipcode-preview`);
+  insertZipcodePreview.innerHTML = innerHTML;
+};
+
+function addCityPreview(innerHTML) {
+  const insertCityPreview = document.getElementById(`tribunal-city-preview`);
+  insertCityPreview.innerHTML = innerHTML;
+};
+
+refreshForm(
+  `<div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
+    <div class="col-md-1">
+      <p class="circle">!</p>
+    </div>
+    <div class="col-md-11 d-flex align-items-center">
+      <p>Votre tribunal d'instance pour le ${userZipcode} est : <br>
+      <strong><%= @tribunal.name %> – <%= @tribunal.address %> – <%= @tribunal.zipcode %></strong></p>
+    </div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>`);
+
+addNamePreview(
+  `<%=@tribunal.name%>`);
+
+addAddressPreview(
+  `<%=@tribunal.address%>`);
+
+addZipcodePreview(
+  `<%=@tribunal.zipcode%>`);
+
+addCityPreview(
+  `<%=@tribunal.city%>`);
+

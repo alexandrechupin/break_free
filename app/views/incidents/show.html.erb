@@ -32,9 +32,16 @@
       </div>
     <% end %>
 
-    <% @incident.incident_category.recommendations.each do |recommendation| %>
+    <% @incident.get_recommendations.each do |recommendation| %>
       <% if recommendation.title == "Transmettre un rapport anonyme à l'établissement concerné" %>
         <%= link_to(incident_reports_path(@incident), :method => :post) do %>
+        <div class="card-action ml-0 mt-3">
+          <h5>📩  <%= recommendation.title %></h5>
+          <i class="fas fa-arrow-circle-right"></i>
+        </div>
+        <% end %>
+      <% elsif recommendation.title == "Déposer plainte" %>
+        <%= link_to(create_complaint_incident_report_path(@incident)) do %>
         <div class="card-action ml-0 mt-3">
           <h5>📩  <%= recommendation.title %></h5>
           <i class="fas fa-arrow-circle-right"></i>

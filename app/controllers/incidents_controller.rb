@@ -109,6 +109,28 @@ class IncidentsController < ApplicationController
     flash[:notice] = "Votre dossier a été supprimé avec succès."
   end
 
+  def update_zipcode
+    @incident = Incident.find(params[:incident][:incident_id])
+    @incident.update(incident_params_zipcode)
+    authorize @incident
+
+    zipcode = @incident.zipcode
+    zipcode_department = zipcode[0..1].to_i
+
+    tribunals = Tribunal.where(zipcode: zipcode)
+    if tribunals.length >= 1
+      @tribunal = tribunals[0]
+    else
+      tribunals = Tribunal.where("zipcode LIKE '#{zipcode_department}%'")
+      @tribunal = tribunals[0]
+    end
+
+    respond_to do |format|
+      format.html { redirect_to report_complaint_incident_report_path(@incident) }
+      format.js
+    end
+  end
+
   private
 
   def sign_up_user!
@@ -117,6 +139,10 @@ class IncidentsController < ApplicationController
 
   def incident_params
     params.require(:incident).permit(:user, :description, :date, :recurrent, :author_is_victim, :address, :publication_agreement, :place_type, :incident_category, :description_after_feeling, :description_about_testimony)
+  end
+
+  def incident_params_zipcode
+    params.require(:incident).permit(:zipcode)
   end
 
   def set_incident_init
