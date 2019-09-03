@@ -134,7 +134,7 @@
     <h2 class="text-white">Déjà plus de...</h2>
     <div class="d-flex justify-content-between my-5">
       <div class="stats-layer mx-3">
-        <h4><strong><%= Incident.count %></strong></h4>
+        <h4 id="number-acts"><strong><%= Incident.count %></strong></h4>
         <p>actes signalés</p>
       </div>
       <div class="stats-layer mx-3">
@@ -142,7 +142,7 @@
         <p>actes géolocalisés</p>
       </div>
       <div class="stats-layer mx-3">
-        <h4><strong><%= Incident.where(user_id: (1..100).to_a).count %></strong></h4>
+        <h4 id="number-files"><strong><%= Incident.where(user_id: (1..100).to_a).count %></strong></h4>
         <p>dossiers créés</p>
       </div>
     </div>
