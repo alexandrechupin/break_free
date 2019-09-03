@@ -31,20 +31,26 @@
 </div>
 
 <% end %>
+<div class="container_thanks">
+  <div class="message_thanks">
+    <p> Merci pour ce signalement </p>
+  </div>
+</div>
 
 <div class="container col-8">
 
 <div class="mt-5 mb-5">
-  <h3>Les bons réflexes</h3>
-  <%# if @incident.place_type == "dans un lieu accueillant du public" || "dans mon lieu de travail"%>
-     <%# end %>
+  <h3>Conseils utiles pour une <%=@incident.incident_category.name.downcase %> </h3>
   <% @recommendations.each do |recommendation| %>
     <div class="mt-3">
+          <% if recommendation.is_an_action == false %>
       <h3 id="list-advice">
           <i class="fas fa-check tickable"></i>
-          <%= link_to "#description#{recommendation.id}", class: "toggle" do %>
-           <%= recommendation.title  %>
+            <%= link_to "#description#{recommendation.id}", class: "toggle" do %>
+            <%= recommendation.title  %>
           <i class="fas fa-angle-down pl-1" id=<%= "arrow#{recommendation.id}" %>></i>
+            <% end %>
+
         <% end %>
       </h3>
     </div>
@@ -68,12 +74,21 @@
 
   <div class="file-banner mb-2">
     <div class="container col-8 p-4">
-      <h5> Nous pouvons vous aider à  créer votre dossier. <br>Pour cela, nous vous invitons à vous <strong> créer un compte </strong> afin de pouvoir y accéder ultérieurement.</h5>
+      <h5>Besoin d'accompagnement pour réaliser les actions suivantes ?</h5>
+      <% @recommendations.each do |recommendation| %>
+        <% if recommendation.is_an_action == true %>
+        <h5>
+         <i class="fas fa-hand-point-right"></i>
+         <%= recommendation.title %>
+        </h5>
+        <% end %>
+      <% end %>
+      <h5>Faites vous accompagner sur breakfree</h5>
     </div>
   </div>
 
   <div class="d-flex justify-content-center p-3 mb-4">
-    <%= link_to 'Créer son compte', assign_user_incident_path(@incident), class: 'button-primary-2' %>
+    <%= link_to "JE PASSE À L'ACTION", assign_user_incident_path(@incident), class: 'button-primary-2' %>
   </div>
 
 <% end %>
