@@ -6,7 +6,7 @@ class ReportPolicy < ApplicationPolicy
   end
 
   def show?
-    @record.incident = @user.incident
+    true
   end
 
   def create?
