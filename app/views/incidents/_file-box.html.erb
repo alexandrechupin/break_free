@@ -1,7 +1,7 @@
 <div class="mt-5 border">
 
-  <div class="card-action-no-hover ml-0 mb-0">
-    <h5>📂 Complétez votre dossier</h5>
+  <div class="card-action ml-0 mb-0">
+    <h5>Complétez votre dossier</h5>
   </div>
   <div class="progress">
     <% if @incident.description.nil? && @incident.proofs.empty? %>
@@ -35,11 +35,12 @@
         <span><%= link_to "Modifier", incident_proofs_path(@incident), class: "button-primary mr-3" %></span>
       <% end %>
     </div>
-     <div class="d-flex justify-content-between pb-3">
-      <h5><i class="fas fa-trash-alt"></i> Détruire mon dossier<p>Cela supprimera définitivement votre compte</p> </h5>
+    <div class="d-flex justify-content-between pb-3">
+      <h5> <i class="fas fa-trash-alt"></i> Détruire mon dossier<p>Cela supprimera définitivement votre compte</p></h5>
       <%= link_to incident_path(@incident), method: 'delete', data: {:confirm => 'Cette action détruira toute trace de votre dossier. Nous supprimerons également votre témoignage et toutes les preuves afférentes de notre base. Votre compte sera également supprimé. Êtes-vous sûrs ?'} do %>
         <div class="button-danger mr-3">Supprimer</div>
       <% end %>
+    </div>
   </div>
 
 </div>
