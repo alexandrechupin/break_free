@@ -23,6 +23,7 @@
 
   .button-primary{
   margin-bottom: 30px;
+  margin-top: 20px;
   }
 
 }
@@ -35,3 +36,28 @@
   }
 }
 
+.testimony_wrapper_header{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+  .content{
+    padding-right : 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.testimony_wrapper_upload{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  .content:first-child{
+    grid-column: 1/ span 1;
+    grid-row: 1/ span 3;
+  }
+  .cerfa{
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+}

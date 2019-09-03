@@ -41,22 +41,27 @@
       </div>
     </div>
     <br>
-    <div class="new_testimony_container">
+    <div class="testimony_wrapper_header">
       <div class="content">
-      <h3>Complétez le formulaire Cerfa de dépôt de plainte </h3>
-      <%= link_to "Téléchargez le formulaire cerfa", cl_image_path("cerfa_attestation_temoin",:width=>200, :height=>250, :page=>1, :crop=>"fill"), target: "_blank" %>
-        <%= f.simple_fields_for :proofs do |n| %>
-          <%= n.input :photo, as: :file, label: (n.index.zero? ? 'Votre pdf' : 'Votre fichier') %>
-          <%= n.input :photo_cache, as: :hidden %>
+        <h3>Complétez le formulaire Cerfa de dépôt de plainte </h3>
       </div>
       <div class="content">
-          <% if n.index.zero? %>
-            <h3>Ajoutez jusqu'à trois médias : photos, vidéos, audio  </h3>
-          <% end %>
-        <% end %>
-       </div>
+      <h3>Ajoutez jusqu'à trois médias : photos, vidéos, audio  </h3>
+      </div>
     </div>
-    <br>
+    <div class="testimony_wrapper_upload">
+        <%= f.simple_fields_for :proofs do |n| %>
+          <div class="content">
+            <% if n.index.zero? %>
+              <div class="cerfa">
+                <%= link_to "Téléchargez le formulaire cerfa", cl_image_path("cerfa_attestation_temoin",:width=>200, :height=>250, :page=>1, :crop=>"fill"), target: "_blank" %>
+              </div>
+            <% end %>
+            <%= n.input :photo, as: :file, label: (n.index.zero? ? 'Votre pdf' : 'Votre fichier') %>
+            <%= n.input :photo_cache, as: :hidden %>
+          </div>
+        <% end %>
+    </div>
     <div class="new_testimony_container_btn">
       <div>
         <%= f.button :submit, 'Valider votre témoignage', class: "button-primary" %>
