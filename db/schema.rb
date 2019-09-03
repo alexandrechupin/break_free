@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2019_09_03_103822) do
     t.string "zipcode"
     t.float "latitude"
     t.float "longitude"
-    t.string "zipcode"
     t.boolean "witness"
     t.string "offender"
     t.index ["incident_category_id"], name: "index_incidents_on_incident_category_id"
