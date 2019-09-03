@@ -6,7 +6,7 @@
   <div class="manage_testimonies">
     <h1>Collecte de témoignages </h1>
     <p>Partagez l'url de votre témoignage </p>
-    <input type="text" value="Hello World" id="myInput">
+    <input type="text" value="<%=request.original_url%>" id="myInput">
     <button onclick="myFunction()">Copier URL</button>
   </div>
   <div class="manage_testimonies">
@@ -16,6 +16,7 @@
         <%= testimony.witness_name %>
         <%= testimony.witness_family_name %>
         <%= testimony.witness_email %>
+        <%= testimony.datetime %>
       <% end %>
   </div>
 </div>
