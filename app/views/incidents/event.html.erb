@@ -1,8 +1,5 @@
-
 <div class="row header-banner-form">
-
   <div class="container pt-3">
-
     <div class="row justify-content-center mt-3">
       <div class="stepper">
         <div class = "center-step active" >
@@ -19,9 +16,10 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
 
-<div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
+<div class="alert alert-warning alert-dismissible fade show w-100 m-0" role="alert">
   <div class="col-md-1">
     <p class="circle">!</p>
   </div>
@@ -31,7 +29,6 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">×</span>
     </button>
-  </div>
 </div>
 
 
@@ -39,7 +36,7 @@
 
   <%= simple_form_for(@incident, method: :patch, url: update_init_incident_path) do |f| %>
 
-   <div class="form-group questions pt-5">
+   <div class="form-group questions">
     <label>
       <h5>À votre avis, cet acte malveillant s’est produit en raison de votre...</h5>
       <p>Aidez-nous à qualifier cet acte. Les motifs de l’acte malveillant que vous avez subi peuvent constituer des circonstances aggravantes qui permettront de faire condamner plus lourdement l’agresseur·se. Vous pouvez sélectionner plusieurs raisons.</p>
