@@ -7,7 +7,7 @@
 
 <div class="container mt-5 pb-3">
   <h3 class="mb-5">Transmettre un rapport à l’établissement de mon choix</h3>
-  <p class="h6 mb-3">A qui souhaitez vous transmettre ce courrier ?</p>
+  <p class="h6 mb-3">A qui souhaitez vous transmettre cet email ?</p>
 
 <%= simple_form_for(@report, method: :patch, url: update_report_incident_report_path) do |f| %>
 
@@ -17,13 +17,18 @@
       <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value="" name="report[recipient_email]">
     </div>
     <div class="col-sm-2">
-      <button type="submit" class="btn btn-primary mb-2" id="validate-button">Valider</button>
+      <button type="submit" class="btn btn-primary mb-2" id="validate-button">Prévisualiser</button>
     </div>
   </div>
-
 <% end %>
 
-
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-12 col-form-label">Le rapport de votre incident sera transmis pièce jointe de ce mail. Pour le visualiser, cliquez sur l'icône :  <%= link_to cl_image_path(@report.photo,:width=>200, :height=>250, :page=>1, :crop=>"fill"), target: "_blank" do %>
+      <span class="h3"><i class="fas fa-file-pdf"></i></span>
+    <% end %>
+    </label>
+  </div>
+  
   <div class="preview-box ml-0 mb-0">
     <div class="ml-3">
       <p class="h6 mt-3"><strong>From :</strong> noreply@breakfree.com</p>

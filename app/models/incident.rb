@@ -21,4 +21,11 @@ class Incident < ApplicationRecord
     end
     recommendations
   end
+
+  def get_content_type
+    content_array = self.proofs.pluck(:content_type).uniq.map do |type|
+      type.split("/")[0]
+    end
+    content_array.join(', ')
+  end
 end

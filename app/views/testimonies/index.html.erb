@@ -1,18 +1,19 @@
-<div class="container">
-  <div class="d-inline-flex">
-    <p>Accueil > Dashboard > </p>
-    <p class="font-weight-bold pl-1">Vos témoignages</p>
+<div class="row header-banner">
+  <div class="container my-3 mb-3">
+    <p><%= link_to "Accueil", root_path %> > <%= link_to "Mon dossier", incident_path(@incident) %> > <strong>Témoignages</strong></p>
+    <h1>Collecte de témoignages</h1>
   </div>
+</div>
+<div class="container mt-5">
   <div class="manage_testimonies">
-    <h1>Collecte de témoignages </h1>
     <p>Partagez l'url de votre témoignage </p>
     <input type="text" value="<%= new_incident_testimony_url(@incident) %>" id="copy-testimony-url" class="w-50">
     <button class="copy-testimony-url-button">Copier URL</button>
   </div>
   <div class="manage_testimonies">
-    <br>
-    <h3>Collecte de témoignages </h3>
-    <p>Vos témoignages collectés</p>
+    <div class="mb-5 mt-5">
+      <h3> Vos témoignages collectés </h3>
+    </div>
         <% @testimonies.each do |testimony| %>
          <div class="card-action">
           <%= testimony.witness_name %>
