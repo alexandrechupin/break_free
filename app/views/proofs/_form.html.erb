@@ -1,10 +1,13 @@
-<div class="container">
-  <div class="d-inline-flex">
-    <p>Accueil > Dashboard > </p>
-    <p class="font-weight-bold pl-1">Mes preuves</p>
+<div class="row header-banner">
+  <div class="container my-3">
+    <p><%= link_to "Accueil", root_path %> > <%= link_to "Mon dossier", incident_path(@incident) %> > <strong>Preuves</strong></p>
+    <h1>Mes preuves</h1>
   </div>
+</div>
+
+<div class="container">
   <div class="manage_proofs">
-    <h1>Ajout de preuves</h1>
+    <h3>Ajout de preuves</h3>
     <p>Uploadez ici vos photos, vidéos et fichiers audio</p>
     <%= simple_form_for [@incident, @proof] do |f| %>
       <%= f.input :photo, label: 'Vos médias'%>

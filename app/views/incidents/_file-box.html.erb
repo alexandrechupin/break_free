@@ -1,9 +1,9 @@
 <div class="mt-5 border">
 
-  <div class="card-action ml-0 mb-0">
+  <div class="card-action-no-hover ml-0 mb-0">
     <h5>📂 Complétez votre dossier</h5>
   </div>
-  <div class="progress mb-4">
+  <div class="progress">
     <% if @incident.description.nil? && @incident.proofs.empty? %>
       <div class="progress-bar" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
     <% elsif @incident.description.nil? || @incident.proofs.empty? %>
@@ -12,7 +12,7 @@
       <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
     <% end %>
   </div>
-  <div class="ml-3">
+  <div class="pl-3 background-white pt-3">
     <div class="d-flex justify-content-between pb-3">
       <h5> ✅ Evènement</h5>
       <span><%= link_to "Modifier", modify_event_incident_path(@incident), class: "button-primary mr-3" %></span>

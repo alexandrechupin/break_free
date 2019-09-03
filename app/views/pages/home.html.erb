@@ -14,25 +14,31 @@
   </section>
 </div>
 
-<div class="home-banner">
-
-  <div class="category-choices">
     <% if user_signed_in? %>
 
-      <% unless current_user.incident.nil? %>
+      <div class="home-signed-in">
 
-        <div class="row justify-content-center">
-          <h2>Vous avez déclaré un acte malveillant.</h2>
-        </div>
+        <% unless current_user.incident.nil? %>
 
-        <div class="row justify-content-center my-5">
-          <%= link_to "Votre dossier", incident_path(current_user.incident), class: 'button-primary' %>
-        </div>
+          <div class="row justify-content-center">
+            <h2>Vous avez déclaré un acte malveillant.</h2>
+          </div>
 
-      <% end %>
+          <div class="row justify-content-center my-5">
+            <%= link_to "Votre dossier", incident_path(current_user.incident), class: 'button-primary' %>
+          </div>
 
+        <% end %>
+
+      </div>
 
     <% else %>
+
+      <div class="home-banner">
+
+      <div class="category-choices">
+
+
 
       <div class="row justify-content-center">
         <h2 class="theme-title mt-3">Je suis ou j'ai été <strong>victime</strong> d'une</h2>
@@ -46,8 +52,8 @@
                 <h4><%= incident_category.name %></h4>
                 <p><%= incident_category.description %></p>
               </div>
-            <div class="show-button pt-2">
-              <div class="show-signal button-primary pt-2">Je signale</div>
+              <div class="show-button pt-2">
+                <div class="show-signal button-primary pt-2">Je signale</div>
               </div>
             </div>
           <% end %>
