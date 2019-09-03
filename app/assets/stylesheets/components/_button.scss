@@ -34,7 +34,23 @@
   background-color: #734758;
 }
 
+.button-danger {
+  height: 40px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #C82333;
+  color: white;
+  // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
 
+.button-danger:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #C82333;
+}
 
 .button-secondary {
   height: 40px;
