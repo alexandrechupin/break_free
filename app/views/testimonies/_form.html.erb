@@ -22,7 +22,7 @@
   <%= simple_form_for [incident, testimony] do |f| %>
     <div class="new_testimony_container">
       <h3>Renseignez vos informations de contact </h3>
-      <p>Vous pourrez être recontactés si besoin de précisions supplémentaires.</p>
+      <p>Vous pourrez être recontactés dans le cadre d'une procédure de dépôt de plainte.</p>
       <div class="new_testimony_contacts">
         <div class="new_testimony_input">
           <%= f.input :witness_name, label: 'Prénom'%>
@@ -42,22 +42,24 @@
     </div>
     <br>
     <div class="new_testimony_container">
+      <div class="content">
       <h3>Complétez le formulaire Cerfa de dépôt de plainte </h3>
-      <p>Téléchargez le formulaire cerfa de dépôt de plainte </p>
       <%= link_to "Téléchargez le formulaire cerfa", cl_image_path("cerfa_attestation_temoin",:width=>200, :height=>250, :page=>1, :crop=>"fill"), target: "_blank" %>
-       <p>Uploadez votre formulaire cerfa complété </p>
         <%= f.simple_fields_for :proofs do |n| %>
           <%= n.input :photo, as: :file, label: (n.index.zero? ? 'Votre pdf' : 'Votre fichier') %>
           <%= n.input :photo_cache, as: :hidden %>
+      </div>
+      <div class="content">
           <% if n.index.zero? %>
             <h3>Ajoutez jusqu'à trois médias : photos, vidéos, audio  </h3>
           <% end %>
         <% end %>
+       </div>
     </div>
     <br>
-    <div class="new_testimony_container">
+    <div class="new_testimony_container_btn">
       <div>
-        <%= f.button :submit, 'Valider', class: "button-primary" %>
+        <%= f.button :submit, 'Valider votre témoignage', class: "button-primary" %>
       </div>
     </div>
   <% end %>
