@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_103822) do
     t.bigint "incident_category_id"
     t.string "description_after_feeling"
     t.string "description_about_testimony"
+    t.string "zipcode"
     t.float "latitude"
     t.float "longitude"
     t.string "zipcode"
@@ -139,14 +140,12 @@ ActiveRecord::Schema.define(version: 2019_09_03_103822) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "incident_id"
     t.string "first_name"
     t.string "last_name"
     t.string "address"
     t.string "zipcode"
     t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["incident_id"], name: "index_users_on_incident_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -161,5 +160,4 @@ ActiveRecord::Schema.define(version: 2019_09_03_103822) do
   add_foreign_key "proofs", "testimonies"
   add_foreign_key "reports", "incidents"
   add_foreign_key "testimonies", "incidents"
-  add_foreign_key "users", "incidents"
 end

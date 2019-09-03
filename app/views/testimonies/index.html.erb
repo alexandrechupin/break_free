@@ -6,25 +6,27 @@
   <div class="manage_testimonies">
     <h1>Collecte de témoignages </h1>
     <p>Partagez l'url de votre témoignage </p>
-    <input type="text" value="Hello World" id="myInput">
-    <button onclick="myFunction()">Copier URL</button>
+    <input type="text" value="<%= new_incident_testimony_url(@incident) %>" id="copy-testimony-url" class="w-50">
+    <button class="copy-testimony-url-button">Copier URL</button>
   </div>
   <div class="manage_testimonies">
+    <br>
     <h3>Collecte de témoignages </h3>
     <p>Vos témoignages collectés</p>
-      <% @testimonies.each do |testimony| %>
-        <%= testimony.witness_name %>
-        <%= testimony.witness_family_name %>
-        <%= testimony.witness_email %>
-      <% end %>
+        <% @testimonies.each do |testimony| %>
+         <div class="card-action">
+          <%= testimony.witness_name %>
+          <%= testimony.witness_family_name %>
+          <%= testimony.witness_email %>
+          </div>
+        <% end %>
+  </div>
+  <div class="d-inline-flex justify-content-center w-100">
+    <div class="p-3 mb-4">
+        <%= link_to 'Preuves récoltées', incident_proofs_path(current_user.incident),class: 'button-primary' %>
+    </div>
+    <div class="p-3 mb-4">
+        <%= link_to 'Retour au dossier', incident_path(current_user.incident),class: 'button-primary' %>
+    </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-

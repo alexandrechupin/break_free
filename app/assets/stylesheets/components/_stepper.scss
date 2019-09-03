@@ -33,14 +33,14 @@
 
 .active {
   .circle {
-    border: 3px solid #7D4E60;
+    border: 3px solid $my-light-gray;
     font-weight: 600;
     line-height: 34.1px;
-    color: white;
-    background-color: #7D4E60;
+    color: $my-gray;
+    background-color: $my-light-gray;
   }
   .step-title {
-    color: #7D4E60;
+    color: $my-light-gray;
     font-size: 18px;
     font-weight: 500;
   }

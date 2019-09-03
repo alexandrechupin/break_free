@@ -1,17 +1,23 @@
 function copyURL() {
   /* Get the text field */
-  const copyText = document.getElementById("myInput");
+  const copyButton = document.querySelector(".copy-testimony-url-button");
 
   /* Select the text field */
-  if(copyText) {
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+  if (copyButton) {
+    copyButton.addEventListener('click', (evt) => {
+      evt.preventDefault();
 
-    /* Copy the text inside the text field */
-    document.execCommand("copy");
+      const copyText = document.getElementById("copy-testimony-url");
 
-    /* Alert the copied text */
-    alert("Copied the text: " + copyText.value);
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+      /* Copy the text inside the text field */
+      document.execCommand("copy");
+
+      /* Alert the copied text */
+      alert("Copied the text: " + copyText.value);
+    });
   }
 }
 

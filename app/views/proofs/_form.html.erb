@@ -1,10 +1,13 @@
-<div class="container">
-  <div class="d-inline-flex">
-    <p>Accueil > Dashboard > </p>
-    <p class="font-weight-bold pl-1">Mes preuves</p>
+<div class="row header-banner">
+  <div class="container my-3">
+    <p><%= link_to "Accueil", root_path %> > <%= link_to "Mon dossier", incident_path(@incident) %> > <strong>Preuves</strong></p>
+    <h1>Mes preuves</h1>
   </div>
+</div>
+
+<div class="container">
   <div class="manage_proofs">
-    <h1>Ajout de preuves</h1>
+    <h3>Ajout de preuves</h3>
     <p>Uploadez ici vos photos, vidéos et fichiers audio</p>
     <%= simple_form_for [@incident, @proof] do |f| %>
       <%= f.input :photo, label: 'Vos médias'%>
@@ -15,25 +18,45 @@
   <div class="manage_proofs">
     <h3>Gestion de vos preuves</h3>
     <% if @proofs.nil? %>
+  </div>
       <div class="proofs_container">
         <p>Uploadez un fichier pour compléter votre dossier </p>
-      </div>
     <% else %>
       <div>
         <% @proofs.each do |proof| %>
-          <div class="proofs_container">
-            <div class="card-action">
-            <%= proof.content_type %>
-            <%= proof.original_filename %>
-            <%= link_to "Supprimer", incident_proof_path(@incident, proof), method: :delete, class: 'btn btn-danger' %>
+          <% if proof.testimony_id.blank? == true %>
+            <div class="proofs_container">
+              <div class="card-action">
+              <%= proof.content_type %>
+              <%= proof.original_filename %>
+              <%= link_to "Supprimer", incident_proof_path(@incident, proof), method: :delete, class: 'btn btn-danger' %>
+             </div>
+            </div>
+          <% end %>
+        <% end  %>
+      </div>
+          <h3>Preuves collectées par vos témoins </h3>
+      <div>
+        <% @proofs.each do |proof| %>
+          <% if proof.testimony_id.blank? == false %>
+            <div class="proofs_container">
+              <div class="card-action">
+              <%= proof.content_type %>
+              <%= proof.original_filename %>
+              <%= link_to "Supprimer", incident_proof_path(@incident, proof), method: :delete, class: 'btn btn-danger' %>
             </div>
           </div>
-        <% end  %>
+        <% end %>
+      <% end  %>
       </div>
     <% end %>
   </div>
-
-  <div class="d-flex justify-content-center p-3 mb-4">
-      <%= link_to 'Retour au dossier', incident_path(current_user.incident),class: 'button-primary' %>
+  <div class="d-inline-flex justify-content-center w-100">
+    <div class="d-flex  p-3 mb-4">
+        <%= link_to 'Mes témoignages', incident_testimonies_path(current_user.incident),class: 'button-primary' %>
+    </div>
+    <div class="d-flex  p-3 mb-4">
+        <%= link_to 'Retour au dossier', incident_path(current_user.incident),class: 'button-primary' %>
+    </div>
   </div>
 </div>

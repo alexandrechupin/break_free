@@ -10,7 +10,6 @@
   background-color: $my-light-blue;
   border-radius: 4px;
 }
-
 .new_testimony_contacts{
   display: flex;
   justify-content: space-around;
@@ -18,3 +17,21 @@
      width: 250px;
   }
 }
+.new_testimony_container_btn{
+  display: flex;
+  justify-content:center;
+
+  .button-primary{
+  margin-bottom: 30px;
+  }
+
+}
+.new_testimony_wrapper{
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+  .content{
+    // flex-grow: 1;
+  }
+}
+
