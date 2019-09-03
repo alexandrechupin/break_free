@@ -47,7 +47,7 @@
                 <p><%= incident_category.description %></p>
               </div>
             <div class="show-button pt-2">
-              <div class="show button-primary pt-2">Je signale</div>
+              <div class="show-signal button-primary pt-2">Je signale</div>
               </div>
             </div>
           <% end %>
@@ -69,7 +69,8 @@
 
   <div class="row explanations-blocs">
     <div class="col-md-4">
-      <img class="img-medium" src="/assets/blob-shape.svg">
+      <%= image_tag("blob-shape.svg", class: "img-medium") %>
+      <!-- <img class="img-medium" src="/assets/blob-shape.svg"> -->
     </div>
     <div class="col-md-8 d-flex align-items-center">
       <div class="first-title">
@@ -85,7 +86,8 @@
       </div>
     </div>
     <div class="col-md-4 second-form">
-      <img class="img-medium" src="/assets/blob-shape-rose.svg">
+      <%= image_tag("blob-shape-rose.svg", class: "img-medium") %>
+      <!-- <img class="img-medium" src="/assets/blob-shape-rose.svg"> -->
     </div>
 
   </div>

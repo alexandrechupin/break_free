@@ -2,7 +2,7 @@
   padding: 8px;
   display: flex;
   flex-direction: column;
-  padding-top: 50px;
+  padding-top: 66px;
   padding-bottom: 35px;
   width: 209px;
   height: 200px;
@@ -98,11 +98,11 @@
   }
 }
 
-.show{
+.show-signal{
    display: none;
 }
 
-.card-launch:hover .show{
+.card-launch:hover .show-signal{
    display : block;
  }
 
