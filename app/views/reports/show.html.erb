@@ -33,33 +33,17 @@
     </div>
     <hr>
     <div class="ml-3">
-      <p class="h6 mt-5"><strong>Objet :</strong> Incident signalé le <%= @incident.created_at.strftime("%d/%m/%Y")  %> </p>
+      <p class="h6 mt-5"><strong>Objet :</strong> Un incident a été signalé dans votre structure </p>
+      <br>
     </div>
     <div class="ml-3">
-      <p class="h6 mt-3">Un témoignage a été créé sur un incident pouvant impliquer du harcèlement ou de la discrimination  au sein de votre organisation. La personne a utilisé Breakfree pour documenter l'incident et nous a demandé de vous envoyer ce rapport. L'équipe Breakfree ne peut pas avoir accès à ce rapport.</p>
-
-      <p class="h6 mt-3"><strong>Qu'est-ce que Breakfree ?</strong></p>
-      <p class="h6 mt-1">Breakfree est un outil qui aide à signaler le harcèlement et la discrimination (homophobie, transphobie, racisme, sexisme), tout en restant anonyme s'ils le souhaitent.</p>
-
-      <p class="h6 mt-3"> <strong>Que devrais-je faire ensuite?</strong></p>
-      <p class="h6 mt-1"> Nous vous recommandons vivement de faire un suivi dans les 10 jours, et vous pouvez utiliser Breakfree pour le faire.</p>
-
-      <p class="h6 mt-3"> Vous pouvez télécharger le rapport, qui est un PDF signé et horodaté de manière sécurisée. Veuillez sauvegarder le fichier PDF dans un endroit sûr.</p>
-
-      <p class="h6 mt-1"> <strong><u><%= link_to "Cliquez pour ouvrir le rapport", cl_image_path(@report.photo,:width=>200, :height=>250, :page=>1, :crop=>"fill"), target: "_blank" %></u></strong></p>
-      <p class="h6 mt-1"> Si vous ne souhaitez pas cliquer sur ce lien, vous pouvez le saisir dans votre navigateur.</p>
-      <p class="h6 mt-3"> Des questions? Cliquez simplement sur répondre ou contactez-nous à bonjour@breakfree.fr. Nous sommes là pour vous aider.</p>
-
-      <p class="h6 mt-3"> L'équipe Breakfree.</p>
-
-<!--       <p><button type="submit" class="btn btn-primary mt-3">Envoyer l'email</button></p>
- -->  <div class="d-flex justify-content-center p-3 mb-4">
-        <%= link_to "Envoyer l'email", send_anonymous_report_incident_report_path ,class: 'button-primary' %>
+      <%= render 'report_email' %>
+      <div class="d-flex justify-content-center p-3 mb-4">
+          <%= link_to "Envoyer l'email", send_anonymous_report_incident_report_path ,class: 'button-primary' %>
       </div>
-
     </div>
-
   </div>
+
   <div class="d-flex justify-content-center p-3 mb-4">
       <%= link_to 'Retour au dossier', incident_path(current_user.incident),class: 'button-primary' %>
   </div>
