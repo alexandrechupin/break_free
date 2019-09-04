@@ -7,7 +7,7 @@ import "../plugins/flatpickr";
 import { formEmail } from "../plugins/preview_email";
 import { copyURL } from "../plugins/copy_url";
 import {initAutocomplete} from "../plugins/init_autocomplete";
-
+import {audioFeature} from "../plugins/record_audio";
 import { Chart } from 'chart.js'
 import { initMapbox } from '../plugins/init_mapbox';
 
@@ -18,8 +18,11 @@ complaintFiller();
 formEmail();
 copyURL();
 initAutocomplete();
+audioFeature();
 initMapbox();
 
+
+// My Chart
 
 var ctx = document.getElementById('myChart');
 if (ctx) {
