@@ -1,18 +1,20 @@
 .toggle-content {
   display: none;
 }
-
+.toggle-content-action {
+  display: none;
+}
 .toggle-content.is-visible {
   display: block;
 }
-
+.toggle-content-action.is-visible {
+  display: block;
+}
 .tickable {
   margin-right: 8px;
   font-size: 20px;
   color: $my-purple;
 }
-
-
 .container_thanks{
   background-color:#FCECE1;
   display:flex;
@@ -22,4 +24,24 @@
     margin-top: 10px;
   }
 }
-
+.container-actions{
+  text-align: left;
+  .anonyme{
+    padding-top: 10px;
+  }
+  a{
+    font-size: 20px;
+  }
+}
+.button-primary-action {
+  font-size: 19px;
+  height: 50px;
+  width: 225px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7E4E60;
+  color: white;
+  // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
