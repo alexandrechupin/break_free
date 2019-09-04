@@ -224,7 +224,7 @@
         <% end %>
         Dans l'attente des suites que vous donnerez à ce courrier, je vous prie d'agréer, Madame, Monsieur le procureur de la République, l'expression de ma plus haute considération.</p>
         <br>
-        <%= link_to "Télécharger le PDF", report_complaint_incident_report_path(@incident, @report, format: :pdf), class: "btn btn-primary mt-2 mb-2", target: :blank %>
+        <%= link_to "Télécharger le PDF", download_complaint_pdf_incident_report_path(@incident, @report), class: "btn btn-primary mt-2 mb-2"%>
       </div>
     </div>
     <div class="d-flex justify-content-center p-3 mb-4">

@@ -4,6 +4,7 @@ class Incident < ApplicationRecord
   PLACE_TYPE = ["dans la rue", "dans un lieu accueillant du public", "dans mon lieu de travail", "dans un lieu privé", "sur internet"]
 
   belongs_to :user, optional: true
+  belongs_to :tribunal, optional: true
   has_many :reports, dependent: :destroy
   has_many :testimonies, dependent: :destroy
   has_many :proofs, dependent: :destroy
