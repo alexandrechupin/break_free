@@ -42,6 +42,22 @@ class ReportsController < ApplicationController
   end
 
   def report_complaint
+        @user = current_user
+
+        respond_to do |format|
+            format.html
+            format.pdf do
+                render pdf: "Report No. #{@report.id}",
+                page_size: 'A4',
+                template: "reports/complaint_pdf.html.erb",
+                encoding: 'utf-8',
+                layout: "pdf.html",
+                orientation: "Landscape",
+                lowquality: true,
+                zoom: 1,
+                dpi: 75
+            end
+        end
   end
 
   def update_report
