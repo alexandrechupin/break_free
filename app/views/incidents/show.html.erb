@@ -55,7 +55,7 @@
      <%= link_to incident_recommendations_path(@incident) do %>
         <div class="card-launch pl-2" id="card-dashboard">
           <div class="label">
-            <i class="fas fa-book-reader pb-2"></i>
+            <i class="fas fa-book-reader pb-2" id="icon-action"></i>
             <h5>Consulter les recommandations applicables à votre situation</h5>
             <div class="show-signal button-primary mt-2 pt-2 w-50" id="button-dashboard-card">Voir plus</div>
           </div>
@@ -69,7 +69,7 @@
           <%= link_to(incident_reports_path(@incident), :method => :post) do %>
             <div class="card-launch pl-2" id="card-dashboard">
               <div class="label">
-                <i class="fas fa-file-alt pb-2"></i>
+                <i class="fas fa-envelope-open-text pb-2" id="icon-action"></i>
                 <h5><%= recommendation.title %></h5>
                 <div class="show-signal button-primary mt-2 pt-2 w-50" id="button-dashboard-card">Voir plus</div>
               </div>
@@ -79,7 +79,7 @@
           <%= link_to(create_complaint_incident_report_path(@incident)) do %>
             <div class="card-launch pl-2 mr-2" id="card-dashboard">
               <div class="label">
-                <i class="fas fa-file-alt pb-2"></i>
+                <i class="fas fa-bullhorn pb-2" id="icon-action"></i>
                 <h5><%= recommendation.title %> </h5>
                 <div class="show-signal button-primary mt-2 pt-2 px-1 w-50" id="button-dashboard-card">Voir</div>
               </div>
