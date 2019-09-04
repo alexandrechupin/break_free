@@ -12,8 +12,8 @@ class PagesController < ApplicationController
       {
         lat: incident.latitude,
         lng: incident.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { incident: incident })
-        image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS')
+        infoWindow: render_to_string(partial: "info_window", locals: { incident: incident }),
+        image_url: helpers.asset_url('map-pin.svg')
       }
     end
   end
