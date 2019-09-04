@@ -40,71 +40,74 @@ const audioFeature = () => {
   const savedAudioMessagesContainer = document.querySelector('#saved-audio-messages');
 
   let recorder;
-  let audio;
+  var audio;
 
-  recordButton.addEventListener('click', async () => {
-    recordButton.setAttribute('disabled', true);
-    stopButton.removeAttribute('disabled');
-    playButton.setAttribute('disabled', true);
-    saveButton.setAttribute('disabled', true);
-    if (!recorder) {
-      recorder = await recordAudio();
-    }
-    recorder.start();
-  });
-
-  stopButton.addEventListener('click', async () => {
-    recordButton.removeAttribute('disabled');
-    stopButton.setAttribute('disabled', true);
-    playButton.removeAttribute('disabled');
-    saveButton.removeAttribute('disabled');
-    audio = await recorder.stop();
-  });
-
-  playButton.addEventListener('click', () => {
-    audio.play();
-  });
-
-  saveButton.addEventListener('click', () => {
-    const reader = new FileReader();
-    reader.readAsDataURL(audio.audioBlob);
-    reader.onload = () => {
-      const base64AudioMessage = reader.result.split(',')[1];
-
-      fetch('/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: base64AudioMessage })
-      }).then(res => {
-        if (res.status === 201) {
-          return populateAudioMessages();
-        }
-        console.log('Invalid status saving audio message: ' + res.status);
-      });
-    };
-  });
-
-  const populateAudioMessages = () => {
-    return fetch('/messages').then(res => {
-      if (res.status === 200) {
-        return res.json().then(json => {
-          json.messageFilenames.forEach(filename => {
-            let audioElement = document.querySelector(`[data-audio-filename="${filename}"]`);
-            if (!audioElement) {
-              audioElement = document.createElement('audio');
-              audioElement.src = `/messages/${filename}`;
-              audioElement.setAttribute('data-audio-filename', filename);
-              audioElement.setAttribute('controls', true);
-              savedAudioMessagesContainer.appendChild(audioElement);
-            }
-          });
-        });
+  if (recordButton) {
+    recordButton.addEventListener('click', async () => {
+      recordButton.setAttribute('disabled', true);
+      stopButton.removeAttribute('disabled');
+      playButton.setAttribute('disabled', true);
+      saveButton.setAttribute('disabled', true);
+      if (!recorder) {
+        recorder = await recordAudio();
       }
-      console.log('Invalid status getting messages: ' + res.status);
+      recorder.start();
     });
-  };
 
-  populateAudioMessages();
+    stopButton.addEventListener('click', async () => {
+      recordButton.removeAttribute('disabled');
+      stopButton.setAttribute('disabled', true);
+      playButton.removeAttribute('disabled');
+      saveButton.removeAttribute('disabled');
+      audio = await recorder.stop();
+    });
+
+    playButton.addEventListener('click', () => {
+      audio.play();
+    });
+
+
+    // saveButton.addEventListener('click', () => {
+    //   const reader = new FileReader();
+    //   reader.readAsDataURL(audio.audioBlob);
+    //   reader.onload = () => {
+    //     const base64AudioMessage = reader.result.split(',')[1];
+
+    //     fetch('/messages', {
+    //       method: 'POST',
+    //       headers: { 'Content-Type': 'application/json' },
+    //       body: JSON.stringify({ message: base64AudioMessage })
+    //     }).then(res => {
+    //       if (res.status === 201) {
+    //         return populateAudioMessages();
+    //       }
+    //       console.log('Invalid status saving audio message: ' + res.status);
+    //     });
+    //   };
+    // });
+  }
+
+  // const populateAudioMessages = () => {
+  //   return fetch('/messages').then(res => {
+  //     if (res.status === 200) {
+  //       return res.json().then(json => {
+  //         json.messageFilenames.forEach(filename => {
+  //           let audioElement = document.querySelector(`[data-audio-filename="${filename}"]`);
+  //           if (!audioElement) {
+  //             audioElement = document.createElement('audio');
+  //             audioElement.src = `/messages/${filename}`;
+  //             audioElement.setAttribute('data-audio-filename', filename);
+  //             audioElement.setAttribute('controls', true);
+  //             savedAudioMessagesContainer.appendChild(audioElement);
+  //           }
+  //         });
+  //       });
+  //     }
+  //     console.log('Invalid status getting messages: ' + res.status);
+  //   });
+  // };
+
+  // populateAudioMessages();
 
 }
 
