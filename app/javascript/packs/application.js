@@ -18,40 +18,42 @@ initAutocomplete();
 
 
 var ctx = document.getElementById('myChart');
-var acts = Number.parseInt(document.querySelector('#number-acts').dataset.acts, 10);
-var actsLocalized = Number.parseInt(document.querySelector('#number-acts-localized').dataset.actsLocalized, 10);
-var actsFiles = Number.parseInt(document.querySelector('#number-files').dataset.actsFiles, 10);
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Actes signalés', 'Actes géolocalisés', 'Dossiers créés'],
-        datasets: [{
-            label: "Nombre d'actes signalés sur Breakfree",
-            data: [acts, actsLocalized, actsFiles],
-            backgroundColor: [
-                '#9D5C63',
-                '#471F44',
-                '#C78283'
-            ],
-            borderColor: [
-                '#9D5C63',
-                '#471F44',
-                '#C78283'
-            ],
-            borderWidth: 0
-        }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-            barPercentage: 0.5,
-            barThickness: 6,
-            maxBarThickness: 8,
-            minBarLength: 1,
-            ticks: {
-                beginAtZero: true
-            }
-        }]
+if (ctx) {
+  var acts = Number.parseInt(document.querySelector('#number-acts').dataset.acts, 10);
+  var actsLocalized = Number.parseInt(document.querySelector('#number-acts-localized').dataset.actsLocalized, 10);
+  var actsFiles = Number.parseInt(document.querySelector('#number-files').dataset.actsFiles, 10);
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: ['Actes signalés', 'Actes géolocalisés', 'Dossiers créés'],
+          datasets: [{
+              label: "Nombre d'actes signalés sur Breakfree",
+              data: [acts, actsLocalized, actsFiles],
+              backgroundColor: [
+                  '#9D5C63',
+                  '#471F44',
+                  '#C78283'
+              ],
+              borderColor: [
+                  '#9D5C63',
+                  '#471F44',
+                  '#C78283'
+              ],
+              borderWidth: 0
+          }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+              barPercentage: 0.5,
+              barThickness: 6,
+              maxBarThickness: 8,
+              minBarLength: 1,
+              ticks: {
+                  beginAtZero: true
+              }
+          }]
+        }
       }
-    }
-});
+  });
+}

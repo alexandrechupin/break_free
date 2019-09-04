@@ -1,7 +1,17 @@
-const userZipcode = document.getElementById('user-zipcode').value;
-const form = document.getElementById('personal-info');
-
-function refreshForm(innerHTML) {
+function refreshForm() {
+  const userZipcode = document.getElementById('user-zipcode').value;
+  const innerHTML = `<div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
+    <div class="col-md-1">
+      <p class="circle">!</p>
+    </div>
+    <div class="col-md-11 d-flex align-items-center">
+      <p>Votre tribunal d'instance pour le ${userZipcode} est : <br>
+      <strong><%= @tribunal.name %> – <%= @tribunal.address %> – <%= @tribunal.zipcode %></strong></p>
+    </div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>`
   const alert = document.getElementById("tribunal-info");
   alert.innerHTML = innerHTML;
 };
@@ -26,19 +36,7 @@ function addCityPreview(innerHTML) {
   insertCityPreview.innerHTML = innerHTML;
 };
 
-refreshForm(
-  `<div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
-    <div class="col-md-1">
-      <p class="circle">!</p>
-    </div>
-    <div class="col-md-11 d-flex align-items-center">
-      <p>Votre tribunal d'instance pour le ${userZipcode} est : <br>
-      <strong><%= @tribunal.name %> – <%= @tribunal.address %> – <%= @tribunal.zipcode %></strong></p>
-    </div>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">×</span>
-    </button>
-  </div>`);
+refreshForm();
 
 addNamePreview(
   `<%=@tribunal.name%>`);
