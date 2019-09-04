@@ -138,7 +138,7 @@ class IncidentsController < ApplicationController
   end
 
   def incident_params
-    params.require(:incident).permit(:user, :description, :date, :recurrent, :author_is_victim, :address, :publication_agreement, :place_type, :incident_category, :description_after_feeling, :description_about_testimony, :witness, :offender)
+    params.require(:incident).permit(:user, :description, :date, :recurrent, :author_is_victim, :audio, :audio_cache, :address, :publication_agreement, :place_type, :incident_category, :description_after_feeling, :description_about_testimony, :witness, :offender)
   end
 
   def incident_params_zipcode

@@ -20,6 +20,23 @@
         <%= f.input :description, label: false %>
       </div>
 
+
+      <div class="form-group">
+        <h5> Vous pouvez aussi enregistrer votre témoignage</h5>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a class="btn record-circle" id="record"><i class="fas fa-microphone-alt"></i></a></li>
+          <li class="list-inline-item"> <a class="btn record-circle" id="stop"><i class="fas fa-stop"></i></a> </li>
+          <li class="list-inline-item"> <a class="btn record-circle" id="play"><i class="fas fa-play"></i></i></a> </li>
+          <li class="list-inline-item"> <a class="btn record-circle" id="download"><i class="fas fa-download"></i></i></a> </li>
+        </ul>
+      </div>
+
+      <p> Lorsque vous êtes satisfaits, vous pouvez télécharger l'enregistrement ici </p>
+
+      <%= f.input :audio, id:"incident_audio", label: false, %>
+
+      <%= f.input :audio_cache, as: :hidden %>
+
         <div class="form-group">
           <label>
             <h5>De potentiels témoins pourraient-ils appuyer votre témoignage?</h5>
@@ -64,14 +81,6 @@
       </div>
 
 
-
-    <button href="" id="record">Record</button>
-    <button href="" id="stop" disabled>Stop</button>
-    <a href="#" class="btn btn-primary" id="play" disabled>Play</a>
-    <a href="#" id="save" disabled>Save</a>
-
-    <div id="saved-audio-messages">
-    </div>
 
 
     <% end %>
