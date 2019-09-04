@@ -20,20 +20,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def after_update_path_for(resource)
-    stored_location_for(resource) || super
-  end
-
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(root_path)
   end
-
 
   private
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
-
 end
