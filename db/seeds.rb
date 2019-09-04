@@ -39,9 +39,9 @@ require 'csv'
 
 puts "Creating incident categories and description..."
 category_one = IncidentCategory.create!({name: "Agression physique",description: "Coups et blessures volontaires"})
-category_two = IncidentCategory.create!({name: "Agression sexuelle",description: "Acte sexuel non consenti"})
-category_three = IncidentCategory.create!({name: "Agression verbale",description: "Agression de forme verbale"})
-category_four = IncidentCategory.create!({name: "Discrimination",description: "Traitement différent des autres"})
+category_two = IncidentCategory.create!({name: "Agression sexuelle",description: "Geste sexuel non consenti ou viol"})
+category_three = IncidentCategory.create!({name: "Agression verbale",description: "Menaces, insultes, incitation à la haine,..."})
+category_four = IncidentCategory.create!({name: "Discrimination",description: "Traitement différent liés à votre identité"})
 puts "Finished !"
 
 
