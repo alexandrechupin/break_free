@@ -60,11 +60,8 @@ ActiveRecord::Schema.define(version: 2019_09_04_132951) do
     t.float "longitude"
     t.boolean "witness"
     t.string "offender"
-<<<<<<< HEAD
     t.string "audio"
-=======
     t.bigint "tribunal_id"
->>>>>>> master
     t.index ["incident_category_id"], name: "index_incidents_on_incident_category_id"
     t.index ["tribunal_id"], name: "index_incidents_on_tribunal_id"
     t.index ["user_id"], name: "index_incidents_on_user_id"
