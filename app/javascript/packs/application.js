@@ -1,4 +1,5 @@
 import "bootstrap";
+// import 'mapbox-gl/dist/mapbox-gl.css';
 import { initThemechoices } from "../plugins/theme_choices";
 import {showHide} from "../plugins/show_hide";
 import {complaintFiller} from "../plugins/complaint_filler";
@@ -8,6 +9,8 @@ import { copyURL } from "../plugins/copy_url";
 import {initAutocomplete} from "../plugins/init_autocomplete";
 import {audioFeature} from "../plugins/record_audio";
 import { Chart } from 'chart.js'
+import { initMapbox } from '../plugins/init_mapbox';
+
 
 initThemechoices();
 showHide();
@@ -16,8 +19,7 @@ formEmail();
 copyURL();
 initAutocomplete();
 audioFeature();
-
-
+initMapbox();
 
 
 // My Chart

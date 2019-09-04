@@ -125,6 +125,9 @@ class IncidentsController < ApplicationController
       @tribunal = tribunals[0]
     end
 
+    @incident.tribunal_id = @tribunal.id
+    @incident.save
+
     respond_to do |format|
       format.html { redirect_to report_complaint_incident_report_path(@incident) }
       format.js
@@ -138,7 +141,7 @@ class IncidentsController < ApplicationController
   end
 
   def incident_params
-    params.require(:incident).permit(:user, :description, :date, :recurrent, :author_is_victim, :audio, :audio_cache, :address, :publication_agreement, :place_type, :incident_category, :description_after_feeling, :description_about_testimony, :witness, :offender)
+    params.require(:incident).permit(:tribunal, :user, :description, :date, :recurrent, :author_is_victim, :address, :audio, :audio_cache, :publication_agreement, :place_type, :incident_category, :description_after_feeling, :description_about_testimony, :witness, :offender)
   end
 
   def incident_params_zipcode

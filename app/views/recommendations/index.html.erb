@@ -39,7 +39,7 @@
 
 <div class="container col-8">
 
-<div class="mt-5 mb-5">
+<div class="mt-4 mb-4">
   <h3>Conseils utiles pour une <%=@incident.incident_category.name.downcase %> </h3>
   <% @recommendations.each do |recommendation| %>
     <div class="mt-3">
@@ -71,26 +71,34 @@
   </div>
 
 <% else %>
-
   <div class="file-banner mb-2">
-    <div class="container col-8 p-4">
-      <h5>Besoin d'accompagnement pour réaliser les actions suivantes ?</h5>
+    <div class="container container-actions pt-3 pb-3">
+      <h3><strong>Besoin d'accompagnement pour réaliser les actions suivantes ?</strong></h3>
       <% @recommendations.each do |recommendation| %>
-        <% if recommendation.is_an_action == true %>
-        <h5>
-         <i class="fas fa-hand-point-right"></i>
-         <%= recommendation.title %>
-        </h5>
-        <% end %>
+        <div class="mt-3">
+          <% if recommendation.is_an_action == true %>
+            <h3 id="list-advice-action">
+              <i class="fas fa-check tickable"></i>
+                <%= link_to "#recommendation#{recommendation.id}", class: "toggle
+                " do %>
+                <%= recommendation.title  %>
+              <i class="fas fa-angle-down pl-1" id=<%= "arrow#{recommendation.id}" %>></i>
+             <% end %>
+            <% end %>
+          </h3>
+        </div>
+        <div class="toggle-content-action" id=<%="recommendation#{recommendation.id}" %>>
+          <p> <%= recommendation.description %></p>
+        </div>
       <% end %>
-      <h5>Faites vous accompagner sur breakfree</h5>
     </div>
   </div>
-
-  <div class="d-flex justify-content-center p-3 mb-4">
-    <%= link_to "JE PASSE À L'ACTION", assign_user_incident_path(@incident), class: 'button-primary-2' %>
+  <div class="d-flex justify-content-center mt-4">
+    <h5 class="anonyme">Créez votre dossier anonyme sur breakfree</h5>
   </div>
-
+  <div class="d-flex justify-content-center p-3 mb-4">
+    <%= link_to "Je passe à l'action", assign_user_incident_path(@incident), class: 'button-primary-action' %>
+  </div>
 <% end %>
 
 

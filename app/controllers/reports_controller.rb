@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
-  before_action :set_incident, only: [:show, :create, :create_complaint, :report_complaint, :update_report, :send_anonymous_report]
-  before_action :set_report, only: [:show, :report_complaint, :update_report, :send_anonymous_report]
+  before_action :set_incident, only: [:show, :create, :create_complaint, :report_complaint, :update_report, :send_anonymous_report, :update_complaint_report]
+  before_action :set_report, only: [:show, :report_complaint, :update_report, :send_anonymous_report, :update_complaint_report]
 
   def create
     @report = Report.new
@@ -42,6 +42,22 @@ class ReportsController < ApplicationController
   end
 
   def report_complaint
+    @tribunal = Tribunal.find(@incident.tribunal_id)
+
+      respond_to do |format|
+          format.html
+          format.pdf do
+              render pdf: "Report No. #{@report.id}",
+              page_size: 'A4',
+              template: "reports/complaint_pdf.html.erb",
+              encoding: 'utf-8',
+              layout: "pdf.html",
+              orientation: "Landscape",
+              lowquality: true,
+              zoom: 1,
+              dpi: 75
+          end
+      end
   end
 
   def update_report
@@ -49,8 +65,14 @@ class ReportsController < ApplicationController
     @report.save
   end
 
+  def update_complaint_report
+    @report.update(report_params)
+    redirect_to report_complaint_incident_report_path
+  end
+
   def send_anonymous_report
-    UserMailer.with(user: @report.recipient_email).report.deliver_now
+    UserMailer.with(user: @report.recipient_email).report(@report.id).deliver_now
+    redirect_to incident_report_path
   end
 
   private
@@ -65,6 +87,6 @@ class ReportsController < ApplicationController
   end
 
   def report_params
-    params.require(:report).permit(:incident, :photo, :photo_cache, :recipient_email)
+    params.require(:report).permit(:incident, :photo, :photo_cache, :recipient_email, :sender_city, :sender_address, :sender_phone_number, :sender_first_name, :sender_last_name)
   end
 end
