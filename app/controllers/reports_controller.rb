@@ -42,7 +42,9 @@ class ReportsController < ApplicationController
   end
 
   def report_complaint
-    @tribunal = Tribunal.find(@incident.tribunal_id)
+    if @incident.tribunal_id
+      @tribunal = Tribunal.find(@incident.tribunal_id)
+    end
 
       respond_to do |format|
           format.html
