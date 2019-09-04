@@ -18,18 +18,8 @@
 
 <div class="container pb-3 mt-5">
 
-  <h1>Mon dossier</h1>
-
-  <div class="mt-5">
-    <span><%= render 'file-box' %></span>
-  </div>
-
-  <div class="mt-5">
-
-
-
-    <h2>Ce que vous pouvez faire</h2>
-
+  <h1>Passez à l'action</h1>
+<!--
     <%= link_to incident_recommendations_path(@incident) do %>
       <div class="card-action ml-0 mt-3">
         <h5>📖 Consulter les recommandations applicables à votre situation</h5>
@@ -59,8 +49,64 @@
         </div>
       <% end %>
     <% end %>
+ -->
+  <div class="row justify-content-left ml-3">
+    <div class="row my-1">
+     <%= link_to incident_recommendations_path(@incident) do %>
+        <div class="card-launch pl-2" id="card-dashboard">
+          <div class="label">
+            <i class="fas fa-book-reader pb-2"></i>
+            <h5>Consulter les recommandations applicables à votre situation</h5>
+            <div class="show-signal button-primary mt-2 pt-2 w-50" id="button-dashboard-card">Voir plus</div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
+    <div class="row my-1 mx-3">
+      <% @incident.get_recommendations.each do |recommendation| %>
+        <% if recommendation.title == "Transmettre un rapport anonyme à l'établissement concerné" %>
+          <%= link_to(incident_reports_path(@incident), :method => :post) do %>
+            <div class="card-launch pl-2" id="card-dashboard">
+              <div class="label">
+                <i class="fas fa-file-alt pb-2"></i>
+                <h5><%= recommendation.title %></h5>
+                <div class="show-signal button-primary mt-2 pt-2 w-50" id="button-dashboard-card">Voir plus</div>
+              </div>
+            </div>
+          <% end %>
+        <% elsif recommendation.title == "Déposer plainte" %>
+          <%= link_to(create_complaint_incident_report_path(@incident)) do %>
+            <div class="card-launch pl-2 mr-2" id="card-dashboard">
+              <div class="label">
+                <i class="fas fa-file-alt pb-2"></i>
+                <h5><%= recommendation.title %> </h5>
+                <div class="show-signal button-primary mt-2 pt-2 px-1 w-50" id="button-dashboard-card">Voir</div>
+              </div>
+            </div>
+          <% end %>
+        <% elsif recommendation.is_an_action %>
+          <div class="card-launch pl-2 mr-2" id="card-dashboard">
+            <div class="label">
+              <i class="fas fa-file-alt pb-2"></i>
+              <h5><%= recommendation.title %></h5>
+              <i class="fas fa-arrow-circle-right"></i>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
+
+  <div class="mt-5">
+    <h1>Complétez votre dossier</h1>
+    <p>Nous vous invitons à compléter votre dossier en ajoutant un récit de votre incident ainsi que des preuves ou témoignages de votre agression.</p>
+
+    <div class="mt-2">
+      <span><%= render 'file-box' %></span>
+    </div>
+  </div>
+
 
 </div>
 
