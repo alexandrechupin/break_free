@@ -36,7 +36,9 @@ const audioFeature = () => {
   const recordButton = document.querySelector('#record');
   const stopButton = document.querySelector('#stop');
   const playButton = document.querySelector('#play');
+  const downloadButton = document.querySelector('#download');
   const saveButton = document.querySelector('#save');
+  const incidentUrl = document.querySelector('#incident_audio');
   const savedAudioMessagesContainer = document.querySelector('#saved-audio-messages');
 
   let recorder;
@@ -44,10 +46,8 @@ const audioFeature = () => {
 
   if (recordButton) {
     recordButton.addEventListener('click', async () => {
-      recordButton.setAttribute('disabled', true);
       stopButton.removeAttribute('disabled');
       playButton.setAttribute('disabled', true);
-      saveButton.setAttribute('disabled', true);
       if (!recorder) {
         recorder = await recordAudio();
       }
@@ -58,13 +58,18 @@ const audioFeature = () => {
       recordButton.removeAttribute('disabled');
       stopButton.setAttribute('disabled', true);
       playButton.removeAttribute('disabled');
-      saveButton.removeAttribute('disabled');
       audio = await recorder.stop();
+      downloadButton.href = audio.audioUrl;
+      downloadButton.download = "RecordedAudio.wav"
+
+      incidentUrl.setAttribute("content", audio);
     });
 
     playButton.addEventListener('click', () => {
       audio.play();
     });
+
+  }
 
 
     // saveButton.addEventListener('click', () => {
@@ -85,7 +90,7 @@ const audioFeature = () => {
     //     });
     //   };
     // });
-  }
+
 
   // const populateAudioMessages = () => {
   //   return fetch('/messages').then(res => {

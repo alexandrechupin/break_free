@@ -15,6 +15,8 @@ class Incident < ApplicationRecord
   validates :incident_category, presence: true
   validates :place_type, inclusion: { in: PLACE_TYPE }, allow_blank: true
 
+  mount_uploader :audio, AudioUploader
+
   def get_recommendations
     recommendations = incident_category.recommendations.to_a
     # garder le to_a pour eviter d'inserer une nouvelle association en db

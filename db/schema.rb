@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_09_04_132951) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_132951) do
     t.float "longitude"
     t.boolean "witness"
     t.string "offender"
+    t.string "audio"
     t.bigint "tribunal_id"
     t.index ["incident_category_id"], name: "index_incidents_on_incident_category_id"
     t.index ["tribunal_id"], name: "index_incidents_on_tribunal_id"
