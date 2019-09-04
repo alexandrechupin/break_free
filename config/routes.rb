@@ -30,5 +30,7 @@ Rails.application.routes.draw do
   get '/stats', to: 'pages#stats'
   get '/about', to: 'pages#about'
 
+  %w(git 404 500).each do |code|
+    get code, :to => "errors#show", :code => code
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
