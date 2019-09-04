@@ -32,12 +32,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   return report_complaint_incident_report_path(incident, report) # Or :prefix_to_your_route
   # end
 
-  def update
-    # @incident = Incident.find(params[:user][:incident_id])
-    # @report = Report.find(params[:user][:report_id])
-    super
-    # redirect_to report_complaint_incident_report_path(@incident, @report)
-  end
+  # def update
+  #   # @incident = Incident.find(params[:user][:incident_id])
+  #   # @report = Report.find(params[:user][:report_id])
+  #   super
+  #   # redirect_to report_complaint_incident_report_path(@incident, @report)
+  # end
 
   # DELETE /resource
   # def destroy
@@ -53,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  protected
+  # protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -75,8 +75,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def update_resource(resource, params)
-    resource.update_without_password(params)
-  end
+  # def update_resource(resource, params)
+  #   resource.update_without_password(params)
+  # end
 
 end
