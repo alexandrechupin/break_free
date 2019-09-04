@@ -25,6 +25,10 @@ class ReportPolicy < ApplicationPolicy
     @record.incident = @user.incident
   end
 
+  def update_complaint_report?
+    @record.incident = @user.incident
+  end
+
   def send_anonymous_report?
     true
   end

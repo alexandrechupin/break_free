@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         get 'create_complaint'
         get 'report_complaint'
         patch 'update_report'
+        patch 'update_complaint_report'
         get 'send_anonymous_report'
       end
     end

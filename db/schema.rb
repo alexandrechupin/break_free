@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_144601) do
+ActiveRecord::Schema.define(version: 2019_09_04_132951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,9 @@ ActiveRecord::Schema.define(version: 2019_09_03_144601) do
     t.float "longitude"
     t.boolean "witness"
     t.string "offender"
+    t.bigint "tribunal_id"
     t.index ["incident_category_id"], name: "index_incidents_on_incident_category_id"
+    t.index ["tribunal_id"], name: "index_incidents_on_tribunal_id"
     t.index ["user_id"], name: "index_incidents_on_user_id"
   end
 
@@ -107,6 +109,11 @@ ActiveRecord::Schema.define(version: 2019_09_03_144601) do
     t.datetime "updated_at", null: false
     t.string "photo"
     t.string "recipient_email"
+    t.string "sender_first_name"
+    t.string "sender_last_name"
+    t.string "sender_address"
+    t.string "sender_city"
+    t.string "sender_phone_number"
     t.index ["incident_id"], name: "index_reports_on_incident_id"
   end
 
@@ -145,6 +152,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_144601) do
     t.string "address"
     t.string "zipcode"
     t.string "phone_number"
+    t.string "city"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -154,6 +162,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_144601) do
   add_foreign_key "incident_recommendations", "incident_categories"
   add_foreign_key "incident_recommendations", "recommendations"
   add_foreign_key "incidents", "incident_categories"
+  add_foreign_key "incidents", "tribunals"
   add_foreign_key "incidents", "users"
   add_foreign_key "non_profits", "motives"
   add_foreign_key "proofs", "incidents"
