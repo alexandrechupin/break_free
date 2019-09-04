@@ -32,4 +32,8 @@ class ReportPolicy < ApplicationPolicy
   def send_anonymous_report?
     true
   end
+
+  def download_complaint_pdf?
+    @record.incident = @user.incident
+  end
 end

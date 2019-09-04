@@ -39,7 +39,7 @@
             <% end %>
           </span>
           <br>
-          <%= current_user.email %>
+          <%= @incident.user.email %>
           <br>
           <span class="user-phone-preview">
             <% unless @report.sender_phone_number.nil?  %>
