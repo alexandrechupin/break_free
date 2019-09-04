@@ -23,7 +23,9 @@ document.querySelectorAll('.toggle').forEach((link) => {
     icon.classList.toggle('fa-rotate-180');
 
     if (!content) return;
+
     toggle(content);
+
   }, false);
 });
 
