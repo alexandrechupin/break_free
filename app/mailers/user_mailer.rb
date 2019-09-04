@@ -10,8 +10,9 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Merci pour votre inscription sur Breakfree')
   end
 
-  def report
+  def report(report_id)
+    @report = Report.find(report_id)
     @recipient_email = params[:user]
-    mail(to: @recipient_email, subject: 'Incident signalé le')
+    mail(to: @recipient_email, subject: "Un incident a été signalé dans votre structure")
   end
 end

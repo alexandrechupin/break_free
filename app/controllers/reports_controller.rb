@@ -50,7 +50,8 @@ class ReportsController < ApplicationController
   end
 
   def send_anonymous_report
-    UserMailer.with(user: @report.recipient_email).report.deliver_now
+    UserMailer.with(user: @report.recipient_email).report(@report.id).deliver_now
+    redirect_to incident_report_path
   end
 
   private
