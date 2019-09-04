@@ -2,14 +2,14 @@
       <div class="ml-3">
         <p class="h6 mt-3">
           <strong> <span class="user-first-name-preview">
-            <% unless @report.sender_first_name.empty? %>
+            <% unless @report.sender_first_name.nil? %>
               <%= @report.sender_first_name %>
             <% else %>
               [Prénom]
             <% end %>
           </span>
           <span class="user-last-name-preview">
-            <% unless  @report.sender_last_name.empty? %>
+            <% unless  @report.sender_last_name.nil? %>
               <%= @report.sender_last_name %>
               <% else %>
               [Nom]
@@ -17,7 +17,7 @@
           </span></strong>
           <br>
           <span class="user-address-preview">
-            <% unless @report.sender_address.empty? %>
+            <% unless @report.sender_address.nil? %>
               <%= @report.sender_address %>
             <% else %>
               [Adresse]
@@ -25,14 +25,14 @@
             </span>
           <br>
           <span class="user-zipcode-preview">
-            <% unless @incident.zipcode.empty? %>
+            <% unless @incident.zipcode.nil? %>
               <%= @incident.zipcode %>
             <% else %>
                 [Code postal]
             <% end %>
           </span> –
           <span class="user-city-preview">
-            <% unless  @report.sender_city.empty? %>
+            <% unless  @report.sender_city.nil? %>
               <%= @report.sender_city %>
               <% else %>
                 [Commune]
@@ -42,7 +42,7 @@
           <%= current_user.email %>
           <br>
           <span class="user-phone-preview">
-            <% unless @report.sender_phone_number.empty?  %>
+            <% unless @report.sender_phone_number.nil?  %>
                 <%= @report.sender_phone_number %>
               <% else %>
                 [Téléphone]
@@ -64,7 +64,7 @@
       <div class="ml-3">
         <p class="h6 mt-5 text-right">
         <span class="user-city-preview">
-          <% unless  @report.sender_city.empty? %>
+          <% unless  @report.sender_city.nil? %>
             <%= @report.sender_city %>
           <% else %>
               [Commune]
@@ -129,5 +129,6 @@
           <br>
         <% end %>
         Dans l'attente des suites que vous donnerez à ce courrier, je vous prie d'agréer, Madame, Monsieur le procureur de la République, l'expression de ma plus haute considération.</p>
+        <br>
       </div>
     </div>
