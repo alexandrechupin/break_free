@@ -27,9 +27,13 @@
           <% if proof.testimony_id.blank? == true %>
             <div class="proofs_container">
               <div class="card-action">
-              <div class="action_text">
-                <%= proof.content_type %>
-                <%= proof.original_filename %>
+              <div class="action d-flex justify-content-between">
+                <div>
+                  <%= proof.content_type.split("/")[0] %>
+                </div>
+                <div>
+                 <%= proof.original_filename %>
+                </div>
               </div>
               <div class="action_download">
                 <%= link_to "Télécharger", cl_image_path(proof.photo,:width=>200, :height=>250, :page=>1, :crop=>"fill"), target: "_blank", class: 'btn btn-success'%>
@@ -49,8 +53,16 @@
             <div class="proofs_container">
               <div class="card-action">
                 <div class="action_text">
-                  <%= proof.content_type %>
-                  <%= proof.original_filename %>
+                  <div class="text_name">
+                    <%= proof.testimony.witness_name %>
+                    <%= proof.testimony.witness_family_name %>
+                  </div>
+                  <div class="text_type">
+                    <%= proof.content_type.split("/")[0] %>
+                  </div>
+                  <div class="text_filename">
+                    <%= proof.original_filename %>
+                  </div>
                 </div>
                 <div class="action_download">
                   <%= link_to "Télécharger", cl_image_path(proof.photo,:width=>200, :height=>250, :page=>1, :crop=>"fill"), target: "_blank", class: 'btn btn-success'%>
