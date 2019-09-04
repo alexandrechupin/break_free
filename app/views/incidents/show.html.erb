@@ -65,12 +65,10 @@
  <div class="row justify-content-center">
   <div class="row my-1 justify-content-center">
    <%= link_to incident_recommendations_path(@incident) do %>
-      <div class="card-launch">
+      <div class="card-launch" id="card-dashboard">
         <div class="label">
-          <h4>Consulter les recommandations applicables à votre situation</h4>
-        </div>
-        <div class="show-button pt-2">
-          <div class="show-signal button-primary pt-2">Voir plus
+          <h5>Consulter les recommandations applicables à votre situation</h5>
+          <div class="show-signal button-primary mt-2 pt-2">Je signale</div>
         </div>
       </div>
     <% end %>

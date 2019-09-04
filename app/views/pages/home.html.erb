@@ -1,9 +1,10 @@
-<div class="home-banner">
+<div class="row">
   <section id="section1">
-    <div class="container mt-5">
-        <h1>Je signale une agression</h1>
-        <h3>Réagissez face aux comportements
-          <br> inappropriés.</h3>
+    <div class="col-md-10 d-flex justify-content-center">
+      <div class="justify-content-center align-items-center">
+        <h1>Je signale une <strong>agression</strong> ou une <strong>situation de discrimination</strong></h1>
+        <h3>Ayez les bons réflexes pour réagir face aux comportements inappropriés.</h3>
+      </div>
     </div>
 
     <svg viewbox="0 0 100 25">
@@ -33,12 +34,13 @@
 
     <% else %>
 
+      <div class="home-banner">
 
-    <div class="category-choices">
+      <div class="category-choices">
 
-      <div class="container">
 
-      <div class="home-launch-title">
+
+      <div class="row justify-content-center">
         <h2 class="theme-title mt-3">Je suis ou j'ai été <strong>victime</strong> d'une</h2>
       </div>
 
@@ -49,47 +51,50 @@
               <div class="label">
                 <h4><%= incident_category.name %></h4>
                 <p><%= incident_category.description %></p>
-                <div class="show-signal button-primary mt-2 pt-2">Je signale</div>
+              </div>
+              <div class="show-button pt-2">
+                <div class="show-signal button-primary pt-2">Je signale</div>
               </div>
             </div>
           <% end %>
         <% end %>
       </div>
 
-      </div>
 
-    </div>
     <% end %>
 </div>
 
+</div>
 
 
 <div class="explanations">
 
-  <div class="row mt-5 justify-content-center">
-    <h2>💡 <strong>Pourquoi signaler ?</strong></h2>
+  <div class="row mt-3 justify-content-center">
+    <h2 class="text-white">Pourquoi signaler ?</h2>
   </div>
 
   <div class="row explanations-blocs">
-<!--     <div class="col-md-4">
-       <%= image_tag("blob-shape.svg", class: "img-medium") %>
-   </div> -->
+    <div class="col-md-4">
+      <%= image_tag("blob-shape.svg", class: "img-medium") %>
+      <!-- <img class="img-medium" src="/assets/blob-shape.svg"> -->
+    </div>
     <div class="col-md-8 d-flex align-items-center">
       <div class="first-title">
-        <h3> Connaître les meilleurs réflexes <br> selon votre situation</h3>
-        <h5>Nous vous apportons des conseils adaptés <br>à votre situation : faut-il que vous portiez plainte ? <br> comment mener les procédures en évitant <br> les mauvaises surprises ?
+        <h1>Découvrir quels sont les meilleurs réflexes <br> selon votre situation</h1>
+        <h3>Breakfree vous apportera des conseils et des recommandations <br> adaptés à votre situation.</h3>
       </div>
     </div>
 
     <div class="col-md-8 d-flex align-items-center">
       <div class="second-title">
-        <h3 > Constituez votre dossier complet<br> pour mieux gérer l'après</h3>
-        <h5> Nous vous guidons dans la constitution de votre dossier <br> pour qu'il soit le plus complet possible, et vous <br> facilitez ainsi la vie dans les procédures <br> qui suivent votre agression.
+        <h1>Dénoncer la haine</h1>
+        <h3>Et sortir du silence.</h3>
       </div>
     </div>
-<!--     <div class="col-md-4 second-form">
-<%= image_tag("blob-shape-rose.svg", class: "img-medium") %>
-    </div> -->
+    <div class="col-md-4 second-form">
+      <%= image_tag("blob-shape-rose.svg", class: "img-medium") %>
+      <!-- <img class="img-medium" src="/assets/blob-shape-rose.svg"> -->
+    </div>
 
   </div>
 
