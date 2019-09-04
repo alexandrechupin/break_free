@@ -27,8 +27,8 @@
   <div class="mt-5">
 
 
-
     <h2>Ce que vous pouvez faire</h2>
+
 
     <%= link_to incident_recommendations_path(@incident) do %>
       <div class="card-action ml-0 mt-3">
@@ -60,6 +60,20 @@
       <% end %>
     <% end %>
 
+  </div>
+
+ <div class="row justify-content-center">
+  <div class="row my-1">
+   <%= link_to incident_recommendations_path(@incident) do %>
+      <div class="card-launch">
+        <div class="label">
+          <h4>Consulter les recommandations applicables à votre situation</h4>
+        </div>
+        <div class="show-button pt-2">
+          <div class="show-signal button-primary pt-2">Voir plus
+        </div>
+      </div>
+    <% end %>
   </div>
 
 </div>
