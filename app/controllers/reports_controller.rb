@@ -69,7 +69,6 @@ class ReportsController < ApplicationController
   def update_complaint_report
     @report.update(report_params)
     download_complaint_pdf
-    # redirect_to report_complaint_incident_report_path
   end
 
   def send_anonymous_report
