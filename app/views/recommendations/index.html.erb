@@ -33,18 +33,18 @@
 <% end %>
 <div class="container_thanks">
   <div class="message_thanks">
-    <p> Merci pour ce signalement </p>
+    <p> Merci pour ce signalement </hp>
   </div>
 </div>
 
 <div class="container col-8">
 
-<div class="mt-4 mb-4">
-  <h3>Conseils utiles pour une <%=@incident.incident_category.name.downcase %> </h3>
+<div class="mt-5 mb-4 pl-5">
+  <h4>Conseils utiles pour une <%=@incident.incident_category.name.downcase %> </h4>
   <% @recommendations.each do |recommendation| %>
     <div class="mt-3">
           <% if recommendation.is_an_action == false %>
-      <h3 id="list-advice">
+      <h5 id="list-advice">
           <i class="fas fa-check tickable"></i>
             <%= link_to "#description#{recommendation.id}", class: "toggle" do %>
             <%= recommendation.title  %>
@@ -52,7 +52,7 @@
             <% end %>
 
         <% end %>
-      </h3>
+      </h5>
     </div>
     <div class="toggle-content" id=<%="description#{recommendation.id}" %>>
       <p> <%= recommendation.description %></p>
@@ -71,13 +71,14 @@
   </div>
 
 <% else %>
+<div class="d-flex justify-content-center mb-5">
   <div class="file-banner mb-2">
     <div class="container container-actions pt-3 pb-3">
-      <h3><strong>Besoin d'accompagnement pour réaliser les actions suivantes ?</strong></h3>
+      <h4>Besoin d'accompagnement pour réaliser les actions suivantes ?</h4>
       <% @recommendations.each do |recommendation| %>
         <div class="mt-3">
           <% if recommendation.is_an_action == true %>
-            <h3 id="list-advice-action">
+            <h5 id="list-advice-action">
               <i class="fas fa-check tickable"></i>
                 <%= link_to "#recommendation#{recommendation.id}", class: "toggle
                 " do %>
@@ -85,20 +86,29 @@
               <i class="fas fa-angle-down pl-1" id=<%= "arrow#{recommendation.id}" %>></i>
              <% end %>
             <% end %>
-          </h3>
+          </h5>
         </div>
         <div class="toggle-content-action" id=<%="recommendation#{recommendation.id}" %>>
           <p> <%= recommendation.description %></p>
         </div>
       <% end %>
     </div>
+    <div class="mt-3">
+      <h3 class="anonyme">Créez votre dossier anonyme sur breakfree</h3>
+    </div>
+    <div class="mb-0 mt-1">
+      <%= link_to "Je veux aller plus loin", assign_user_incident_path(@incident), class: 'button-primary-action' %>
+    </div>
   </div>
-  <div class="d-flex justify-content-center mt-4">
+</div>
+<!--
+  <div class="d-flex justify-content-center mt-5">
     <h5 class="anonyme">Créez votre dossier anonyme sur breakfree</h5>
   </div>
   <div class="d-flex justify-content-center p-3 mb-4">
-    <%= link_to "Je passe à l'action", assign_user_incident_path(@incident), class: 'button-primary-action' %>
+    <%= link_to "Je veux aller plus loin", assign_user_incident_path(@incident), class: 'button-primary-action' %> -->
   </div>
+
 <% end %>
 
 
