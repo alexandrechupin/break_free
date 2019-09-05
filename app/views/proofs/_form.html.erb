@@ -6,8 +6,8 @@
 </div>
 
 <div class="container">
-  <div class="manage_proofs">
-    <h3>Ajout de preuves</h3>
+  <div class="manage_proofs pt-5">
+    <h2>Ajout de preuves</h2>
     <p>Uploadez ici vos photos, vidéos et fichiers audio</p>
     <%= simple_form_for [@incident, @proof] do |f| %>
       <%= f.input :photo, label: 'Vos médias'%>
