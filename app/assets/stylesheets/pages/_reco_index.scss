@@ -43,5 +43,11 @@
   background-color: #7E4E60;
   color: white;
   // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
+  border-radius: 25px;
+}
+
+.button-primary-action:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #734758;
 }
