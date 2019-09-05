@@ -25,6 +25,7 @@ class TestimoniesController < ApplicationController
       proof.incident = @incident
       next if proof.photo.blank?
       proof.content_type = proof.photo.content_type
+      proof.content_type = "attestation de témoin/pdf" if proof.content_type == "application/pdf"
       proof.original_filename = proof.photo.file.original_filename
     end
 
