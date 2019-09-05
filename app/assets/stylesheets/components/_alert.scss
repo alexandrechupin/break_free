@@ -2,8 +2,11 @@
   display: flex;
   padding-bottom: 0;
   margin-bottom: 0;
+  color: white;
+  background-color: #C78283;
+  border-color: #C78283;
   .circle {
-    border-color: $my-orange;
+    border-color: white;
     position: relative;
     top: 6px;
     bottom: 6px;
@@ -14,11 +17,11 @@
   i {
     position: relative;
     right: 16px;
-    top: 0px;
-    font-size: 20px;
+    top: -4px;
+    left: 50px;
+    font-size: 27px;
   }
   i:hover {
     cursor: pointer;
   }
 }
-
