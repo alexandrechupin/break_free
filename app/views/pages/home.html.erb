@@ -42,7 +42,7 @@
         <h2 class="theme-title mt-3">Je suis ou j'ai été <strong>victime</strong> d'une</h2>
       </div>
 
-      <div class="row my-1">
+      <div class="row my-1 mb-5">
         <% @incident_categories.each do |incident_category| %>
           <%= link_to incidents_path(author_is_victim: 'true', incident_category_id: incident_category.id), method: 'post' do  %>
             <div class="card-launch">
@@ -67,7 +67,7 @@
 <div class="explanations">
 
   <div class="row mt-5 justify-content-center">
-    <h2>💡 <strong>Pourquoi signaler ?</strong></h2>
+    <h2><i class="fas fa-lightbulb"></i>  <strong> Pourquoi signaler ?</strong></h2>
   </div>
 
   <div class="row explanations-blocs">
