@@ -1,0 +1,17 @@
+.table-testimony {
+  background: white;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.1);
+};
+
+.table {
+  border: none !important;
+}
+
+.pastille {
+  border: 1px solid $my-gray;
+  color: $my-gray;
+  margin: 8px;
+  border-radius: 16px;
+  padding: 4px;
+  line-height: 36px;
+}

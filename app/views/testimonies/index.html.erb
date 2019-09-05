@@ -6,14 +6,17 @@
 </div>
 <div class="container mt-5">
   <div class="manage_testimonies">
-    <p>Partagez l'url de votre témoignage </p>
+    <h3 class="mb-4">Partagez l'URL de votre dossier pour solliciter des témoignages</strong></h3>
     <input type="text" value="<%= new_incident_testimony_url(@incident) %>" id="copy-testimony-url" class="w-50">
     <button class="copy-testimony-url-button">Copier URL</button>
   </div>
   <div class="manage_testimonies">
-    <div class="mb-5 mt-5">
+    <div class="mb-3 mt-5">
       <h3> Vos témoignages collectés </h3>
     </div>
+        <% if @testimonies == [] %>
+          <p>Vous n'avez pas encore récupéré de témoignages</p>
+        <% end %>
         <% @testimonies.each do |testimony| %>
          <div class="card-action-witness">
 
