@@ -13,7 +13,6 @@ Rails.application.routes.draw do
         patch 'update_report'
         patch 'update_complaint_report'
         get 'send_anonymous_report'
-        get 'download_complaint_pdf'
       end
     end
     resources :testimonies, only: [:new, :create, :index, :destroy, :edit, :update]
