@@ -1,1 +1,38 @@
+<div class="row header-banner">
+  <div class="container my-3">
+    <p><%= link_to "Accueil", root_path %> > <strong> Collecte de témoignages</strong></p>
+    <h1>Témoignez pour un incident</h1>
+  </div>
+</div>
+
+
+<div class="container my-5">
+  <h3>Vous êtes invités à témoigner pour l'incident suivant :</h3>
+
+  <table class="mt-3 table table-testimony">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Motifs</th>
+        <th scope="col">Date</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Type de lieu</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th><%= @incident.incident_category.name  %>
+        </th>
+        <td><% @incident.motives.each do |motive| %>
+        <span class="pastille">
+        <%= motive.name %>
+        </span>
+          <% end %></td>
+        <td><%= @incident.date %></td>
+        <td><%= @incident.address %></td>
+        <td><%= @incident.place_type %></td>
+      </tr>
+    </tbody>
+  </table>
+
 <%= render 'form', testimony: @testimony, incident: @incident %>

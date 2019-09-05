@@ -1,27 +1,31 @@
-<div class="row header-banner">
-  <div class="container my-3">
-    <p><%= link_to "Accueil", root_path %> > <strong> Collecte de témoignages</strong></p>
-    <h1>Témoignez pour un incident</h1>
-  </div>
-</div>
-<div class="container mt-4">
-  <p>Vous êtes invités à témoigner pour l'incident suivant</p>
-  <div class="card-action-testimony">
+
+
+
+<!--   <div class="card-action-testimony">
     <div>
-      <%= incident.description %>
+      <strong>Type d'agression</strong> <br>
+      <%= incident.incident_category.name %> <br>
+      en raison de : <% incident.motives.each do |motive| %>
+        <%= motive.name %>
+      <% end %>
     </div>
     <div>
+      <strong>Date</strong> <br>
       <%= incident.date %>
     </div>
     <div>
+      <strong>Adresse</strong> <br>
       <%= incident.address %>
     </div>
     <div>
+      <strong>Type de lieu</strong> <br>
       <%= incident.place_type %>
     </div>
-  </div>
+  </div> -->
+
+
   <%= simple_form_for [incident, testimony] do |f| %>
-    <div class="new_testimony_container">
+    <div class="new_testimony_container mt-5">
       <h3>Renseignez vos informations</h3>
       <p>Vous pourrez être recontactés dans le cadre d'une procédure de dépôt de plainte.</p>
       <div class="new_testimony_contacts">
@@ -55,7 +59,7 @@
           <div class="content">
             <% if n.index.zero? %>
               <div class="cerfa">
-                <%= link_to "Téléchargez le formulaire cerfa", cl_image_path("cerfa_attestation_temoin",:width=>200, :height=>250, :page=>1, :crop=>"fill"), target: "_blank" %>
+                <%= link_to "Téléchargez le formulaire cerfa", cl_image_path("cerfa_attestation_temoin",:width=>200, :height=>250, :page=>1, :crop=>"fill"), target: "_blank", class: "btn btn-primary" %>
               </div>
             <% end %>
             <%= n.input :photo, as: :file, label: (n.index.zero? ? 'Votre pdf' : 'Votre fichier') %>
