@@ -2,33 +2,44 @@ const audioFeature = () => {
 
   const recordAudio = () =>
     new Promise(async resolve => {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const mediaRecorder = new MediaRecorder(stream);
-      let audioChunks = [];
 
-      mediaRecorder.addEventListener('dataavailable', event => {
-        audioChunks.push(event.data);
-      });
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
-      const start = () => {
-        audioChunks = [];
-        mediaRecorder.start();
-      };
 
-      const stop = () =>
-        new Promise(resolve => {
-          mediaRecorder.addEventListener('stop', () => {
-            const audioBlob = new Blob(audioChunks);
-            const audioUrl = URL.createObjectURL(audioBlob);
-            const audio = new Audio(audioUrl);
-            const play = () => audio.play();
-            resolve({ audioChunks, audioBlob, audioUrl, play });
-          });
+        const mediaRecorder = new MediaRecorder(stream);
+        let audioChunks = [];
 
-          mediaRecorder.stop();
+        mediaRecorder.addEventListener('dataavailable', event => {
+          audioChunks.push(event.data);
         });
 
-      resolve({ start, stop });
+        const start = () => {
+          audioChunks = [];
+          mediaRecorder.start();
+        };
+
+        const stop = () =>
+          new Promise(resolve => {
+            mediaRecorder.addEventListener('stop', () => {
+              const audioBlob = new Blob(audioChunks);
+              const audioUrl = URL.createObjectURL(audioBlob);
+              const audio = new Audio(audioUrl);
+              const play = () => audio.play();
+              resolve({ audioChunks, audioBlob, audioUrl, play });
+            });
+
+            mediaRecorder.stop();
+          });
+
+        resolve({ start, stop });
+      }
+      catch(error) {
+        console.error(error.message);
+      }
+
+
+
     });
 
   const sleep = time => new Promise(resolve => setTimeout(resolve, time));
