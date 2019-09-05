@@ -14,12 +14,13 @@ class ProofsController < ApplicationController
     @proof.content_type = params[:proof][:photo].content_type if params[:proof][:photo].content_type
     @proof.content_type = "attestation de temoin/pdf" if @proof.content_type == "application/pdf"
     @proof.original_filename = params[:proof][:photo].original_filename if params[:proof][:photo].original_filename
+    authorize @proof
+
     if @proof.save
       redirect_to incident_proofs_path(@incident)
     else
       render :index
     end
-    authorize @proof
   end
 
   def destroy
@@ -37,7 +38,7 @@ class ProofsController < ApplicationController
   private
 
   def proof_params
-    params.require(:proof).permit(:photo, :photo_cache)
+    params.require(:proof).permit(:photo, :photo_cache, :public_id)
   end
 
   def set_incident

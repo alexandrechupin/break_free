@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
-  before_action :set_incident, only: [:show, :create, :create_complaint, :report_complaint, :update_report, :send_anonymous_report]
-  before_action :set_report, only: [:show, :report_complaint, :update_report, :send_anonymous_report]
+  before_action :set_incident, only: [:download_complaint_pdf, :show, :create, :create_complaint, :report_complaint, :update_report, :send_anonymous_report, :update_complaint_report]
+  before_action :set_report, only: [:download_complaint_pdf, :show, :report_complaint, :update_report, :send_anonymous_report, :update_complaint_report]
 
   def create
     @report = Report.new
@@ -42,11 +42,34 @@ class ReportsController < ApplicationController
   end
 
   def report_complaint
+    if @incident.tribunal_id
+      @tribunal = Tribunal.find(@incident.tribunal_id)
+    end
+
+      respond_to do |format|
+          format.html
+          format.pdf do
+              render pdf: "Report No. #{@report.id}",
+              page_size: 'A4',
+              template: "reports/complaint_pdf",
+              encoding: 'utf-8',
+              layout: "pdf.html",
+              lowquality: true,
+              zoom: 1,
+              dpi: 75
+          end
+      end
   end
 
   def update_report
     @report.recipient_email = params[:report][:recipient_email]
     @report.save
+  end
+
+  def update_complaint_report
+    @report.update(report_params)
+    download_complaint_pdf
+    # redirect_to report_complaint_incident_report_path
   end
 
   def send_anonymous_report
@@ -55,6 +78,23 @@ class ReportsController < ApplicationController
   end
 
   private
+
+  def download_complaint_pdf
+    pdf_html = ApplicationController.render(
+      assigns: { report: @report, incident: @incident, tribunal: @incident.tribunal },
+      template: 'reports/complaint_pdf',
+      layout: 'pdf'
+    )
+
+    pdf = WickedPdf.new.pdf_from_string(pdf_html,
+      page_size: 'A4',
+      encoding: 'utf-8',
+      orientation: "portrait",
+      lowquality: true,
+      zoom: 1,
+      dpi: 75)
+    send_data pdf, filename: 'plainte.pdf'
+  end
 
   def set_incident
     @incident = Incident.find(params[:incident_id])
@@ -66,6 +106,6 @@ class ReportsController < ApplicationController
   end
 
   def report_params
-    params.require(:report).permit(:incident, :photo, :photo_cache, :recipient_email)
+    params.require(:report).permit(:incident, :photo, :photo_cache, :recipient_email, :sender_city, :sender_address, :sender_phone_number, :sender_first_name, :sender_last_name)
   end
 end

@@ -6,7 +6,7 @@
 </div>
 <div class="container mt-4">
   <p>Vous êtes invités à témoigner pour l'incident suivant</p>
-  <div class="card-incident">
+  <div class="card-action-testimony">
     <div>
       <%= incident.description %>
     </div>
@@ -22,7 +22,7 @@
   </div>
   <%= simple_form_for [incident, testimony] do |f| %>
     <div class="new_testimony_container">
-      <h3>Renseignez vos informations de contact </h3>
+      <h3>Renseignez vos informations</h3>
       <p>Vous pourrez être recontactés dans le cadre d'une procédure de dépôt de plainte.</p>
       <div class="new_testimony_contacts">
         <div class="new_testimony_input">
@@ -44,10 +44,10 @@
     <br>
     <div class="testimony_wrapper_header">
       <div class="content">
-        <h3>Complétez le formulaire Cerfa de dépôt de plainte </h3>
+        <h3>Attestation de témoin </h3>
       </div>
       <div class="content">
-      <h3>Ajoutez jusqu'à trois médias : photos, vidéos, audio  </h3>
+      <h3>Ajoutez jusqu'à trois médias </h3>
       </div>
     </div>
     <div class="testimony_wrapper_upload">

@@ -94,3 +94,20 @@
   color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
+
+.record-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white !important;
+  background-color: $my-purple;
+  cursor: pointer;
+}
+
+#record .recording {
+  background-color: $my-salmon;
+}

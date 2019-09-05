@@ -15,10 +15,20 @@
       <h3> Vos témoignages collectés </h3>
     </div>
         <% @testimonies.each do |testimony| %>
-         <div class="card-action">
-          <%= testimony.witness_name %>
-          <%= testimony.witness_family_name %>
-          <%= testimony.witness_email %>
+         <div class="card-action-witness">
+
+              <div class="witness_identity">
+                <%= testimony.witness_name %>
+                <%= testimony.witness_family_name %>
+              </div>
+              <div class="witness_email">
+                <%= testimony.witness_email %>
+              </div>
+              <div class="witness_count">
+                <span>Total preuves collectées</span>
+                <strong><%= testimony.proofs.count %></strong>
+              </div>
+
           </div>
         <% end %>
   </div>

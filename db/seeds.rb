@@ -197,25 +197,13 @@ incident_recommendation5 = IncidentRecommendation.create!({
   })
 incident_recommendation6 = IncidentRecommendation.create!({
     incident_category: category_two,
-    recommendation: recommendation5
+    recommendation: recommendation1
   })
 incident_recommendation7 = IncidentRecommendation.create!({
-    incident_category: category_two,
+    incident_category: category_three,
     recommendation: recommendation1
   })
 incident_recommendation8 = IncidentRecommendation.create!({
-    incident_category: category_three,
-    recommendation: recommendation5
-  })
-incident_recommendation9 = IncidentRecommendation.create!({
-    incident_category: category_three,
-    recommendation: recommendation1
-  })
-incident_recommendation10 = IncidentRecommendation.create!({
-    incident_category: category_four,
-    recommendation: recommendation5
-  })
-incident_recommendation11 = IncidentRecommendation.create!({
     incident_category: category_four,
     recommendation: recommendation1
   })
