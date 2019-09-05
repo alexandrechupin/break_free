@@ -61,6 +61,24 @@ class ReportsController < ApplicationController
       end
   end
 
+  def update_report
+    @report.recipient_email = params[:report][:recipient_email]
+    @report.save
+  end
+
+  def update_complaint_report
+    @report.update(report_params)
+    download_complaint_pdf
+    # redirect_to report_complaint_incident_report_path
+  end
+
+  def send_anonymous_report
+    UserMailer.with(user: @report.recipient_email).report(@report.id).deliver_now
+    redirect_to incident_report_path
+  end
+
+  private
+
   def download_complaint_pdf
     pdf_html = ApplicationController.render(
       assigns: { report: @report, incident: @incident, tribunal: @incident.tribunal },
@@ -74,27 +92,9 @@ class ReportsController < ApplicationController
       orientation: "portrait",
       lowquality: true,
       zoom: 1,
-      dpi: 75
-    )
+      dpi: 75)
     send_data pdf, filename: 'plainte.pdf'
   end
-
-  def update_report
-    @report.recipient_email = params[:report][:recipient_email]
-    @report.save
-  end
-
-  def update_complaint_report
-    @report.update(report_params)
-    redirect_to report_complaint_incident_report_path
-  end
-
-  def send_anonymous_report
-    UserMailer.with(user: @report.recipient_email).report(@report.id).deliver_now
-    redirect_to incident_report_path
-  end
-
-  private
 
   def set_incident
     @incident = Incident.find(params[:incident_id])
