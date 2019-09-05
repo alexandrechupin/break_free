@@ -12,7 +12,7 @@ class ProofsController < ApplicationController
     @proof = Proof.new(proof_params)
     @proof.incident = @incident
     @proof.content_type = params[:proof][:photo].content_type if params[:proof][:photo].content_type
-    @proof.content_type = "attestation de temoin/pdf" if @proof.content_type == "application/pdf"
+    @proof.content_type = "attestation de témoin/pdf" if @proof.content_type == "application/pdf"
     @proof.original_filename = params[:proof][:photo].original_filename if params[:proof][:photo].original_filename
     authorize @proof
 
