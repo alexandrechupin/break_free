@@ -1,12 +1,18 @@
+<div class="row header-banner">
+  <div class="container my-5">
+    <h1>Votre dossier</h1>
+  </div>
+</div>
+
 <div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
   <div class="col-md-1">
     <p class="circle">!</p>
   </div>
   <div class="col-md-11 d-flex align-items-center mb-2">
-    <% if @incident.description.nil? && @incident.proofs.empty? %>
-      <span class="pl-3">Votre dossier n’est complet qu’à 40%. Certains actions requièrent un dossier complet afin que nous puissions vous aider au mieux.</span>
-    <% elsif @incident.description.nil? || @incident.proofs.empty? %>
-      <span class="pl-3">Votre dossier n’est complet qu’à 70%. Certains actions requièrent un dossier complet afin que nous puissions vous aider au mieux.</span>
+    <% if @incident.description.nil? || @incident.proofs.empty? %>
+      <span class="pl-3">Votre dossier n’est pas complet. Certains actions requièrent un dossier complet afin que nous puissions vous aider au mieux.</span>
+    <% elsif @incident.description.nil? || @incident.testimonies.empty? %>
+      <span class="pl-3">Votre dossier n’est pas complet. Certains actions requièrent un dossier complet afin que nous puissions vous aider au mieux.</span>
     <% else %>
       <span class="pl-3">félicitations, votre dossier est complet à 100%.</span>
     <% end %>
@@ -18,7 +24,7 @@
 
 <div class="container pb-3 mt-5">
 
-  <h1>Passez à l'action</h1>
+  <h2><strong>Passez à l'action</strong></h2>
 <!--
     <%= link_to incident_recommendations_path(@incident) do %>
       <div class="card-action ml-0 mt-3">
@@ -99,7 +105,7 @@
   </div>
 
   <div class="mt-5">
-    <h1>Complétez votre dossier</h1>
+    <h2><strong>Complétez votre dossier</strong></h2>
     <p>Nous vous invitons à compléter votre dossier en ajoutant un récit de votre incident ainsi que des preuves ou témoignages de votre agression.</p>
 
     <div class="mt-2">
