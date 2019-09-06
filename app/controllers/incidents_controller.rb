@@ -64,7 +64,9 @@ class IncidentsController < ApplicationController
   end
 
   def update_init
-    if params[:incident][:motive].nil?
+    if params[:incident][:date] == ""
+      redirect_to event_incident_path, alert: "Merci de spécifier la date de l'incident"
+    elsif params[:incident][:motive].nil?
       redirect_to event_incident_path, alert: 'Merci de spécifier au moins un motif'
     else
       set_incident_init
