@@ -6,7 +6,7 @@
 
 <div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
   <div class="col-md-1">
-    <p class="circle">!</p>
+    <i class="fas fa-info-circle"></i>
   </div>
   <div class="col-md-11 d-flex align-items-center mb-2">
     <% if @incident.description.nil? || @incident.proofs.empty? %>
@@ -14,7 +14,7 @@
     <% elsif @incident.description.nil? || @incident.testimonies.empty? %>
       <span class="pl-3">Votre dossier n’est pas complet. Certains actions requièrent un dossier complet afin que nous puissions vous aider au mieux.</span>
     <% else %>
-      <span class="pl-3">Félicitations, votre dossier est complet à 100%.</span>
+      <span class="pl-3">Félicitations, votre dossier est maintenant complet à 100%.</span>
     <% end %>
   </div>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

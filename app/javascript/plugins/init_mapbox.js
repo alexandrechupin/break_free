@@ -10,6 +10,16 @@ const buildMap = () => {
   });
 };
 
+// $(window).bind('mousewheel DOMMouseScroll', function(event)
+// {
+//     if(event.ctrlKey == true) {
+//         map['scrollZoom'].enable();
+//     }
+//     else {
+//         map['scrollZoom'].disable();
+//     }
+// });
+
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);

@@ -6,11 +6,15 @@
 </div>
 
 <div class="container">
-  <div class="manage_proofs">
-    <h3>Ajout de preuves</h3>
+  <div class="manage_proofs pt-5">
+    <h2>Ajout de preuves</h2>
     <p>Uploadez ici vos photos, vidéos et fichiers audio</p>
     <%= simple_form_for [@incident, @proof] do |f| %>
       <%= f.input :photo, label: 'Vos médias'%>
+<!--       <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div> -->
       <%= f.input :photo_cache, as: :hidden %>
       <%= f.button :submit, 'Ajouter', class: "button-primary" %>
     <% end %>
