@@ -17,7 +17,7 @@ const toggle = function (elem) {
 // Listen for click events
 document.querySelectorAll('.toggle').forEach((link) => {
   link.addEventListener('click', function (event) {
-    // event.preventDefault();
+    event.preventDefault();
     var content = document.querySelector(event.currentTarget.hash);
     const icon = event.currentTarget.querySelector('.fas');
     icon.classList.toggle('fa-rotate-180');
