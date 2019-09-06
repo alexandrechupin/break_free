@@ -41,7 +41,7 @@ puts "Creating incident categories and description..."
 category_one = IncidentCategory.create!({name: "Agression physique",description: "Coups et blessures volontaires"})
 category_two = IncidentCategory.create!({name: "Agression sexuelle",description: "Geste sexuel non consenti ou viol"})
 category_three = IncidentCategory.create!({name: "Agression verbale",description: "Menaces, insultes, incitation à la haine,..."})
-category_four = IncidentCategory.create!({name: "Discrimination",description: "Traitement différent liés à votre identité"})
+category_four = IncidentCategory.create!({name: "Discrimination",description: "Traitement différent lié à votre identité"})
 puts "Finished !"
 
 
