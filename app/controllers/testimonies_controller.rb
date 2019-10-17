@@ -2,7 +2,6 @@ class TestimoniesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :show, :index, :edit, :update, :destroy]
   before_action :set_incident, only: [:new, :create, :show, :index, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:new, :create]
-  #before_action :set_proof, only: [:new, :create]
 
   def index
     @testimonies = policy_scope(Testimony)

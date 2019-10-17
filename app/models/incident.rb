@@ -33,4 +33,8 @@ class Incident < ApplicationRecord
     end
     content_array.join(', ')
   end
+
+  def get_nonprofits
+    "toto"
+  end
 end
