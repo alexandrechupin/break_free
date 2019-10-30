@@ -1,12 +1,36 @@
-<h1>Nonprofits#index</h1>
-<ul>
-  <% @nonprofits.each do |nonprofit| %>
-    <li>
-      <%= nonprofit.name  %>
-    </li>
-  <% end %>
-</ul>
+<div class="row header-banner">
+  <div class="container my-3">
+    <p><%= link_to "Accueil", root_path %> > <%= link_to "Associations", incident_path(@incident) %> > <strong>Transmettre</strong></p>
+    <h1>Contacter une association</h1>
+  </div>
+</div>
 
-<p>Find me in app/views/nonprofits/index.html.erb</p>
+<div class="container">
+  <div class="manage_proofs pt-5">
+    <h2>Entrez en contact avec une association adaptée</h2>
+    <%= simple_form_for [@nonprofits, @reports](@reports, method: :patch, url: update_report_incident_nonprofit_path) do |f| %>
+
+      </div>
+
+      <button type="submit" class="btn btn-primary mb-2" id="validate-button">Prévisualiser</button>
+    <% end %>
+
+     <div class=association_grid>
+          <%@nonprofits.each do |nonprofit|%>
+          <div class="card-association">
+            <%= nonprofit.motive.name %>
+            <%= nonprofit.name  %>
+          <input type="email" class="form-control" id="inputEmail3" <%= nonprofit.contact_email  %> name="report[recipient_email]">
+          <img src="<%=nonprofit.logo_url%>" alt="" height="50" width="50">
+            <%= nonprofit.description  %>
+        </div>
+        <br>
+        <% end %>
+  </div>
+</div>
+
+
+
+
 
 

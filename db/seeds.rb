@@ -98,26 +98,44 @@ puts "Creating non-profits..."
 non_profit1 = NonProfit.create!({
     name: 'France Victimes',
     description: "France Victimes est composée de 130 associations d'aide aux victimes. L'objet de la Fédération est de promouvoir et de développer l'aide et l'assistance aux victimes, les pratiques de médiation et toute autre mesure contribuant à améliorer la reconnaissance des victimes.",
-    contact_email: "fakemail@gmail.org",
+    contact_email: "victimes@france-victimes.fr",
+    logo_url: "https://res.cloudinary.com/dg8fxmpur/image/upload/v1571327080/Capture_d_e%CC%81cran_2019-10-17_a%CC%80_17.41.07_xmz1he.png",
     motive: motive_seven
   })
  non_profit2 = NonProfit.create!({
     name: "Ravad",
     description: "Réseau d'assistance aux victime d'agressions et de discriminations à raison de leur orientation sexuelle, identité de genre et leur état de santé",
-    contact_email: "fakemail@gmail.org",
+    contact_email: "urgence@ravad.org",
+    logo_url: "https://res.cloudinary.com/dg8fxmpur/image/upload/v1571327080/Capture_d_e%CC%81cran_2019-10-17_a%CC%80_17.42.01_kpcopc.png",
     motive: motive_six
   })
  non_profit3 = NonProfit.create!({
     name: "SOS Homophobie",
     description: "SOS homophobie est une association loi 1901 de lutte contre les discriminations et les agressions à caractère homophobe et transphobe.",
-    contact_email: "fakemail@gmail.org",
+    contact_email: "sos@sos-homophobie.org",
+    logo_url: "https://res.cloudinary.com/dg8fxmpur/image/upload/v1571327080/Capture_d_e%CC%81cran_2019-10-17_a%CC%80_17.42.13_rebh9d.png",
     motive: motive_one
   })
  non_profit4 = NonProfit.create!({
     name: "SOS Racisme",
     description: "SOS Racisme est une association française créée en 1984, dont le but est la lutte contre le racisme, l'antisémitisme et plus généralement toutes les formes de discrimination.",
-    contact_email: "fakemail@gmail.org",
+    contact_email: "internet@sos-racisme.org",
+    logo_url: "https://res.cloudinary.com/dg8fxmpur/image/upload/v1571327080/Capture_d_e%CC%81cran_2019-10-17_a%CC%80_17.41.29_lt1ybr.png",
     motive: motive_two
+  })
+ non_profit5 = NonProfit.create!({
+    name: "Solidarité Femmes",
+    description: "Les associations Solidarité Femmes accompagnent chaque année plus de 30000 femmes victimes, hébergent plus de 3000 femmes et autant d’enfants.",
+    contact_email: "contact@solidaritefemmes.org",
+    logo_url: "https://res.cloudinary.com/dg8fxmpur/image/upload/v1571327080/Capture_d_e%CC%81cran_2019-10-17_a%CC%80_17.41.18_jk5mgj.png",
+    motive: motive_three
+  })
+ non_profit5 = NonProfit.create!({
+    name: "APF France Handicap",
+    description: "Mouvement national de défense et de représentation des personnes en situation de handicap moteur avec ou sans troubles associés et de leur famille.",
+    contact_email: "dr.iledefrance@apf.asso.fr",
+    logo_url: "https://res.cloudinary.com/dg8fxmpur/image/upload/v1571327080/Capture_d_e%CC%81cran_2019-10-17_a%CC%80_17.41.43_xucaem.png",
+    motive: motive_five
   })
 puts "Finished !"
 

@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   resources :incidents, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :recommendations, only: [:index]
     resources :proofs, only: [:new, :create, :index, :destroy]
-    resources :nonprofits, only: [:index]
+    resources :nonprofits, only: [:index, :show, :create] do
+      member do
+      patch 'update_report'
+      get 'send_anonymous_report'
+      end
+    end
     resources :reports, only: [:show, :create] do
       member do
         get 'create_complaint'

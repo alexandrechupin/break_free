@@ -1,0 +1,114 @@
+<head>
+  <meta charset=”utf-8″>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <%= wicked_pdf_stylesheet_link_tag "report" %>
+</head>
+
+  <div class="header">
+      <%=  wicked_pdf_image_tag ("logo-b-f.png"), class: "ml-5" %>
+      <center><h1> Rapport d'incident </h1></center>
+  </div>
+
+
+<div class="pdf-content">
+
+
+  <table>
+      <tr>
+        <h2>Contexte du rapport</h2>
+      </tr>
+
+        <hr>
+
+      <tr>
+        <div class="item">
+          <td> <h4> Type d'incident</h4> </td>
+          <td > <p><%= @report.incident.incident_category.name %> </p> </td>
+          <% if @report.incident.recurrent %>
+            <p> Il s'agit d'un <strong> acte répété </strong>, qui peut s'apparenter à une situation de harcèlement. </p>
+          <% end %>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="item">
+         <td> <h4> Signalé le </h4> </td>
+          <td > <p> <%= @report.incident.created_at.strftime("%d/%m/%Y") %> </p> </td>
+        </div>
+      </tr>
+
+    </table>
+
+
+      <h2>Contenu du témoignage</h2>
+
+      <hr>
+
+    <table>
+
+      <tr>
+        <div class="item">
+          <td> <h4> Date de l'incident</h4> </td>
+          <td> <p><%= @report.incident.date.strftime("%d/%m/%Y")  %></p> </td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class=item>
+          <td>  <h4> Lieu de l'incident</h4></td>
+          <td> <p><%= @report.incident.address  %></p> </td>
+        </div>
+      </tr>
+
+    </table>
+
+    <div class="item">
+        <h4>Description</h4>
+         <p> <%= @report.incident.description %> </p>
+    </div>
+
+<!--     <div class="item">
+      <h4>Impacts sur la victime </h4>
+        <%# unless @report.incident.description_after_feeling.nil? %>
+          <p> <%= @report.incident.description_after_feeling %> </p>
+        <%# else %>
+         <p> <em>Non renseigné </em></p>
+      <% #end %>
+    </div> -->
+
+
+    <table>
+
+        <tr>
+          <div class="item">
+           <td>  <h4> Preuves récoltées</h4> </td>
+             <% if @report.incident.proofs.length > 0 %>
+                <td>  <p> <%= @report.incident.proofs.count %> fichiers médias appuie(nt) ce témoignage, vous pouvez le(s) consulter sur break<strong>free</strong>.fr.</p> </td>
+              <% else %>
+                <td> <p> <em>Non renseigné </em></p></td>
+              <% end %>
+          </div>
+        </tr>
+
+
+        <tr>
+          <div class="item">
+            <td> <h4>Témoins </h4> </td>
+            <% if @report.incident.testimonies.length > 0 %>
+              <td> <p> Le récit de la victime est corroboré par <%@report.incident.testimonies.count %> témoin(s). </p> </td>
+              <% else %>
+                <td> <p> <em>Non renseigné </em></p></td>
+              <% end %>
+          </div>
+        </tr>
+
+
+    </table>
+
+  <hr>
+
+    <em>Ce rapport est confidentiel.</em>
+
+  </div>
+
+
