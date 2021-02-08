@@ -20,7 +20,7 @@ gem 'pundit'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'cloudinary', '~> 1.9.1'
 gem "algoliasearch-rails"
 gem 'geocoder'
